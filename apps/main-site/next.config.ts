@@ -10,9 +10,7 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_TELEMETRY_DISABLED: '1',
   },
-  experimental: {
-    serverComponentsExternalPackages: [],
-  },
+  serverExternalPackages: [],
 };
 
 export default nextConfig;
