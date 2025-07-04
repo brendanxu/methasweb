@@ -1,0 +1,13 @@
+{
+  "buildCommand": "cd apps/main-site && npm run build",
+  "outputDirectory": "apps/main-site/.next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "devCommand": "cd apps/main-site && npm run dev -- --port $PORT",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/apps/main-site/$1"
+    }
+  ]
+}

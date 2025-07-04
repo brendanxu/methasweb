@@ -1,5 +1,5 @@
 {
-  "name": "with-tailwind",
+  "name": "southpole-clone",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -9,19 +9,26 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./*": "./dist/*.js"
+    ".": "./dist/index.js",
+    "./button": "./dist/button.js",
+    "./card": "./dist/card.js",
+    "./header": "./dist/header.js",
+    "./footer": "./dist/footer.js"
   },
   "license": "MIT",
   "scripts": {
+    "build": "npm run build:components && npm run build:styles",
     "build:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
     "build:components": "tsc",
     "check-types": "tsc --noEmit",
+    "dev": "npm run dev:components & npm run dev:styles",
     "dev:styles": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
     "dev:components": "tsc --watch",
     "lint": "eslint src --max-warnings 0"
   },
   "peerDependencies": {
-    "react": "^19"
+    "react": "^19",
+    "framer-motion": "^11"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -30,6 +37,7 @@
     "@tailwindcss/cli": "^4.1.5",
     "@types/react": "^19.1.0",
     "eslint": "^9.30.0",
+    "framer-motion": "^11.15.0",
     "tailwindcss": "^4.1.5",
     "typescript": "5.8.2"
   }
