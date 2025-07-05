@@ -187,7 +187,10 @@ export async function logoutUser(): Promise<void> {
 // Utility functions
 export const isTokenExpired = (token: string): boolean => {
   try {
-    const payload = JSON.parse(atob(token.split('.')[1]))
+    const parts = token.split('.')
+    if (parts.length !== 3) return true
+    
+    const payload = JSON.parse(atob(parts[1]))
     return payload.exp * 1000 < Date.now()
   } catch {
     return true
@@ -196,7 +199,10 @@ export const isTokenExpired = (token: string): boolean => {
 
 export const getUserFromToken = (token: string): Partial<User> | null => {
   try {
-    const payload = JSON.parse(atob(token.split('.')[1]))
+    const parts = token.split('.')
+    if (parts.length !== 3) return null
+    
+    const payload = JSON.parse(atob(parts[1]))
     return {
       id: payload.userId || payload.sub,
       email: payload.email,
