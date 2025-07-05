@@ -55,7 +55,7 @@ export default function ProjectShowcase({
         {showFilters && industries.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <Button
-              variant={activeFilter === 'all' ? 'default' : 'outline'}
+              variant={activeFilter === 'all' ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setActiveFilter('all')}
             >
@@ -64,7 +64,7 @@ export default function ProjectShowcase({
             {industries.map((industry) => (
               <Button
                 key={industry}
-                variant={activeFilter === industry ? 'default' : 'outline'}
+                variant={activeFilter === industry ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => setActiveFilter(industry)}
               >
@@ -100,7 +100,7 @@ export default function ProjectShowcase({
 
                 {/* View Project Button (appears on hover) */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button variant="default" size="sm" asChild>
+                  <Button variant="primary" size="sm" asChild>
                     <Link href={`/work/${project.slug}`}>
                       View Project
                     </Link>
