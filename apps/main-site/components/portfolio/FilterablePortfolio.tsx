@@ -53,7 +53,7 @@ export default function FilterablePortfolio({ caseStudies }: FilterablePortfolio
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           <Button
-            variant={activeFilter === 'all' ? 'default' : 'outline'}
+            variant={activeFilter === 'all' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => handleFilterChange('all')}
           >
@@ -64,7 +64,7 @@ export default function FilterablePortfolio({ caseStudies }: FilterablePortfolio
             return (
               <Button
                 key={industry}
-                variant={activeFilter === industry ? 'default' : 'outline'}
+                variant={activeFilter === industry ? 'primary' : 'outline'}
                 size="sm"
                 onClick={() => handleFilterChange(industry)}
               >
