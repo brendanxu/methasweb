@@ -33,7 +33,7 @@ export default function UserProfile() {
         <Button variant="ghost" size="sm" asChild>
           <Link href="/login">Sign In</Link>
         </Button>
-        <Button variant="default" size="sm" asChild>
+        <Button variant="primary" size="sm" asChild>
           <Link href="/register">Sign Up</Link>
         </Button>
       </div>
