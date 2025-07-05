@@ -93,6 +93,10 @@ const nextConfig = {
   
   // Build configuration
   transpilePackages: ['@repo/ui'],
+  
+  // Disable file-system caching for EdgeOne deployment
+  cacheHandler: undefined,
+  cacheMaxMemorySize: 0,
 
   // Webpack configuration
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {

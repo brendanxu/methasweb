@@ -1,0 +1,90 @@
+# EdgeOne deployment ignore file
+
+# Next.js cache
+.next/cache/
+apps/main-site/.next/cache/
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Development files
+*.log
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Build artifacts
+dist/
+build/
+out/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+LICENSE
+
+# Source maps
+*.map
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Storybook
+.storybook/
+storybook-static/
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Package manager files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Turbo
+.turbo/
+
+# ESLint & Prettier
+.eslintrc*
+.prettierrc*
+.eslintignore
+.prettierignore
