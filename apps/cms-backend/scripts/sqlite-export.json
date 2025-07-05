@@ -1,0 +1,189 @@
+{
+  "users": [
+    {
+      "id": "cmcpjq0uf0000m6mjj4zq8esi",
+      "email": "admin@southpole.com",
+      "password_hash": "$2a$12$JG6P1laubxluSW8BAdnJL.OsadllRyaRnOYf/0s8WCo5MVbmtbXLC",
+      "name": "Admin User",
+      "role": "ADMIN",
+      "avatar_url": null,
+      "is_active": 1,
+      "created_at": 1751677779399,
+      "updated_at": 1751677779399
+    }
+  ],
+  "services": [
+    {
+      "id": "cmcpjq0ui0001m6mjmbqwzowg",
+      "name": "Climate Action",
+      "slug": "climate-action",
+      "description": "Comprehensive climate action strategies and implementation",
+      "icon_url": null,
+      "color": "#0057FF",
+      "is_active": 1,
+      "created_at": 1751677779403,
+      "updated_at": 1751677779403
+    },
+    {
+      "id": "cmcpjq0uj0002m6mjuyazsdiz",
+      "name": "Climate Finance",
+      "slug": "climate-finance",
+      "description": "Financial instruments and strategies for climate initiatives",
+      "icon_url": null,
+      "color": "#00B5A1",
+      "is_active": 1,
+      "created_at": 1751677779403,
+      "updated_at": 1751677779403
+    },
+    {
+      "id": "cmcpjq0uk0003m6mjm1geqxhq",
+      "name": "Renewable Energy",
+      "slug": "renewable-energy",
+      "description": "Renewable energy solutions and implementation",
+      "icon_url": null,
+      "color": "#22C55E",
+      "is_active": 1,
+      "created_at": 1751677779404,
+      "updated_at": 1751677779404
+    },
+    {
+      "id": "cmcpjq0uk0004m6mjupp438or",
+      "name": "Nature-Based Solutions",
+      "slug": "nature-based-solutions",
+      "description": "Natural climate solutions and conservation",
+      "icon_url": null,
+      "color": "#10B981",
+      "is_active": 1,
+      "created_at": 1751677779405,
+      "updated_at": 1751677779405
+    }
+  ],
+  "industries": [
+    {
+      "id": "cmcpjq0ul0005m6mjog3k4z7t",
+      "name": "Technology",
+      "slug": "technology",
+      "description": "Technology and software companies",
+      "is_active": 1,
+      "created_at": 1751677779405,
+      "updated_at": 1751677779405
+    },
+    {
+      "id": "cmcpjq0um0006m6mjj2fvis7l",
+      "name": "Finance",
+      "slug": "finance",
+      "description": "Financial services and institutions",
+      "is_active": 1,
+      "created_at": 1751677779406,
+      "updated_at": 1751677779406
+    },
+    {
+      "id": "cmcpjq0um0007m6mj7qosmxfi",
+      "name": "Manufacturing",
+      "slug": "manufacturing",
+      "description": "Manufacturing and industrial companies",
+      "is_active": 1,
+      "created_at": 1751677779407,
+      "updated_at": 1751677779407
+    },
+    {
+      "id": "cmcpjq0un0008m6mj3o501084",
+      "name": "Energy",
+      "slug": "energy",
+      "description": "Energy companies and utilities",
+      "is_active": 1,
+      "created_at": 1751677779407,
+      "updated_at": 1751677779407
+    }
+  ],
+  "categories": [
+    {
+      "id": "cmcpjq0uo0009m6mjbywrpnnq",
+      "name": "Climate Action",
+      "slug": "climate-action",
+      "description": "News about climate action initiatives",
+      "color": "#0057FF",
+      "is_active": 1,
+      "created_at": 1751677779408,
+      "updated_at": 1751677779408
+    },
+    {
+      "id": "cmcpjq0uo000am6mjyqcw9fmm",
+      "name": "Sustainability",
+      "slug": "sustainability",
+      "description": "Sustainability news and updates",
+      "color": "#22C55E",
+      "is_active": 1,
+      "created_at": 1751677779409,
+      "updated_at": 1751677779409
+    },
+    {
+      "id": "cmcpjq0up000bm6mj0kavnj28",
+      "name": "Innovation",
+      "slug": "innovation",
+      "description": "Innovation in climate technology",
+      "color": "#8B5CF6",
+      "is_active": 1,
+      "created_at": 1751677779409,
+      "updated_at": 1751677779409
+    },
+    {
+      "id": "cmcpjq0up000cm6mjqnrt3nyn",
+      "name": "Policy",
+      "slug": "policy",
+      "description": "Climate policy and regulation news",
+      "color": "#EF4444",
+      "is_active": 1,
+      "created_at": 1751677779410,
+      "updated_at": 1751677779410
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "cmcpjq0ur000em6mjvk9vovh8",
+      "title": "Microsoft Carbon Negative Initiative",
+      "slug": "microsoft-carbon-negative-initiative",
+      "client_name": "Microsoft Corporation",
+      "hero_image_url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=900&fit=crop",
+      "summary": "Helping Microsoft achieve their ambitious carbon negative goals through comprehensive climate action strategies.",
+      "the_goal": "Microsoft committed to being carbon negative by 2030 and removing all carbon emitted since the company was founded by 2050.",
+      "the_challenge": "Developing a comprehensive strategy to not only achieve carbon neutrality but to go beyond and become carbon negative across all operations.",
+      "the_solution": "We worked with Microsoft to develop a multi-faceted approach including renewable energy procurement, carbon removal technologies, and sustainable supply chain practices.",
+      "status": "PUBLISHED",
+      "meta_title": "Microsoft Carbon Negative Initiative Case Study",
+      "meta_description": "Learn how South Pole helped Microsoft achieve their carbon negative goals through comprehensive climate action strategies.",
+      "published_at": 1751677779410,
+      "created_at": 1751677779412,
+      "updated_at": 1751677779412,
+      "industry_id": "cmcpjq0ul0005m6mjog3k4z7t",
+      "author_id": "cmcpjq0uf0000m6mjj4zq8esi"
+    }
+  ],
+  "newsArticles": [
+    {
+      "id": "cmcpjq0ut000im6mjxfqlwjrw",
+      "title": "New Carbon Removal Technologies Show Promise",
+      "slug": "new-carbon-removal-technologies-show-promise",
+      "hero_image_url": "https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1600&h=900&fit=crop",
+      "summary": "Recent developments in direct air capture and other carbon removal technologies are showing significant promise for scaling climate solutions.",
+      "content": "\n        <p>The field of carbon removal is experiencing rapid innovation, with new technologies emerging that could play a crucial role in achieving global climate goals.</p>\n        \n        <h2>Direct Air Capture Advances</h2>\n        <p>Direct air capture (DAC) technology has seen significant improvements in efficiency and cost reduction. Several companies are now operating commercial-scale DAC facilities.</p>\n        \n        <h2>Nature-Based Solutions</h2>\n        <p>Alongside technological solutions, nature-based approaches continue to show promise for large-scale carbon removal.</p>\n        \n        <h2>Looking Forward</h2>\n        <p>The combination of technological and natural solutions provides a pathway for achieving the scale of carbon removal needed to meet climate targets.</p>\n      ",
+      "status": "PUBLISHED",
+      "meta_title": "New Carbon Removal Technologies Show Promise",
+      "meta_description": "Recent developments in direct air capture and other carbon removal technologies are showing significant promise for scaling climate solutions.",
+      "published_at": 1751677779412,
+      "created_at": 1751677779413,
+      "updated_at": 1751677779413,
+      "category_id": "cmcpjq0uo000am6mjyqcw9fmm",
+      "author_id": "cmcpjq0uf0000m6mjj4zq8esi"
+    }
+  ],
+  "caseStudyServices": [
+    {
+      "id": "cmcpjq0us000gm6mj99chhcfp",
+      "case_study_id": "cmcpjq0ur000em6mjvk9vovh8",
+      "service_id": "cmcpjq0ui0001m6mjmbqwzowg",
+      "created_at": 1751677779412
+    }
+  ],
+  "mediaFiles": []
+}

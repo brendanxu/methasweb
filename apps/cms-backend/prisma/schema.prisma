@@ -1,0 +1,470 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums for PostgreSQL
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum MediaType {
+  IMAGE
+  DOCUMENT
+  VIDEO
+  OTHER
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  passwordHash String  @map("password_hash")
+  name        String
+  role        UserRole @default(EDITOR)
+  avatarUrl   String?  @map("avatar_url")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudies  CaseStudy[]
+  newsArticles NewsArticle[]
+  mediaFiles   MediaFile[]
+  companyInfo  CompanyInfo[]
+  assignedContactForms ContactForm[]
+  seoMeta      SEOMeta[]
+
+  @@map("users")
+  @@index([email])
+  @@index([role])
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  iconUrl     String? @map("icon_url")
+  color       String? // HEX color code
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudyServices CaseStudyService[]
+
+  @@map("services")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Industry {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudies CaseStudy[]
+
+  @@map("industries")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  color       String? // HEX color code
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  newsArticles NewsArticle[]
+
+  @@map("categories")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model CaseStudy {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  clientName    String        @map("client_name")
+  heroImageUrl  String?       @map("hero_image_url")
+  summary       String        @db.Text
+  theGoal       String        @map("the_goal") @db.Text
+  theChallenge  String        @map("the_challenge") @db.Text
+  theSolution   String        @map("the_solution") @db.Text
+  status        ContentStatus @default(DRAFT)
+  metaTitle     String?       @map("meta_title")
+  metaDescription String?     @map("meta_description") @db.Text
+  publishedAt   DateTime?     @map("published_at")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  industryId String? @map("industry_id")
+  authorId   String  @map("author_id")
+
+  // Relations
+  industry Industry? @relation(fields: [industryId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id])
+  services CaseStudyService[]
+  mediaFiles MediaFile[]
+
+  @@map("case_studies")
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([industryId])
+  @@index([authorId])
+}
+
+model NewsArticle {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  excerpt         String        @db.Text
+  featuredImageUrl String?      @map("featured_image_url")
+  content         String        @db.Text
+  status          ContentStatus @default(DRAFT)
+  metaTitle       String?       @map("meta_title")
+  metaDescription String?       @map("meta_description") @db.Text
+  publishedAt     DateTime?     @map("published_at")
+  tags            String[]      @default([])
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  categoryId String @map("category_id")
+  authorId   String @map("author_id")
+
+  // Relations
+  category   Category    @relation(fields: [categoryId], references: [id])
+  author     User        @relation(fields: [authorId], references: [id])
+  mediaFiles MediaFile[]
+
+  @@map("news_articles")
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([categoryId])
+  @@index([authorId])
+}
+
+model CaseStudyService {
+  id           String @id @default(cuid())
+  caseStudyId  String @map("case_study_id")
+  serviceId    String @map("service_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  caseStudy CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  service   Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([caseStudyId, serviceId])
+  @@map("case_study_services")
+  @@index([caseStudyId])
+  @@index([serviceId])
+}
+
+model MediaFile {
+  id           String    @id @default(cuid())
+  filename     String
+  originalName String    @map("original_name")
+  url          String
+  type         MediaType @default(OTHER)
+  mimetype     String
+  size         Int
+  alt          String?   @db.Text
+  caption      String?   @db.Text
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  uploadedById  String? @map("uploaded_by_id")
+  caseStudyId   String? @map("case_study_id")
+  newsArticleId String? @map("news_article_id")
+
+  // Relations
+  uploadedBy  User?        @relation(fields: [uploadedById], references: [id])
+  caseStudy   CaseStudy?   @relation(fields: [caseStudyId], references: [id])
+  newsArticle NewsArticle? @relation(fields: [newsArticleId], references: [id])
+
+  @@map("media_files")
+  @@index([uploadedById])
+  @@index([type])
+  @@index([caseStudyId])
+  @@index([newsArticleId])
+}
+
+// Company Information Models
+enum CompanyInfoType {
+  HERO
+  MISSION
+  VALUES
+  HISTORY
+  COMMITMENT
+  IMPACT
+}
+
+model CompanyInfo {
+  id          String          @id @default(cuid())
+  section     CompanyInfoType
+  title       String
+  subtitle    String?         @db.Text
+  content     String          @db.Text
+  imageUrl    String?
+  videoUrl    String?
+  ctaText     String?
+  ctaUrl      String?
+  displayOrder Int?
+  isActive    Boolean         @default(true) @map("is_active")
+  createdAt   DateTime        @default(now()) @map("created_at")
+  updatedAt   DateTime        @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  authorId    String          @map("author_id")
+
+  // Relations
+  author      User            @relation(fields: [authorId], references: [id])
+
+  @@map("company_info")
+  @@index([section])
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+model CompanyStats {
+  id          String   @id @default(cuid())
+  label       String
+  value       String
+  description String?  @db.Text
+  iconUrl     String?
+  displayOrder Int?
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("company_stats")
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  title       String
+  department  String?
+  bio         String?  @db.Text
+  imageUrl    String?
+  linkedinUrl String?
+  email       String?
+  isLeadership Boolean @default(false) @map("is_leadership")
+  displayOrder Int?    @map("display_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("team_members")
+  @@index([isLeadership])
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+model OfficeLocation {
+  id          String   @id @default(cuid())
+  name        String
+  address     String   @db.Text
+  city        String
+  country     String
+  countryCode String?  @map("country_code")
+  phone       String?
+  email       String?
+  timezone    String?
+  coordinates String?  // "lat,lng"
+  description String?  @db.Text
+  imageUrl    String?
+  isHeadquarters Boolean @default(false) @map("is_headquarters")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("office_locations")
+  @@index([country])
+  @@index([isHeadquarters])
+  @@index([isActive])
+}
+
+// Contact Forms and Communications
+enum ContactFormType {
+  GENERAL
+  PARTNERSHIP
+  MEDIA
+  CAREER
+  SUPPORT
+  CONSULTATION
+}
+
+enum ContactStatus {
+  NEW
+  ASSIGNED
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum ContactPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+model ContactForm {
+  id          String         @id @default(cuid())
+  type        ContactFormType @default(GENERAL)
+  status      ContactStatus  @default(NEW)
+  priority    ContactPriority @default(MEDIUM)
+  
+  // Contact Information
+  firstName   String         @map("first_name")
+  lastName    String         @map("last_name")
+  email       String
+  phone       String?
+  company     String?
+  jobTitle    String?        @map("job_title")
+  country     String?
+  
+  // Message Details
+  subject     String
+  message     String         @db.Text
+  attachments Json?          // Array of file URLs/info
+  
+  // Metadata
+  source      String?        // Where the form was submitted from
+  referrer    String?        // HTTP referrer
+  userAgent   String?        @map("user_agent")
+  ipAddress   String?        @map("ip_address")
+  
+  // Follow-up
+  assignedToId String?       @map("assigned_to_id")
+  assignedTo  User?          @relation(fields: [assignedToId], references: [id])
+  responseText String?       @db.Text @map("response_text")
+  responseDate DateTime?     @map("response_date")
+  
+  // Timestamps
+  submittedAt DateTime       @default(now()) @map("submitted_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+  
+  @@map("contact_forms")
+  @@index([type])
+  @@index([status])
+  @@index([priority])
+  @@index([submittedAt])
+  @@index([assignedToId])
+  @@index([email])
+}
+
+// SEO Management
+enum SEOPageType {
+  HOME
+  ABOUT
+  SERVICES
+  WORK
+  NEWS
+  CONTACT
+  TEAM
+  LOCATIONS
+  CASE_STUDY
+  NEWS_ARTICLE
+  SERVICE_PAGE
+  CUSTOM
+}
+
+model SEOMeta {
+  id          String      @id @default(cuid())
+  pageType    SEOPageType
+  pagePath    String?     // For custom pages or specific paths
+  
+  // Basic Meta Tags
+  title       String
+  description String      @db.Text
+  keywords    String?     @db.Text
+  
+  // OpenGraph Meta Tags
+  ogTitle     String?     @map("og_title")
+  ogDescription String?   @db.Text @map("og_description")
+  ogImage     String?     @map("og_image")
+  ogImageAlt  String?     @map("og_image_alt")
+  ogType      String?     @default("website") @map("og_type")
+  ogUrl       String?     @map("og_url")
+  ogSiteName  String?     @default("South Pole") @map("og_site_name")
+  ogLocale    String?     @default("en_US") @map("og_locale")
+  
+  // Twitter Card Meta Tags
+  twitterCard String?     @default("summary_large_image") @map("twitter_card")
+  twitterSite String?     @map("twitter_site")
+  twitterCreator String?  @map("twitter_creator")
+  twitterTitle String?    @map("twitter_title")
+  twitterDescription String? @db.Text @map("twitter_description")
+  twitterImage String?    @map("twitter_image")
+  twitterImageAlt String? @map("twitter_image_alt")
+  
+  // Advanced SEO
+  canonical   String?     // Canonical URL
+  robots      String?     @default("index,follow") // Robots directive
+  viewport    String?     @default("width=device-width, initial-scale=1") // Viewport meta
+  
+  // Schema.org JSON-LD
+  structuredData Json?     @map("structured_data")
+  
+  // Additional Meta Tags
+  customMeta  Json?       @map("custom_meta") // Array of {name, content} or {property, content}
+  
+  // Content References (for dynamic pages)
+  referenceId String?     @map("reference_id") // ID of case study, news article, etc.
+  referenceType String?   @map("reference_type") // Type of referenced content
+  
+  // Status and Management
+  isActive    Boolean     @default(true) @map("is_active")
+  isDefault   Boolean     @default(false) @map("is_default") // Default SEO for page type
+  priority    Int?        @default(0) // Higher priority overrides lower
+  
+  // Audit Fields
+  createdById String      @map("created_by_id")
+  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  
+  @@map("seo_meta")
+  @@unique([pageType, pagePath, referenceId])
+  @@index([pageType])
+  @@index([pagePath])
+  @@index([referenceId])
+  @@index([isActive])
+  @@index([isDefault])
+}

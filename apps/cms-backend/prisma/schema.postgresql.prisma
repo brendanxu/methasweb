@@ -1,0 +1,219 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums for PostgreSQL
+enum UserRole {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum MediaType {
+  IMAGE
+  DOCUMENT
+  VIDEO
+  OTHER
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  passwordHash String  @map("password_hash")
+  name        String
+  role        UserRole @default(EDITOR)
+  avatarUrl   String?  @map("avatar_url")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudies  CaseStudy[]
+  newsArticles NewsArticle[]
+  mediaFiles   MediaFile[]
+
+  @@map("users")
+  @@index([email])
+  @@index([role])
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  iconUrl     String? @map("icon_url")
+  color       String? // HEX color code
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudyServices CaseStudyService[]
+
+  @@map("services")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Industry {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  caseStudies CaseStudy[]
+
+  @@map("industries")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  name        String
+  slug        String  @unique
+  description String? @db.Text
+  color       String? // HEX color code
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  newsArticles NewsArticle[]
+
+  @@map("categories")
+  @@index([slug])
+  @@index([isActive])
+}
+
+model CaseStudy {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  clientName    String        @map("client_name")
+  heroImageUrl  String?       @map("hero_image_url")
+  summary       String        @db.Text
+  theGoal       String        @map("the_goal") @db.Text
+  theChallenge  String        @map("the_challenge") @db.Text
+  theSolution   String        @map("the_solution") @db.Text
+  status        ContentStatus @default(DRAFT)
+  metaTitle     String?       @map("meta_title")
+  metaDescription String?     @map("meta_description") @db.Text
+  publishedAt   DateTime?     @map("published_at")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  industryId String? @map("industry_id")
+  authorId   String  @map("author_id")
+
+  // Relations
+  industry Industry? @relation(fields: [industryId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id])
+  services CaseStudyService[]
+  mediaFiles MediaFile[]
+
+  @@map("case_studies")
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([industryId])
+  @@index([authorId])
+}
+
+model NewsArticle {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  excerpt         String        @db.Text
+  featuredImageUrl String?      @map("featured_image_url")
+  content         String        @db.Text
+  status          ContentStatus @default(DRAFT)
+  metaTitle       String?       @map("meta_title")
+  metaDescription String?       @map("meta_description") @db.Text
+  publishedAt     DateTime?     @map("published_at")
+  tags            String[]      @default([])
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  categoryId String @map("category_id")
+  authorId   String @map("author_id")
+
+  // Relations
+  category   Category    @relation(fields: [categoryId], references: [id])
+  author     User        @relation(fields: [authorId], references: [id])
+  mediaFiles MediaFile[]
+
+  @@map("news_articles")
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([categoryId])
+  @@index([authorId])
+}
+
+model CaseStudyService {
+  id           String @id @default(cuid())
+  caseStudyId  String @map("case_study_id")
+  serviceId    String @map("service_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relations
+  caseStudy CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  service   Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([caseStudyId, serviceId])
+  @@map("case_study_services")
+  @@index([caseStudyId])
+  @@index([serviceId])
+}
+
+model MediaFile {
+  id           String    @id @default(cuid())
+  filename     String
+  originalName String    @map("original_name")
+  url          String
+  type         MediaType @default(OTHER)
+  mimetype     String
+  size         Int
+  alt          String?   @db.Text
+  caption      String?   @db.Text
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  // Foreign Keys
+  uploadedById  String? @map("uploaded_by_id")
+  caseStudyId   String? @map("case_study_id")
+  newsArticleId String? @map("news_article_id")
+
+  // Relations
+  uploadedBy  User?        @relation(fields: [uploadedById], references: [id])
+  caseStudy   CaseStudy?   @relation(fields: [caseStudyId], references: [id])
+  newsArticle NewsArticle? @relation(fields: [newsArticleId], references: [id])
+
+  @@map("media_files")
+  @@index([uploadedById])
+  @@index([type])
+  @@index([caseStudyId])
+  @@index([newsArticleId])
+}
