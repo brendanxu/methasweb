@@ -2,11 +2,14 @@
   "name": "southpole-clone",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "cd apps/main-site && npm install && npm run build",
     "dev": "turbo run dev",
+    "start": "cd apps/main-site && npm run start",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "build:turbo": "turbo run build",
+    "vercel-build": "cd apps/main-site && npm install && npm run build"
   },
   "devDependencies": {
     "prettier": "^3.6.0",
