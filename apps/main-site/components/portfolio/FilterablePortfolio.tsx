@@ -96,7 +96,6 @@ export default function FilterablePortfolio({ caseStudies }: FilterablePortfolio
                 title={study.title}
                 description={study.summary}
                 href={`/work/${study.slug}`}
-                className="hover:transform hover:scale-105 transition-transform duration-300"
               />
             </div>
           ))}
