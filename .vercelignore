@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Development files
+.env.local
+.env.development
+*.log
+.DS_Store
+
+# Test files
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+__tests__/
+
+# Documentation
+README.md
+docs/
+*.md
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Git files
+.git/
+.gitignore
+.github/
+
+# Build files (only keep production builds)
+.next/
+.turbo/
+dist/
+
+# Backend app (only deploy frontend)
+apps/cms-backend/
+
+# Scripts and configs
+scripts/
+*.backup
+*.bak
+
+# Database files
+*.db
+*.sqlite
+prisma/migrations/dev/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Package manager files
+pnpm-lock.yaml
+yarn.lock
+
+# Temporary files
+tmp/
+temp/
+*.tmp
