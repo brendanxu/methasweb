@@ -1,11 +1,8 @@
 import HomepageHero from '@/components/homepage/HomepageHero'
 import HomepageServices from '@/components/homepage/HomepageServices'
-import HomepageStats from '@/components/homepage/HomepageStats'
 import HomepageImpact from '@/components/homepage/HomepageImpact'
-import HomepageCaseStudies from '@/components/homepage/HomepageCaseStudies'
-import HomepageNews from '@/components/homepage/HomepageNews'
+import CarbonInsights from '@/components/homepage/CarbonInsights'
 import HomepagePartners from '@/components/homepage/HomepagePartners'
-import HomepageCTA from '@/components/homepage/HomepageCTA'
 import { getHomepageData } from '@/lib/api'
 
 export default async function HomePage() {
@@ -14,13 +11,10 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen">
       <HomepageHero />
-      <HomepageStats stats={homepageData.stats} />
       <HomepageServices services={homepageData.services} />
       <HomepageImpact />
-      <HomepageCaseStudies caseStudies={homepageData.caseStudies} />
+      <CarbonInsights />
       <HomepagePartners />
-      <HomepageNews news={homepageData.news} />
-      <HomepageCTA />
     </div>
   )
 }

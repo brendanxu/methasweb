@@ -396,39 +396,22 @@ export async function getTeamPageData(): Promise<{
 
 // Homepage API Functions
 export async function getHomepageData(): Promise<{
-  stats: CompanyStat[],
-  services: Service[],
-  caseStudies: CaseStudy[],
-  news: NewsArticle[]
+  services: Service[]
 }> {
   try {
-    const [statsResponse, servicesResponse, caseStudiesResponse, newsResponse] = await Promise.all([
-      fetch(`${API_BASE_URL}/company/stats`, { next: { revalidate: 3600 } }),
-      fetch(`${API_BASE_URL}/services`, { next: { revalidate: 3600 } }),
-      getCaseStudies(), // Use existing function
-      getNewsArticles()  // Use existing function
-    ])
+    const servicesResponse = await fetch(`${API_BASE_URL}/services`, { next: { revalidate: 3600 } })
     
-    const statsData = statsResponse.ok ? await statsResponse.json() : { data: [] }
     const servicesData = servicesResponse.ok ? await servicesResponse.json() : { data: [] }
-    const caseStudies = await caseStudiesResponse
-    const news = await newsResponse
     
     return { 
-      stats: statsData.data || [],
-      services: servicesData.data || [],
-      caseStudies: caseStudies.slice(0, 3),
-      news: news.slice(0, 3)
+      services: servicesData.data || []
     }
   } catch (error) {
     console.error('Error fetching homepage data:', error)
     
     // Return fallback data
     return { 
-      stats: [],
-      services: [],
-      caseStudies: [],
-      news: []
+      services: []
     }
   }
 }
