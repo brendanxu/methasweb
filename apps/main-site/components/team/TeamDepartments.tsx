@@ -81,7 +81,7 @@ export default function TeamDepartments({ departments }: TeamDepartmentsProps) {
 
         {/* Departments Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {displayDepartments.map((dept, index) => (
+          {displayDepartments.map((dept) => (
             <div key={dept.id} className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 group">
               {/* Header */}
               <div className="flex items-start justify-between mb-6">

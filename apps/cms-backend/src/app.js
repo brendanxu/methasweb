@@ -32,19 +32,10 @@ const notFound = require('./middleware/notFound');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Security middleware
+// Security middleware (relaxed for admin interface)
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" },
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://unpkg.com"],
-      fontSrc: ["'self'", "https:", "data:"],
-      imgSrc: ["'self'", "data:", "https:"],
-      connectSrc: ["'self'", "http://localhost:3001"],
-    },
-  },
+  contentSecurityPolicy: false, // Disable CSP temporarily for testing
 }));
 
 // Rate limiting

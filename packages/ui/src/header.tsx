@@ -17,25 +17,25 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: 'What we do',
-    href: '#',
+    href: '/services',
     children: [
-      { label: 'Climate Action', href: '/climate-action', description: 'Solutions for net zero' },
-      { label: 'Climate Finance', href: '/climate-finance', description: 'Investment solutions' },
-      { label: 'Renewable Energy', href: '/renewable-energy', description: 'Clean energy projects' },
-      { label: 'Nature-Based Solutions', href: '/nature-based', description: 'Natural climate solutions' },
+      { label: 'Climate Action', href: '/services/climate-action', description: 'Carbon offsetting and reduction strategies' },
+      { label: 'Climate Finance', href: '/services/climate-finance', description: 'Investment solutions and green financing' },
+      { label: 'Renewable Energy', href: '/services/renewable-energy', description: 'Clean energy projects and procurement' },
+      { label: 'Nature-Based Solutions', href: '/services/nature-based-solutions', description: 'Forest conservation and ecosystem restoration' },
     ]
   },
   {
     label: 'Who we serve',
     href: '#',
     children: [
-      { label: 'Corporations', href: '/corporations', description: 'Enterprise solutions' },
-      { label: 'Governments', href: '/governments', description: 'Public sector support' },
-      { label: 'Financial Institutions', href: '/financial', description: 'Investment partners' },
+      { label: 'Corporations', href: '/corporations', description: 'Enterprise climate solutions' },
+      { label: 'Governments', href: '/governments', description: 'Public sector climate action' },
+      { label: 'Financial Institutions', href: '/financial', description: 'Investment and risk management' },
     ]
   },
   { label: 'Our work', href: '/work' },
-  { label: 'Insights', href: '/insights' },
+  { label: 'Insights', href: '/news' },
   { label: 'About', href: '/about' },
 ]
 
@@ -105,26 +105,40 @@ export function Header() {
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-0 top-full mt-2 w-screen max-w-md rounded-lg bg-white p-6 shadow-xl"
+                      className="absolute left-0 top-full mt-2 w-screen max-w-lg rounded-xl bg-white p-6 shadow-2xl border border-gray-100"
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: 'easeOut' }}
                     >
-                      <div className="space-y-4">
+                      <div className="space-y-1">
                         {item.children.map((child, index) => (
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="block rounded-lg p-3 hover:bg-light transition-colors"
+                            className="group flex items-center justify-between rounded-lg p-4 hover:bg-blue-50 transition-all duration-200"
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.05, duration: 0.2 }}
                           >
-                            <div className="font-medium text-dark">{child.label}</div>
-                            {child.description && (
-                              <div className="mt-1 text-sm text-gray">{child.description}</div>
-                            )}
+                            <div className="flex-1">
+                              <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                {child.label}
+                              </div>
+                              {child.description && (
+                                <div className="mt-1 text-sm text-gray-600 group-hover:text-blue-500 transition-colors">
+                                  {child.description}
+                                </div>
+                              )}
+                            </div>
+                            <svg 
+                              className="h-5 w-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                           </motion.a>
                         ))}
                       </div>

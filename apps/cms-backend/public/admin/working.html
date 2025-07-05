@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Pole CMS Admin - Working Version</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f3f4f6;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        h1, h2 { color: #1f2937; margin-bottom: 20px; }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        button:hover { background: #2563eb; }
+        button:disabled { background: #9ca3af; cursor: not-allowed; }
+        
+        .nav {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav button {
+            width: auto;
+            padding: 8px 16px;
+            margin: 0 5px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .action-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .alert-error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        
+        .alert-success {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .hidden { display: none; }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .table th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-admin { background: #ddd6fe; color: #7c3aed; }
+        .badge-user { background: #dcfce7; color: #16a34a; }
+        .badge-active { background: #dcfce7; color: #16a34a; }
+        .badge-inactive { background: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="container">
+        <div class="card">
+            <h1>Admin Login</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="admin@southpole.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" value="admin123456" required>
+                </div>
+                <button type="submit" id="loginBtn">Sign In</button>
+            </form>
+            <div id="loginError" class="alert alert-error hidden"></div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="dashboard hidden">
+        <div class="nav">
+            <h1>CMS Admin Dashboard</h1>
+            <div>
+                <span id="userEmail"></span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalUsers">-</div>
+                <div>Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalTeam">-</div>
+                <div>Team Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCases">-</div>
+                <div>Case Studies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalNews">-</div>
+                <div>News Articles</div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <div class="action-card" onclick="loadUsers()">
+                <h3>👥 User Management</h3>
+                <p>View and manage users</p>
+            </div>
+            <div class="action-card" onclick="loadTeam()">
+                <h3>🏢 Team Management</h3>
+                <p>Manage team members</p>
+            </div>
+            <div class="action-card" onclick="loadCompany()">
+                <h3>🏛️ Company Info</h3>
+                <p>View company details</p>
+            </div>
+            <div class="action-card" onclick="loadAPIStatus()">
+                <h3>⚡ API Status</h3>
+                <p>Check system health</p>
+            </div>
+        </div>
+        
+        <div id="contentArea" style="margin-top: 30px;"></div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('authToken');
+        let currentUser = null;
+
+        // Initialize
+        if (authToken) {
+            checkAuth();
+        } else {
+            showLogin();
+        }
+
+        function showLogin() {
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('dashboardPage').classList.add('hidden');
+        }
+
+        function showDashboard() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('dashboardPage').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/auth/profile', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentUser = data.data?.user || data.user || data;
+                    document.getElementById('userEmail').textContent = currentUser.email;
+                    showDashboard();
+                } else {
+                    throw new Error('Auth failed');
+                }
+            } catch (error) {
+                localStorage.removeItem('authToken');
+                authToken = null;
+                showLogin();
+            }
+        }
+
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Signing in...';
+            errorDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    authToken = data.data.token;
+                    localStorage.setItem('authToken', authToken);
+                    currentUser = data.data.user;
+                    showDashboard();
+                } else {
+                    throw new Error(data.message || 'Login failed');
+                }
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.classList.remove('hidden');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Sign In';
+            }
+        });
+
+        async function loadDashboardData() {
+            const headers = { 'Authorization': `Bearer ${authToken}` };
+            
+            try {
+                const [users, team, cases, news] = await Promise.all([
+                    fetch('/api/users', { headers }).then(r => r.json()),
+                    fetch('/api/team', { headers }).then(r => r.json()),
+                    fetch('/api/case-studies', { headers }).then(r => r.json()),
+                    fetch('/api/news', { headers }).then(r => r.json())
+                ]);
+
+                document.getElementById('totalUsers').textContent = 
+                    users.data?.length || users.meta?.totalItems || '0';
+                document.getElementById('totalTeam').textContent = 
+                    team.data?.length || team.meta?.totalItems || '0';
+                document.getElementById('totalCases').textContent = 
+                    cases.data?.length || cases.meta?.totalItems || '0';
+                document.getElementById('totalNews').textContent = 
+                    news.data?.length || news.meta?.totalItems || '0';
+                    
+            } catch (error) {
+                console.error('Failed to load dashboard data:', error);
+            }
+        }
+
+        async function loadUsers() {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = '<h2>Users</h2><p>Loading...</p>';
+            
+            try {
+                const response = await fetch('/api/users', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const data = await response.json();
+                const users = data.data || [];
+                
+                contentArea.innerHTML = `
+                    <h2>User Management</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${users.map(user => `
+                                <tr>
+                                    <td>${user.name || 'N/A'}</td>
+                                    <td>${user.email}</td>
+                                    <td><span class="badge ${user.role === 'ADMIN' ? 'badge-admin' : 'badge-user'}">${user.role}</span></td>
+                                    <td><span class="badge ${user.isActive ? 'badge-active' : 'badge-inactive'}">${user.isActive ? 'Active' : 'Inactive'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                contentArea.innerHTML = `<h2>Error</h2><p>Failed to load users: ${error.message}</p>`;
+            }
+        }
+
+        async function loadTeam() {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = '<h2>Team</h2><p>Loading...</p>';
+            
+            try {
+                const response = await fetch('/api/team', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const data = await response.json();
+                const team = data.data || [];
+                
+                contentArea.innerHTML = `
+                    <h2>Team Management</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${team.map(member => `
+                                <tr>
+                                    <td>${member.name}</td>
+                                    <td>${member.position}</td>
+                                    <td>${member.department}</td>
+                                    <td><span class="badge ${member.isActive ? 'badge-active' : 'badge-inactive'}">${member.isActive ? 'Active' : 'Inactive'}</span></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                contentArea.innerHTML = `<h2>Error</h2><p>Failed to load team: ${error.message}</p>`;
+            }
+        }
+
+        async function loadCompany() {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = '<h2>Company</h2><p>Loading...</p>';
+            
+            try {
+                const response = await fetch('/api/company', {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                const data = await response.json();
+                const company = data.data || {};
+                
+                contentArea.innerHTML = `
+                    <h2>Company Information</h2>
+                    <div class="card">
+                        <p><strong>Name:</strong> ${company.name || 'South Pole'}</p>
+                        <p><strong>Website:</strong> ${company.website || 'https://www.southpole.com'}</p>
+                        <p><strong>Description:</strong> ${company.description || 'Climate solutions provider'}</p>
+                    </div>
+                `;
+            } catch (error) {
+                contentArea.innerHTML = `<h2>Error</h2><p>Failed to load company info: ${error.message}</p>`;
+            }
+        }
+
+        async function loadAPIStatus() {
+            const contentArea = document.getElementById('contentArea');
+            contentArea.innerHTML = '<h2>API Status</h2><p>Checking endpoints...</p>';
+            
+            const endpoints = [
+                { name: 'Health Check', path: '/health' },
+                { name: 'Users API', path: '/api/users' },
+                { name: 'Team API', path: '/api/team' },
+                { name: 'Company API', path: '/api/company' },
+                { name: 'News API', path: '/api/news' }
+            ];
+            
+            let statusHTML = '<h2>API Status</h2><table class="table"><thead><tr><th>Endpoint</th><th>Status</th></tr></thead><tbody>';
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const headers = endpoint.path === '/health' ? {} : { 'Authorization': `Bearer ${authToken}` };
+                    const response = await fetch(endpoint.path, { headers });
+                    const status = response.ok ? 'OK' : 'Error';
+                    const statusClass = response.ok ? 'badge-active' : 'badge-inactive';
+                    
+                    statusHTML += `<tr><td>${endpoint.name}</td><td><span class="badge ${statusClass}">${status}</span></td></tr>`;
+                } catch (error) {
+                    statusHTML += `<tr><td>${endpoint.name}</td><td><span class="badge badge-inactive">Failed</span></td></tr>`;
+                }
+            }
+            
+            statusHTML += '</tbody></table>';
+            contentArea.innerHTML = statusHTML;
+        }
+
+        function logout() {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            currentUser = null;
+            showLogin();
+        }
+    </script>
+</body>
+</html>
