@@ -1,16 +1,58 @@
 import Link from 'next/link'
 
+/**
+ * Hero Section with Video Background
+ * 
+ * To add real video files:
+ * 1. Place your video files in the public/videos/ directory
+ * 2. Replace the placeholder paths in the <source> tags:
+ *    - /videos/hero-climate-action.mp4
+ *    - /videos/hero-climate-action.webm
+ * 3. Recommended video specifications:
+ *    - Duration: 10-30 seconds (loops automatically)
+ *    - Resolution: 1920x1080 minimum for desktop
+ *    - Format: MP4 (H.264) and WebM for browser compatibility
+ *    - File size: Keep under 5MB for good performance
+ * 4. Consider creating mobile-optimized versions for better performance
+ */
 export default function HomepageHero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-green-800 overflow-hidden">
-      {/* Background Video/Image */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Video - Desktop */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1920&h=1080&fit=crop"
-          alt="Climate action"
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-green-900/70"></div>
+        {/* Video for desktop (hidden on mobile for performance) */}
+        <video 
+          className="hidden md:block w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster="https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1920&h=1080&fit=crop"
+        >
+          {/* Replace these with actual video files when available */}
+          <source src="/videos/hero-climate-action.mp4" type="video/mp4" />
+          <source src="/videos/hero-climate-action.webm" type="video/webm" />
+          
+          {/* Fallback image for browsers that don't support video */}
+          <img 
+            src="https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1920&h=1080&fit=crop"
+            alt="Climate action"
+            className="w-full h-full object-cover"
+          />
+        </video>
+        
+        {/* Static background image for mobile */}
+        <div 
+          className="md:hidden w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1920&h=1080&fit=crop)'
+          }}
+        ></div>
+        
+        {/* Video overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
       </div>
 
       {/* Floating Elements */}
@@ -22,38 +64,38 @@ export default function HomepageHero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
-          <div className="lg:w-1/2">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+        <div className="text-center">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               Leading the Way in 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 drop-shadow-lg">
                 {" "}Climate Solutions
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl">
+            <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto drop-shadow-xl">
               Since 2006, we've helped organizations accelerate their transition to a 
               net-zero future through comprehensive climate action strategies and solutions.
             </p>
 
             {/* Key Highlights */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-white">18+</div>
-                <div className="text-green-300 text-sm">Years Leading</div>
+            <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">18+</div>
+                <div className="text-green-300 text-sm drop-shadow-md">Years Leading</div>
               </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-white">50M+</div>
-                <div className="text-green-300 text-sm">CO₂ Reduced</div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">50M+</div>
+                <div className="text-green-300 text-sm drop-shadow-md">CO₂ Reduced</div>
               </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-white">1000+</div>
-                <div className="text-green-300 text-sm">Clients Served</div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">1000+</div>
+                <div className="text-green-300 text-sm drop-shadow-md">Clients Served</div>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/services"
                 className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-200 group"
@@ -72,47 +114,6 @@ export default function HomepageHero() {
             </div>
           </div>
 
-          {/* Right side visual */}
-          <div className="lg:w-1/2 mt-12 lg:mt-0">
-            <div className="relative">
-              {/* Climate Impact Visual */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <h3 className="text-2xl font-bold text-white mb-6">Global Climate Impact</h3>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-200">Carbon Emissions Reduced</span>
-                    <span className="text-green-400 font-bold">50M+ tonnes</span>
-                  </div>
-                  <div className="w-full bg-white/20 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-green-400 to-blue-400 h-2 rounded-full" style={{ width: '85%' }}></div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-200">Projects Worldwide</span>
-                    <span className="text-blue-400 font-bold">700+ projects</span>
-                  </div>
-                  <div className="w-full bg-white/20 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-blue-400 to-green-400 h-2 rounded-full" style={{ width: '78%' }}></div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-200">Countries Reached</span>
-                    <span className="text-purple-400 font-bold">20+ countries</span>
-                  </div>
-                  <div className="w-full bg-white/20 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-purple-400 to-green-400 h-2 rounded-full" style={{ width: '65%' }}></div>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-white/20">
-                  <p className="text-gray-300 text-sm text-center">
-                    Trusted by Fortune 500 companies, governments, and NGOs worldwide
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 

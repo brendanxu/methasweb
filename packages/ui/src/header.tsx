@@ -16,33 +16,52 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: 'What we do',
-    href: '/services',
+    label: 'About us',
+    href: '/about',
     children: [
-      { label: 'Climate Action', href: '/services/climate-action', description: 'Carbon offsetting and reduction strategies' },
-      { label: 'Climate Finance', href: '/services/climate-finance', description: 'Investment solutions and green financing' },
-      { label: 'Renewable Energy', href: '/services/renewable-energy', description: 'Clean energy projects and procurement' },
-      { label: 'Nature-Based Solutions', href: '/services/nature-based-solutions', description: 'Forest conservation and ecosystem restoration' },
+      { label: 'Our story', href: '/about/story', description: 'How South Pole became a climate leader' },
+      { label: 'Leadership team', href: '/about/leadership', description: 'Meet our executive team and board' },
+      { label: 'Mission & values', href: '/about/mission', description: 'Our purpose and core principles' },
+      { label: 'Locations', href: '/about/locations', description: 'Our global offices and presence' },
     ]
   },
   {
-    label: 'Who we serve',
-    href: '#',
+    label: 'What we do',
+    href: '/services',
     children: [
-      { label: 'Corporations', href: '/corporations', description: 'Enterprise climate solutions' },
-      { label: 'Governments', href: '/governments', description: 'Public sector climate action' },
-      { label: 'Financial Institutions', href: '/financial', description: 'Investment and risk management' },
+      { label: 'Services', href: '/services', description: 'Complete climate action solutions' },
+      { label: 'Solutions', href: '/services/solutions', description: 'Tailored climate strategies' },
+      { label: 'Industries', href: '/services/industries', description: 'Sector-specific expertise' },
+      { label: 'Approach', href: '/services/approach', description: 'Our methodology and process' },
     ]
   },
-  { label: 'Our work', href: '/work' },
-  { label: 'Insights', href: '/news' },
-  { label: 'About', href: '/about' },
+  {
+    label: 'Our impact',
+    href: '/impact',
+    children: [
+      { label: 'Case studies', href: '/impact/case-studies', description: 'Real-world climate projects' },
+      { label: 'Sustainability reports', href: '/impact/reports', description: 'Annual impact assessments' },
+      { label: 'Client success', href: '/impact/success-stories', description: 'Customer transformation stories' },
+      { label: 'Metrics', href: '/impact/metrics', description: 'Measurable climate outcomes' },
+    ]
+  },
+  {
+    label: 'News & insights',
+    href: '/news',
+    children: [
+      { label: 'Latest news', href: '/news', description: 'Company announcements and updates' },
+      { label: 'Blog', href: '/news/blog', description: 'Expert insights and analysis' },
+      { label: 'Resources', href: '/news/resources', description: 'Reports, guides, and tools' },
+      { label: 'Events', href: '/news/events', description: 'Conferences and webinars' },
+    ]
+  },
 ]
 
 export function Header() {
   const [isSticky, setIsSticky] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null)
+  const [mobileOpenSubmenu, setMobileOpenSubmenu] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,52 +114,90 @@ export function Header() {
                 onMouseEnter={() => item.children && setOpenMegaMenu(item.label)}
                 onMouseLeave={() => setOpenMegaMenu(null)}
               >
-                <a
-                  href={item.href}
-                  className="text-dark hover:text-primary transition-colors font-medium"
-                >
-                  {item.label}
-                </a>
+                <div className="flex items-center space-x-1">
+                  <a
+                    href={item.href}
+                    className="text-dark hover:text-primary transition-colors font-medium"
+                  >
+                    {item.label}
+                  </a>
+                  {item.children && (
+                    <motion.svg
+                      className="h-4 w-4 text-gray-500 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      animate={{
+                        rotate: openMegaMenu === item.label ? 180 : 0
+                      }}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </motion.svg>
+                  )}
+                </div>
                 
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-0 top-full mt-2 w-screen max-w-lg rounded-xl bg-white p-6 shadow-2xl border border-gray-100"
-                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden"
+                      initial={{ opacity: 0, y: -15, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                      exit={{ opacity: 0, y: -15, scale: 0.92 }}
+                      transition={{ duration: 0.25, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      style={{
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)'
+                      }}
                     >
-                      <div className="space-y-1">
+                      {/* Header with gradient */}
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
+                        <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
+                          {item.label}
+                        </h3>
+                      </div>
+                      
+                      <div className="py-2">
                         {item.children.map((child, index) => (
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="group flex items-center justify-between rounded-lg p-4 hover:bg-blue-50 transition-all duration-200"
-                            initial={{ opacity: 0, x: -10 }}
+                            className="group flex items-start px-6 py-4 hover:bg-gray-50 transition-all duration-200 border-l-4 border-transparent hover:border-blue-500"
+                            initial={{ opacity: 0, x: -15 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05, duration: 0.2 }}
+                            transition={{ delay: index * 0.08, duration: 0.3 }}
                           >
                             <div className="flex-1">
-                              <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                              <div className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors text-sm">
                                 {child.label}
                               </div>
                               {child.description && (
-                                <div className="mt-1 text-sm text-gray-600 group-hover:text-blue-500 transition-colors">
+                                <div className="mt-1 text-xs text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
                                   {child.description}
                                 </div>
                               )}
                             </div>
                             <svg 
-                              className="h-5 w-5 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200" 
+                              className="h-4 w-4 text-gray-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
                             >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                           </motion.a>
                         ))}
+                      </div>
+                      
+                      {/* Footer CTA */}
+                      <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
+                        <a 
+                          href={item.href}
+                          className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors flex items-center"
+                        >
+                          View all {item.label.toLowerCase()}
+                          <svg className="h-3 w-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </a>
                       </div>
                     </motion.div>
                   )}
@@ -198,28 +255,59 @@ export function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  <a
-                    href={item.href}
-                    className="block py-2 text-dark hover:text-primary font-medium"
-                  >
-                    {item.label}
-                  </a>
-                  {item.children && (
-                    <div className="ml-4 space-y-1">
-                      {item.children.map((child, childIndex) => (
-                        <motion.a
-                          key={child.label}
-                          href={child.href}
-                          className="block py-1 text-sm text-gray hover:text-primary"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (index * 0.1) + (childIndex * 0.05), duration: 0.2 }}
+                  <div className="flex items-center justify-between py-2">
+                    <a
+                      href={item.href}
+                      className="text-dark hover:text-primary font-medium flex-1"
+                    >
+                      {item.label}
+                    </a>
+                    {item.children && (
+                      <motion.button
+                        onClick={() => setMobileOpenSubmenu(mobileOpenSubmenu === item.label ? null : item.label)}
+                        className="p-1 rounded hover:bg-gray-100 transition-colors"
+                      >
+                        <motion.svg
+                          className="h-4 w-4 text-gray-500 transition-transform duration-200"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          animate={{
+                            rotate: mobileOpenSubmenu === item.label ? 180 : 0
+                          }}
                         >
-                          {child.label}
-                        </motion.a>
-                      ))}
-                    </div>
-                  )}
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </motion.svg>
+                      </motion.button>
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {item.children && mobileOpenSubmenu === item.label && (
+                      <motion.div 
+                        className="ml-4 space-y-1 overflow-hidden"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      >
+                        {item.children.map((child, childIndex) => (
+                          <motion.a
+                            key={child.label}
+                            href={child.href}
+                            className="block py-2 px-3 text-sm text-gray hover:text-primary hover:bg-gray-50 rounded transition-colors"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: childIndex * 0.05, duration: 0.2 }}
+                          >
+                            <div className="font-medium">{child.label}</div>
+                            {child.description && (
+                              <div className="text-xs text-gray-500 mt-1">{child.description}</div>
+                            )}
+                          </motion.a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               ))}
             </div>
