@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Pole CMS Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="app">
+        <!-- Login Page -->
+        <div id="loginPage" class="min-h-screen flex items-center justify-center">
+            <div class="max-w-md w-full space-y-8 p-8">
+                <div class="text-center">
+                    <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
+                        South Pole CMS
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Sign in to your admin account
+                    </p>
+                </div>
+                <form id="loginForm" class="mt-8 space-y-6">
+                    <div class="rounded-md shadow-sm -space-y-px">
+                        <div>
+                            <input id="email" name="email" type="email" required 
+                                   class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                   placeholder="Email address" value="admin@southpole.com">
+                        </div>
+                        <div>
+                            <input id="password" name="password" type="password" required 
+                                   class="relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                   placeholder="Password" value="admin123456">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" 
+                                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Sign in
+                        </button>
+                    </div>
+                    <div id="loginError" class="hidden text-red-600 text-sm text-center"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="hidden min-h-screen bg-gray-100">
+            <!-- Navigation -->
+            <nav class="bg-white shadow">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16">
+                        <div class="flex items-center">
+                            <h1 class="text-xl font-semibold">South Pole CMS Admin</h1>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span id="userEmail" class="text-gray-700"></span>
+                            <button id="logoutBtn" class="text-blue-600 hover:text-blue-800">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900">Total Users</h3>
+                        <p id="totalUsers" class="text-2xl font-bold text-blue-600">-</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900">Team Members</h3>
+                        <p id="totalTeam" class="text-2xl font-bold text-green-600">-</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900">Case Studies</h3>
+                        <p id="totalCases" class="text-2xl font-bold text-purple-600">-</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-medium text-gray-900">News Articles</h3>
+                        <p id="totalNews" class="text-2xl font-bold text-orange-600">-</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white shadow rounded-lg p-6 mb-8">
+                    <h2 class="text-lg font-medium text-gray-900 mb-4">Quick Actions</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button onclick="showSection('users')" class="p-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">👥</div>
+                                <div class="text-sm font-medium">Manage Users</div>
+                            </div>
+                        </button>
+                        <button onclick="showSection('team')" class="p-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🏢</div>
+                                <div class="text-sm font-medium">Team Management</div>
+                            </div>
+                        </button>
+                        <button onclick="showSection('company')" class="p-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">🏛️</div>
+                                <div class="text-sm font-medium">Company Info</div>
+                            </div>
+                        </button>
+                        <button onclick="showSection('api')" class="p-4 border border-gray-300 rounded-lg hover:bg-gray-50">
+                            <div class="text-center">
+                                <div class="text-2xl mb-2">⚡</div>
+                                <div class="text-sm font-medium">API Status</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- API Endpoints -->
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h2 class="text-lg font-medium text-gray-900 mb-4">Available API Endpoints</h2>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/users</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/team</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/company</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/locations</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/case-studies</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">GET /api/news</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-mono">POST /api/auth/login</span>
+                            <span class="text-green-600">✓ Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = localStorage.getItem('authToken');
+        let currentUser = null;
+
+        // API Base URL
+        const API_BASE = '';
+
+        // Initialize app
+        function init() {
+            if (authToken) {
+                checkAuth();
+            } else {
+                showLogin();
+            }
+        }
+
+        // Show login page
+        function showLogin() {
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('dashboardPage').classList.add('hidden');
+        }
+
+        // Show dashboard
+        function showDashboard() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('dashboardPage').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        // Check authentication
+        async function checkAuth() {
+            try {
+                const response = await axios.get('/api/auth/profile', {
+                    headers: { Authorization: `Bearer ${authToken}` }
+                });
+                currentUser = response.data.user;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                showDashboard();
+            } catch (error) {
+                localStorage.removeItem('authToken');
+                authToken = null;
+                showLogin();
+            }
+        }
+
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('loginError');
+
+            try {
+                const response = await axios.post('/api/auth/login', { email, password });
+                authToken = response.data.token;
+                localStorage.setItem('authToken', authToken);
+                currentUser = response.data.user;
+                errorDiv.classList.add('hidden');
+                showDashboard();
+            } catch (error) {
+                errorDiv.textContent = error.response?.data?.error || 'Login failed';
+                errorDiv.classList.remove('hidden');
+            }
+        });
+
+        // Handle logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            currentUser = null;
+            showLogin();
+        });
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                const headers = { Authorization: `Bearer ${authToken}` };
+                
+                // Load stats
+                const [users, team, cases, news] = await Promise.all([
+                    axios.get('/api/users', { headers }),
+                    axios.get('/api/team', { headers }),
+                    axios.get('/api/case-studies', { headers }),
+                    axios.get('/api/news', { headers })
+                ]);
+
+                document.getElementById('totalUsers').textContent = users.data.users?.length || 0;
+                document.getElementById('totalTeam').textContent = team.data.teamMembers?.length || 0;
+                document.getElementById('totalCases').textContent = cases.data.caseStudies?.length || 0;
+                document.getElementById('totalNews').textContent = news.data.articles?.length || 0;
+            } catch (error) {
+                console.error('Failed to load dashboard data:', error);
+            }
+        }
+
+        // Show section (placeholder for future functionality)
+        function showSection(section) {
+            alert(`${section} management will be implemented in future updates`);
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>

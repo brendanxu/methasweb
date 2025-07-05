@@ -21,6 +21,12 @@ router.get('/me',
   asyncHandler(authController.getMe)
 );
 
+// Alias for profile
+router.get('/profile', 
+  authenticateToken, 
+  asyncHandler(authController.getMe)
+);
+
 router.put('/profile', 
   authenticateToken, 
   validate(userSchemas.updateProfile), 

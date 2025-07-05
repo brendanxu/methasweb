@@ -76,6 +76,28 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Serve static files (uploaded media)
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
+// Serve admin interface
+app.use('/admin', express.static(path.join(__dirname, '../public/admin')));
+
+// Welcome page
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'South Pole CMS Backend API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/health',
+      auth: '/api/auth',
+      admin: '/admin',
+      api_docs: '/api',
+    },
+    admin_access: {
+      login: '/admin/login',
+      dashboard: '/admin/dashboard'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', async (req, res) => {
   let databaseStatus = false;
