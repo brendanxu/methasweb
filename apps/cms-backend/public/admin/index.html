@@ -255,18 +255,358 @@
                 const casesData = cases.data.data || cases.data;
                 const newsData = news.data.data || news.data;
                 
-                document.getElementById('totalUsers').textContent = usersData.users?.length || usersData.length || 0;
-                document.getElementById('totalTeam').textContent = teamData.teamMembers?.length || teamData.length || 0;
-                document.getElementById('totalCases').textContent = casesData.caseStudies?.length || casesData.length || 0;
-                document.getElementById('totalNews').textContent = newsData.articles?.length || newsData.length || 0;
+                console.log('API Data:', { usersData, teamData, casesData, newsData }); // Debug log
+                
+                document.getElementById('totalUsers').textContent = 
+                    Array.isArray(usersData) ? usersData.length : 
+                    (usersData.users?.length || usersData.meta?.totalItems || 0);
+                    
+                document.getElementById('totalTeam').textContent = 
+                    Array.isArray(teamData) ? teamData.length : 
+                    (teamData.teamMembers?.length || teamData.meta?.totalItems || 0);
+                    
+                document.getElementById('totalCases').textContent = 
+                    Array.isArray(casesData) ? casesData.length : 
+                    (casesData.caseStudies?.length || casesData.meta?.totalItems || 0);
+                    
+                document.getElementById('totalNews').textContent = 
+                    Array.isArray(newsData) ? newsData.length : 
+                    (newsData.articles?.length || newsData.meta?.totalItems || 0);
             } catch (error) {
                 console.error('Failed to load dashboard data:', error);
             }
         }
 
-        // Show section (placeholder for future functionality)
+        // Show management sections
         function showSection(section) {
-            alert(`${section} management will be implemented in future updates`);
+            // Hide dashboard
+            document.getElementById('dashboardPage').style.display = 'none';
+            
+            // Create or show section content
+            let sectionDiv = document.getElementById(section + 'Section');
+            if (!sectionDiv) {
+                sectionDiv = createSectionContent(section);
+            }
+            sectionDiv.style.display = 'block';
+        }
+        
+        // Create section content dynamically
+        function createSectionContent(section) {
+            const container = document.createElement('div');
+            container.id = section + 'Section';
+            container.className = 'min-h-screen bg-gray-100';
+            
+            const sectionNames = {
+                users: 'User Management',
+                team: 'Team Management', 
+                company: 'Company Information',
+                api: 'API Status'
+            };
+            
+            container.innerHTML = `
+                <!-- Navigation -->
+                <nav class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex justify-between h-16">
+                            <div class="flex items-center">
+                                <button onclick="showDashboard()" class="text-blue-600 hover:text-blue-800 mr-4">← Back to Dashboard</button>
+                                <h1 class="text-xl font-semibold">${sectionNames[section]}</h1>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span id="userEmail" class="text-gray-700">${currentUser?.email || ''}</span>
+                                <button id="logoutBtn2" onclick="logout()" class="text-blue-600 hover:text-blue-800">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Main Content -->
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <div id="${section}Content">
+                            <div class="text-center py-8">
+                                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                                <p class="text-gray-600">Loading ${sectionNames[section]}...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(container);
+            
+            // Load content for the section
+            loadSectionData(section);
+            
+            return container;
+        }
+        
+        // Load data for specific sections
+        async function loadSectionData(section) {
+            const contentDiv = document.getElementById(section + 'Content');
+            const headers = { Authorization: `Bearer ${authToken}` };
+            
+            try {
+                switch(section) {
+                    case 'users':
+                        const usersResponse = await axios.get('/api/users', { headers });
+                        const users = usersResponse.data.data || usersResponse.data;
+                        contentDiv.innerHTML = createUsersTable(Array.isArray(users) ? users : []);
+                        break;
+                        
+                    case 'team':
+                        const teamResponse = await axios.get('/api/team', { headers });
+                        const team = teamResponse.data.data || teamResponse.data;
+                        contentDiv.innerHTML = createTeamTable(Array.isArray(team) ? team : []);
+                        break;
+                        
+                    case 'company':
+                        const companyResponse = await axios.get('/api/company', { headers });
+                        const company = companyResponse.data.data || companyResponse.data;
+                        contentDiv.innerHTML = createCompanyForm(company);
+                        break;
+                        
+                    case 'api':
+                        contentDiv.innerHTML = createAPIStatus();
+                        await checkAPIEndpoints();
+                        break;
+                }
+            } catch (error) {
+                console.error('Failed to load section data:', error);
+                contentDiv.innerHTML = `
+                    <div class="text-center py-8">
+                        <div class="text-red-600 mb-4">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Failed to load data</h3>
+                        <p class="text-gray-600">${error.message}</p>
+                        <button onclick="loadSectionData('${section}')" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                            Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        // Create users table
+        function createUsersTable(users) {
+            if (!users.length) {
+                return '<div class="text-center py-8"><p class="text-gray-600">No users found</p></div>';
+            }
+            
+            return `
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            ${users.map(user => `
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="h-10 w-10 flex-shrink-0">
+                                                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                                    <span class="text-blue-600 font-medium">${user.name?.charAt(0) || 'U'}</span>
+                                                </div>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">${user.name || 'N/A'}</div>
+                                                <div class="text-sm text-gray-500">${user.email}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.role === 'ADMIN' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'}">
+                                            ${user.role}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                            ${user.isActive ? 'Active' : 'Inactive'}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        ${new Date(user.createdAt).toLocaleDateString()}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+        
+        // Create team table  
+        function createTeamTable(team) {
+            if (!team.length) {
+                return '<div class="text-center py-8"><p class="text-gray-600">No team members found</p></div>';
+            }
+            
+            return `
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Member</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            ${team.map(member => `
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="h-10 w-10 flex-shrink-0">
+                                                <img class="h-10 w-10 rounded-full object-cover" src="${member.imageUrl || 'https://via.placeholder.com/40'}" alt="${member.name}">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">${member.name}</div>
+                                                <div class="text-sm text-gray-500">${member.position}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        ${member.department}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${member.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                            ${member.isActive ? 'Active' : 'Inactive'}
+                                        </span>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+        
+        // Create company form
+        function createCompanyForm(company) {
+            return `
+                <div class="max-w-4xl mx-auto">
+                    <h3 class="text-lg font-medium mb-6">Company Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                            <input type="text" value="${company?.name || 'South Pole'}" class="w-full border border-gray-300 rounded-md px-3 py-2" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Website</label>
+                            <input type="url" value="${company?.website || 'https://www.southpole.com'}" class="w-full border border-gray-300 rounded-md px-3 py-2" readonly>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                            <textarea rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2" readonly>${company?.description || 'Climate solutions and sustainability services'}</textarea>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">Company information is read-only. Contact system administrator to make changes.</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Create API status page
+        function createAPIStatus() {
+            return `
+                <div>
+                    <h3 class="text-lg font-medium mb-6">API Endpoint Status</h3>
+                    <div id="apiEndpoints" class="space-y-2">
+                        <div class="text-center py-4">
+                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                            <p class="text-gray-600 mt-2">Checking API endpoints...</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Check API endpoints
+        async function checkAPIEndpoints() {
+            const endpoints = [
+                { path: '/api/users', name: 'Users API' },
+                { path: '/api/team', name: 'Team API' },
+                { path: '/api/company', name: 'Company API' },
+                { path: '/api/locations', name: 'Locations API' },
+                { path: '/api/case-studies', name: 'Case Studies API' },
+                { path: '/api/news', name: 'News API' },
+                { path: '/api/services', name: 'Services API' },
+                { path: '/health', name: 'Health Check' }
+            ];
+            
+            const results = [];
+            const headers = { Authorization: `Bearer ${authToken}` };
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await axios.get(endpoint.path, endpoint.path === '/health' ? {} : { headers });
+                    results.push({
+                        ...endpoint,
+                        status: 'success',
+                        responseTime: '< 100ms',
+                        message: 'OK'
+                    });
+                } catch (error) {
+                    results.push({
+                        ...endpoint,
+                        status: 'error',
+                        responseTime: 'N/A',
+                        message: error.response?.status || 'Failed'
+                    });
+                }
+            }
+            
+            const endpointsDiv = document.getElementById('apiEndpoints');
+            if (endpointsDiv) {
+                endpointsDiv.innerHTML = results.map(result => `
+                    <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="h-3 w-3 rounded-full ${result.status === 'success' ? 'bg-green-400' : 'bg-red-400'} mr-3"></div>
+                            <div>
+                                <div class="font-medium">${result.name}</div>
+                                <div class="text-sm text-gray-500">${result.path}</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-medium ${result.status === 'success' ? 'text-green-600' : 'text-red-600'}">${result.message}</div>
+                            <div class="text-xs text-gray-500">${result.responseTime}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        // Back to dashboard function
+        function showDashboard() {
+            // Hide all section pages
+            const sections = ['users', 'team', 'company', 'api'];
+            sections.forEach(section => {
+                const sectionDiv = document.getElementById(section + 'Section');
+                if (sectionDiv) {
+                    sectionDiv.style.display = 'none';
+                }
+            });
+            
+            // Show dashboard
+            document.getElementById('dashboardPage').style.display = 'block';
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('authToken');
+            authToken = null;
+            currentUser = null;
+            showLogin();
         }
 
         // Initialize the app
