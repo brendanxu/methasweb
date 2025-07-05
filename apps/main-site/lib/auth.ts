@@ -190,7 +190,7 @@ export const isTokenExpired = (token: string): boolean => {
     const parts = token.split('.')
     if (parts.length !== 3) return true
     
-    const payload = JSON.parse(atob(parts[1]))
+    const payload = JSON.parse(atob(parts[1]!))
     return payload.exp * 1000 < Date.now()
   } catch {
     return true
@@ -202,7 +202,7 @@ export const getUserFromToken = (token: string): Partial<User> | null => {
     const parts = token.split('.')
     if (parts.length !== 3) return null
     
-    const payload = JSON.parse(atob(parts[1]))
+    const payload = JSON.parse(atob(parts[1]!))
     return {
       id: payload.userId || payload.sub,
       email: payload.email,
