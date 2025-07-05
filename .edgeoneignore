@@ -3,6 +3,9 @@
 # Next.js cache
 .next/cache/
 apps/main-site/.next/cache/
+**/cache/
+cache/
+**/*.pack
 
 # Node modules
 node_modules/
