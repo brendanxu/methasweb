@@ -72,8 +72,8 @@ export const mockCaseStudies: CaseStudy[] = [
     theGoal: 'Achieve carbon negative status by 2030 and remove historical emissions by 2050.',
     theChallenge: 'Balancing rapid business growth with ambitious climate targets across global operations.',
     theSolution: 'Comprehensive carbon removal portfolio, renewable energy procurement, and supply chain transformation.',
-    relatedServices: [mockServices[0], mockServices[1]],
-    relatedIndustry: mockIndustries[0],
+    relatedServices: [mockServices[0]!, mockServices[1]!],
+    relatedIndustry: mockIndustries[0]!,
     createdAt: '2024-03-15'
   },
   {
@@ -86,8 +86,8 @@ export const mockCaseStudies: CaseStudy[] = [
     theGoal: 'Transform supply chain to net zero emissions while supporting 1 million farmers.',
     theChallenge: 'Complex global supply chain with diverse agricultural inputs and manufacturing processes.',
     theSolution: 'Nature-based solutions, regenerative agriculture programs, and renewable energy transition.',
-    relatedServices: [mockServices[3], mockServices[2]],
-    relatedIndustry: mockIndustries[2],
+    relatedServices: [mockServices[3]!, mockServices[2]!],
+    relatedIndustry: mockIndustries[2]!,
     createdAt: '2024-02-20'
   },
   {
@@ -100,8 +100,8 @@ export const mockCaseStudies: CaseStudy[] = [
     theGoal: 'Create industry-leading climate risk assessment tools for financial decision-making.',
     theChallenge: 'Integrating complex climate data into actionable financial risk models.',
     theSolution: 'Advanced climate analytics platform with real-time risk assessment capabilities.',
-    relatedServices: [mockServices[1]],
-    relatedIndustry: mockIndustries[1],
+    relatedServices: [mockServices[1]!],
+    relatedIndustry: mockIndustries[1]!,
     createdAt: '2024-01-10'
   }
 ]
@@ -114,7 +114,7 @@ export const mockNewsArticles: NewsArticle[] = [
     publishDate: '2024-07-01',
     heroImage: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=1600&h=900&fit=crop',
     content: 'Latest developments in direct air capture and enhanced weathering technologies demonstrate potential for gigaton-scale carbon removal...',
-    category: mockCategories[2],
+    category: mockCategories[2]!,
     summary: 'Breakthrough technologies in carbon removal are approaching commercial viability, offering new pathways to achieve net zero targets.'
   },
   {
@@ -124,7 +124,7 @@ export const mockNewsArticles: NewsArticle[] = [
     publishDate: '2024-06-28',
     heroImage: 'https://images.unsplash.com/photo-1569163139394-de4798aa62ca?w=1600&h=900&fit=crop',
     content: 'The European Union has announced an expansion of its Carbon Border Adjustment Mechanism to include additional sectors...',
-    category: mockCategories[3],
+    category: mockCategories[3]!,
     summary: 'New EU regulations will impact global trade flows and accelerate decarbonization efforts across industries.'
   },
   {
@@ -134,7 +134,7 @@ export const mockNewsArticles: NewsArticle[] = [
     publishDate: '2024-06-25',
     heroImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=900&fit=crop',
     content: 'Major corporations are increasingly turning to nature-based solutions as part of their climate strategies...',
-    category: mockCategories[1],
+    category: mockCategories[1]!,
     summary: 'Companies are investing billions in forest conservation, regenerative agriculture, and ecosystem restoration projects.'
   },
   {
@@ -144,7 +144,7 @@ export const mockNewsArticles: NewsArticle[] = [
     publishDate: '2024-06-20',
     heroImage: 'https://images.unsplash.com/photo-1518544801976-3e159e50e5bb?w=1600&h=900&fit=crop',
     content: 'South Pole announces the launch of an innovative climate finance platform connecting investors with verified climate projects...',
-    category: mockCategories[0],
+    category: mockCategories[0]!,
     summary: 'New platform streamlines investment in high-impact climate projects with enhanced transparency and verification.'
   }
 ]
