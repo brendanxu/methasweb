@@ -187,10 +187,15 @@
                 const response = await axios.get('/api/auth/profile', {
                     headers: { Authorization: `Bearer ${authToken}` }
                 });
-                currentUser = response.data.user;
+                console.log('Profile response:', response.data); // Debug log
+                
+                // Handle both data structures
+                const data = response.data.data || response.data;
+                currentUser = data.user || data;
                 document.getElementById('userEmail').textContent = currentUser.email;
                 showDashboard();
             } catch (error) {
+                console.error('Auth check error:', error); // Debug log
                 localStorage.removeItem('authToken');
                 authToken = null;
                 showLogin();
@@ -206,13 +211,19 @@
 
             try {
                 const response = await axios.post('/api/auth/login', { email, password });
-                authToken = response.data.token;
+                console.log('Login response:', response.data); // Debug log
+                
+                // Handle both data structures
+                const data = response.data.data || response.data;
+                authToken = data.token;
                 localStorage.setItem('authToken', authToken);
-                currentUser = response.data.user;
+                currentUser = data.user;
                 errorDiv.classList.add('hidden');
                 showDashboard();
             } catch (error) {
-                errorDiv.textContent = error.response?.data?.error || 'Login failed';
+                console.error('Login error:', error); // Debug log
+                const errorMessage = error.response?.data?.error || error.response?.data?.message || 'Login failed';
+                errorDiv.textContent = errorMessage;
                 errorDiv.classList.remove('hidden');
             }
         });
@@ -238,10 +249,16 @@
                     axios.get('/api/news', { headers })
                 ]);
 
-                document.getElementById('totalUsers').textContent = users.data.users?.length || 0;
-                document.getElementById('totalTeam').textContent = team.data.teamMembers?.length || 0;
-                document.getElementById('totalCases').textContent = cases.data.caseStudies?.length || 0;
-                document.getElementById('totalNews').textContent = news.data.articles?.length || 0;
+                // Handle different API response structures
+                const usersData = users.data.data || users.data;
+                const teamData = team.data.data || team.data;
+                const casesData = cases.data.data || cases.data;
+                const newsData = news.data.data || news.data;
+                
+                document.getElementById('totalUsers').textContent = usersData.users?.length || usersData.length || 0;
+                document.getElementById('totalTeam').textContent = teamData.teamMembers?.length || teamData.length || 0;
+                document.getElementById('totalCases').textContent = casesData.caseStudies?.length || casesData.length || 0;
+                document.getElementById('totalNews').textContent = newsData.articles?.length || newsData.length || 0;
             } catch (error) {
                 console.error('Failed to load dashboard data:', error);
             }
