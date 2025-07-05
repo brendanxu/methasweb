@@ -3,6 +3,7 @@ import "@repo/ui/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header, Footer } from "@repo/ui";
+import { AuthProvider } from '../contexts/AuthContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white text-dark`}>
-        <Header />
-        <main className="min-h-screen pt-24 md:pt-28 lg:pt-32">
-          {children}
-        </main>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <main className="min-h-screen pt-24 md:pt-28 lg:pt-32">
+            {children}
+          </main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

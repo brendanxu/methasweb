@@ -4,9 +4,9 @@ import { getCaseStudy, getLatestCaseStudies } from "../../../lib/api"
 import Image from 'next/image'
 
 interface CaseStudyDetailProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 async function CaseStudyHero({ caseStudy }: { caseStudy: any }) {
@@ -141,8 +141,45 @@ async function RelatedCaseStudies({ currentSlug }: { currentSlug: string }) {
   )
 }
 
+export async function generateMetadata({ params }: CaseStudyDetailProps) {
+  const { slug } = await params
+  const caseStudy = await getCaseStudy(slug)
+  
+  if (!caseStudy) {
+    return {
+      title: 'Case Study Not Found | South Pole',
+      description: 'The requested case study could not be found.'
+    }
+  }
+
+  return {
+    title: `${caseStudy.title} | South Pole Case Study`,
+    description: caseStudy.summary,
+    openGraph: {
+      title: caseStudy.title,
+      description: caseStudy.summary,
+      images: [
+        {
+          url: caseStudy.heroImage,
+          width: 1200,
+          height: 630,
+          alt: caseStudy.title,
+        }
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: caseStudy.title,
+      description: caseStudy.summary,
+      images: [caseStudy.heroImage],
+    },
+  }
+}
+
 export default async function CaseStudyDetailPage({ params }: CaseStudyDetailProps) {
-  const caseStudy = await getCaseStudy(params.slug)
+  const { slug } = await params
+  const caseStudy = await getCaseStudy(slug)
 
   if (!caseStudy) {
     notFound()
@@ -152,7 +189,7 @@ export default async function CaseStudyDetailPage({ params }: CaseStudyDetailPro
     <article>
       <CaseStudyHero caseStudy={caseStudy} />
       <CaseStudyContent caseStudy={caseStudy} />
-      <RelatedCaseStudies currentSlug={params.slug} />
+      <RelatedCaseStudies currentSlug={slug} />
     </article>
   )
 }

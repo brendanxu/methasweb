@@ -4,9 +4,9 @@ import { getNewsArticle, getLatestNews } from "../../../lib/api"
 import Image from 'next/image'
 
 interface NewsDetailProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 async function ArticleHero({ article }: { article: any }) {
@@ -117,7 +117,8 @@ async function RelatedArticles({ currentSlug }: { currentSlug: string }) {
 }
 
 export default async function NewsDetailPage({ params }: NewsDetailProps) {
-  const article = await getNewsArticle(params.slug)
+  const { slug } = await params
+  const article = await getNewsArticle(slug)
 
   if (!article) {
     notFound()
@@ -127,7 +128,7 @@ export default async function NewsDetailPage({ params }: NewsDetailProps) {
     <article>
       <ArticleHero article={article} />
       <ArticleContent article={article} />
-      <RelatedArticles currentSlug={params.slug} />
+      <RelatedArticles currentSlug={slug} />
     </article>
   )
 }
