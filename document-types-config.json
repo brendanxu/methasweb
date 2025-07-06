@@ -1,0 +1,385 @@
+{
+  "documentTypes": {
+    "homepage": {
+      "name": "Homepage",
+      "alias": "homepage",
+      "icon": "icon-home",
+      "allowAtRoot": true,
+      "allowedChildNodeTypes": ["folder", "service", "caseStudy", "newsArticle"],
+      "tabs": [
+        {
+          "name": "基本信息",
+          "properties": [
+            {
+              "name": "页面标题",
+              "alias": "pageTitle",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "页面主标题"
+            },
+            {
+              "name": "SEO标题",
+              "alias": "seoTitle", 
+              "dataType": "Textstring",
+              "mandatory": false,
+              "description": "搜索引擎优化标题"
+            },
+            {
+              "name": "SEO描述",
+              "alias": "seoDescription",
+              "dataType": "Textarea",
+              "mandatory": false,
+              "description": "搜索引擎优化描述"
+            }
+          ]
+        },
+        {
+          "name": "Hero区域",
+          "properties": [
+            {
+              "name": "Hero标题",
+              "alias": "heroTitle",
+              "dataType": "Textstring", 
+              "mandatory": true,
+              "description": "首页大标题"
+            },
+            {
+              "name": "Hero副标题",
+              "alias": "heroSubtitle",
+              "dataType": "Textstring",
+              "mandatory": false,
+              "description": "首页副标题"
+            },
+            {
+              "name": "Hero描述",
+              "alias": "heroDescription",
+              "dataType": "Textarea",
+              "mandatory": true,
+              "description": "首页描述文字"
+            },
+            {
+              "name": "Hero背景图",
+              "alias": "heroBackgroundImage",
+              "dataType": "Media Picker",
+              "mandatory": true,
+              "description": "首页背景图片"
+            },
+            {
+              "name": "Hero CTA文字",
+              "alias": "heroCTAText",
+              "dataType": "Textstring",
+              "mandatory": false,
+              "description": "行动按钮文字"
+            },
+            {
+              "name": "Hero CTA链接",
+              "alias": "heroCTALink",
+              "dataType": "Textstring",
+              "mandatory": false,
+              "description": "行动按钮链接"
+            }
+          ]
+        }
+      ]
+    },
+    "service": {
+      "name": "Service",
+      "alias": "service",
+      "icon": "icon-settings",
+      "allowAtRoot": false,
+      "allowedChildNodeTypes": [],
+      "tabs": [
+        {
+          "name": "服务信息",
+          "properties": [
+            {
+              "name": "服务名称",
+              "alias": "serviceName",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "服务标题"
+            },
+            {
+              "name": "URL别名",
+              "alias": "urlSlug",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "页面链接别名"
+            },
+            {
+              "name": "服务图标",
+              "alias": "serviceIcon",
+              "dataType": "Media Picker",
+              "mandatory": false,
+              "description": "服务图标图片"
+            },
+            {
+              "name": "简短描述",
+              "alias": "shortDescription",
+              "dataType": "Textarea",
+              "mandatory": true,
+              "description": "服务简介"
+            },
+            {
+              "name": "详细描述",
+              "alias": "fullDescription",
+              "dataType": "Rich Text Editor",
+              "mandatory": true,
+              "description": "服务详细说明"
+            },
+            {
+              "name": "显示顺序",
+              "alias": "displayOrder",
+              "dataType": "Numeric",
+              "mandatory": false,
+              "description": "排序权重（数字越小越靠前）"
+            }
+          ]
+        }
+      ]
+    },
+    "caseStudy": {
+      "name": "Case Study",
+      "alias": "caseStudy",
+      "icon": "icon-lightbulb",
+      "allowAtRoot": false,
+      "allowedChildNodeTypes": [],
+      "tabs": [
+        {
+          "name": "项目基本信息",
+          "properties": [
+            {
+              "name": "项目标题",
+              "alias": "projectTitle",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "案例项目标题"
+            },
+            {
+              "name": "URL别名",
+              "alias": "urlSlug", 
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "页面链接别名"
+            },
+            {
+              "name": "客户名称",
+              "alias": "clientName",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "客户公司名称"
+            },
+            {
+              "name": "项目时间",
+              "alias": "projectDate",
+              "dataType": "Date Picker",
+              "mandatory": false,
+              "description": "项目实施日期"
+            },
+            {
+              "name": "封面图片",
+              "alias": "heroImage",
+              "dataType": "Media Picker",
+              "mandatory": true,
+              "description": "案例封面图"
+            },
+            {
+              "name": "项目摘要",
+              "alias": "projectSummary",
+              "dataType": "Textarea",
+              "mandatory": true,
+              "description": "项目简介"
+            }
+          ]
+        },
+        {
+          "name": "项目详情",
+          "properties": [
+            {
+              "name": "项目目标",
+              "alias": "projectGoal",
+              "dataType": "Rich Text Editor",
+              "mandatory": true,
+              "description": "项目要达成的目标"
+            },
+            {
+              "name": "面临挑战",
+              "alias": "challenges",
+              "dataType": "Rich Text Editor",
+              "mandatory": true,
+              "description": "项目面临的挑战和难点"
+            },
+            {
+              "name": "解决方案",
+              "alias": "solutions",
+              "dataType": "Rich Text Editor",
+              "mandatory": true,
+              "description": "采用的解决方案和方法"
+            },
+            {
+              "name": "项目成果",
+              "alias": "results",
+              "dataType": "Rich Text Editor",
+              "mandatory": false,
+              "description": "项目实施的成果和效果"
+            }
+          ]
+        }
+      ]
+    },
+    "newsArticle": {
+      "name": "News Article",
+      "alias": "newsArticle",
+      "icon": "icon-newspaper",
+      "allowAtRoot": false,
+      "allowedChildNodeTypes": [],
+      "tabs": [
+        {
+          "name": "文章信息",
+          "properties": [
+            {
+              "name": "新闻标题",
+              "alias": "newsTitle",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "新闻文章标题"
+            },
+            {
+              "name": "URL别名",
+              "alias": "urlSlug",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "页面链接别名"
+            },
+            {
+              "name": "发布日期",
+              "alias": "publishDate",
+              "dataType": "Date Picker",
+              "mandatory": true,
+              "description": "文章发布时间"
+            },
+            {
+              "name": "作者",
+              "alias": "author",
+              "dataType": "Textstring",
+              "mandatory": false,
+              "description": "文章作者"
+            },
+            {
+              "name": "特色图片",
+              "alias": "featuredImage",
+              "dataType": "Media Picker",
+              "mandatory": true,
+              "description": "文章封面图"
+            },
+            {
+              "name": "文章摘要",
+              "alias": "articleSummary",
+              "dataType": "Textarea",
+              "mandatory": true,
+              "description": "文章内容摘要"
+            },
+            {
+              "name": "正文内容",
+              "alias": "content",
+              "dataType": "Rich Text Editor",
+              "mandatory": true,
+              "description": "文章正文内容"
+            }
+          ]
+        }
+      ]
+    },
+    "folder": {
+      "name": "Folder",
+      "alias": "folder",
+      "icon": "icon-folder",
+      "allowAtRoot": true,
+      "allowedChildNodeTypes": ["service", "caseStudy", "newsArticle", "folder"],
+      "tabs": [
+        {
+          "name": "文件夹信息",
+          "properties": [
+            {
+              "name": "文件夹名称",
+              "alias": "folderName",
+              "dataType": "Textstring",
+              "mandatory": true,
+              "description": "文件夹显示名称"
+            },
+            {
+              "name": "描述",
+              "alias": "description",
+              "dataType": "Textarea",
+              "mandatory": false,
+              "description": "文件夹说明"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sampleContent": {
+    "homepage": {
+      "pageTitle": "南极气候解决方案",
+      "seoTitle": "南极气候解决方案 - 专业的碳管理和气候变化解决方案",
+      "seoDescription": "南极气候解决方案是专业的碳管理和气候变化解决方案提供商，为企业提供碳盘查、减排策略、碳中和实施等全方位服务。",
+      "heroTitle": "引领气候行动，共建可持续未来",
+      "heroSubtitle": "专业的碳管理和气候变化解决方案提供商",
+      "heroDescription": "我们致力于帮助企业实现碳中和目标，通过创新的技术和专业的咨询服务，为应对气候变化贡献力量。从碳盘查到减排实施，从策略制定到效果监测，我们为您提供全生命周期的气候解决方案。",
+      "heroCTAText": "了解我们的服务",
+      "heroCTALink": "/services"
+    },
+    "services": [
+      {
+        "serviceName": "碳管理咨询",
+        "urlSlug": "carbon-management-consulting",
+        "shortDescription": "为企业提供全面的碳排放管理和减排策略制定服务",
+        "fullDescription": "我们的碳管理咨询服务包括碳盘查、减排路径规划、碳中和策略制定等，帮助企业建立科学的碳管理体系，实现可持续发展目标。",
+        "displayOrder": 1
+      },
+      {
+        "serviceName": "可持续发展战略",
+        "urlSlug": "sustainability-strategy",
+        "shortDescription": "制定企业可持续发展战略和ESG实施方案",
+        "fullDescription": "基于企业实际情况，制定符合国际标准的可持续发展战略，涵盖环境、社会和治理各个方面，帮助企业提升ESG表现。",
+        "displayOrder": 2
+      },
+      {
+        "serviceName": "ESG报告服务",
+        "urlSlug": "esg-reporting",
+        "shortDescription": "专业的ESG报告编制和披露服务",
+        "fullDescription": "提供符合国际标准的ESG报告编制服务，包括数据收集、分析、报告撰写和第三方验证，助力企业透明化披露可持续发展成果。",
+        "displayOrder": 3
+      },
+      {
+        "serviceName": "碳信用交易",
+        "urlSlug": "carbon-credit-trading",
+        "shortDescription": "碳信用项目开发和交易服务",
+        "fullDescription": "提供碳信用项目开发、认证、交易等全流程服务，帮助企业通过碳市场机制实现减排目标和经济效益的双重收获。",
+        "displayOrder": 4
+      }
+    ],
+    "caseStudies": [
+      {
+        "projectTitle": "全球科技公司碳中和实施项目",
+        "urlSlug": "global-tech-carbon-neutral",
+        "clientName": "Global Tech Corp",
+        "projectSummary": "帮助一家全球性科技公司制定并实施全面的碳中和战略，覆盖运营、供应链和产品全生命周期。",
+        "projectGoal": "在2025年前实现公司运营的碳中和，并制定供应链减排计划，同时建立可持续的碳管理体系。",
+        "challenges": "复杂的全球供应链、多样化的业务模式、缺乏统一的碳管理体系、不同地区的政策法规差异。",
+        "solutions": "制定分阶段的减排计划，实施可再生能源转换，建立碳抵消机制，开发内部碳定价系统，建立供应商碳管理要求。",
+        "results": "成功减少运营碳排放40%，建立了覆盖全球的碳管理体系，获得了国际认证，为2025年碳中和目标奠定了坚实基础。"
+      }
+    ],
+    "newsArticles": [
+      {
+        "newsTitle": "南极气候解决方案获得国际碳管理认证",
+        "urlSlug": "carbon-management-certification",
+        "author": "公司新闻部",
+        "articleSummary": "我们很荣幸地宣布，南极气候解决方案正式获得了国际碳管理协会的专业认证，这标志着我们在碳管理领域的专业能力得到了国际认可。",
+        "content": "这项认证的获得，不仅是对我们专业能力的认可，更是对我们服务质量的肯定。未来，我们将继续致力于为客户提供更优质的碳管理和气候解决方案服务。"
+      }
+    ]
+  }
+}
