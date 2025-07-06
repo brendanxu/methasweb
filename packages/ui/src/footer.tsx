@@ -56,7 +56,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-secondary-900 text-white relative overflow-hidden">
+    <footer className="bg-[#1a1f2e] text-white relative overflow-hidden">
       {/* Main footer content */}
       <div className="relative z-10">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -66,13 +66,13 @@ export function Footer() {
             <div className="lg:col-span-2">
               {/* Logo */}
               <div className="mb-6">
-                <h2 className="text-heading-lg font-semibold text-text-inverse">
+                <h2 className="text-heading-lg font-semibold text-white">
                   妙盈
                 </h2>
               </div>
               
               {/* Slogan */}
-              <p className="mb-6 text-secondary-300 text-body-lg">
+              <p className="mb-6 text-gray-300 text-body-lg">
                 关注我们随时收到最新讯息
               </p>
               
@@ -84,12 +84,12 @@ export function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="请输入邮箱"
-                    className="flex-1 px-4 py-3 bg-background-primary text-text-primary border border-secondary-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-body-md"
+                    className="flex-1 px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-body-md"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-5 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-colors duration-200 text-button-md shadow-soft hover:shadow-medium"
+                    className="px-5 py-3 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-colors duration-200 text-button-md shadow-lg hover:shadow-xl"
                   >
                     订阅
                   </button>
@@ -98,10 +98,10 @@ export function Footer() {
               
               {/* Contact info */}
               <div className="mb-8">
-                <h4 className="text-body-lg font-semibold mb-3 text-text-inverse">媒体联络</h4>
+                <h4 className="text-body-lg font-semibold mb-3 text-white">媒体联络</h4>
                 <a 
                   href="mailto:pr@miotech.com" 
-                  className="text-primary-400 hover:text-primary-300 transition-colors duration-200 text-body-md"
+                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200 text-body-md"
                 >
                   pr@miotech.com
                 </a>
@@ -137,7 +137,7 @@ export function Footer() {
             <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
               {Object.entries(footerNavigation).map(([key, section]) => (
                 <div key={key}>
-                  <h3 className="text-body-lg font-semibold text-text-inverse mb-4">
+                  <h3 className="text-body-lg font-semibold text-white mb-4">
                     {section.title}
                   </h3>
                   <ul className="space-y-3">
@@ -145,7 +145,7 @@ export function Footer() {
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-secondary-300 hover:text-text-inverse transition-colors duration-200 text-body-sm leading-relaxed"
+                          className="text-gray-400 hover:text-white transition-colors duration-200 text-body-sm leading-relaxed"
                         >
                           {link.label}
                         </a>
@@ -177,20 +177,20 @@ export function Footer() {
       </div>
       
       {/* Bottom copyright */}
-      <div className="border-t border-secondary-700">
+      <div className="border-t border-gray-700">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-secondary-400 text-body-sm">
+            <p className="text-gray-400 text-body-sm">
               © {new Date().getFullYear()} 妙盈科技. 保留所有权利.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
                 隐私政策
               </a>
-              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
                 使用条款
               </a>
-              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
                 网站地图
               </a>
             </div>
