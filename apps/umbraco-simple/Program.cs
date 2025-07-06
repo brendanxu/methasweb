@@ -1,8 +1,16 @@
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Configure URLs for Railway deployment
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+// Configure URLs for Railway deployment and local development
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5001";
+var isProduction = builder.Environment.IsProduction();
+if (isProduction)
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
+else
+{
+    builder.WebHost.UseUrls($"http://localhost:{port}", $"https://localhost:44310");
+}
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
@@ -14,6 +22,8 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
+// Add root endpoint for Railway health checks
+app.MapGet("/", () => "Umbraco CMS is running! Visit /umbraco for the admin panel.");
 
 app.UseUmbraco()
     .WithMiddleware(u =>
