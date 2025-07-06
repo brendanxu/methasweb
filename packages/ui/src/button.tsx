@@ -12,26 +12,26 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant = 'primary', size = 'md', asChild = false, className = '', children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center font-bold rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200'
+    const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200'
     
     const variants = {
-      primary: 'bg-primary-800 text-text-inverse hover:bg-primary-700 focus:ring-primary-600 shadow-lg hover:shadow-xl',
-      secondary: 'bg-background-primary text-text-primary border-2 border-primary-800 hover:bg-primary-800 hover:text-text-inverse focus:ring-primary-600',
-      outline: 'border-2 border-primary-800 text-primary-800 hover:bg-primary-800 hover:text-text-inverse focus:ring-primary-600',
-      ghost: 'text-text-muted hover:text-text-primary hover:bg-secondary-100 focus:ring-secondary-300'
+      primary: 'bg-primary-500 text-text-inverse hover:bg-primary-600 focus:ring-primary-500 shadow-soft hover:shadow-medium',
+      secondary: 'bg-background-primary text-text-primary border border-secondary-300 hover:bg-secondary-50 focus:ring-secondary-300 shadow-subtle',
+      outline: 'border border-primary-500 text-primary-600 hover:bg-primary-50 focus:ring-primary-500',
+      ghost: 'text-text-secondary hover:text-text-primary hover:bg-secondary-50 focus:ring-secondary-300'
     }
     
     const hoverVariants = {
-      primary: { scale: 1.02 },
-      secondary: { scale: 1.02 },
-      outline: { scale: 1.02 },
-      ghost: { scale: 1.02 }
+      primary: { scale: 1.01 },
+      secondary: { scale: 1.00 },
+      outline: { scale: 1.00 },
+      ghost: { scale: 1.00 }
     }
     
     const sizes = {
-      sm: 'px-4 py-2 text-button-sm',
-      md: 'px-6 py-3 text-button-md',
-      lg: 'px-8 py-4 text-button-lg'
+      sm: 'px-3 py-1.5 text-button-sm',
+      md: 'px-5 py-2.5 text-button-md',
+      lg: 'px-6 py-3 text-button-lg'
     }
     
     const buttonClasses = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`

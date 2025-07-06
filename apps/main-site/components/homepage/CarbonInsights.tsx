@@ -135,7 +135,7 @@ export default function CarbonInsights() {
   const canScrollRight = currentIndex < insightCards.length - cardsPerView
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+    <section className="py-24 bg-background-secondary relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -149,7 +149,7 @@ export default function CarbonInsights() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-display-lg md:text-display-lg font-bold text-text-primary mb-6">
+          <h2 className="text-display-md font-semibold text-text-primary mb-6">
             碳智观察
           </h2>
           <p className="text-body-lg text-text-secondary max-w-3xl mx-auto">
@@ -167,7 +167,7 @@ export default function CarbonInsights() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 onClick={scrollLeft}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-lg border border-secondary-200 flex items-center justify-center text-text-muted hover:text-primary-700 hover:shadow-xl transition-all duration-200 group"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-soft border border-secondary-100 flex items-center justify-center text-text-muted hover:text-primary-600 hover:shadow-medium transition-all duration-200 group"
                 style={{ marginLeft: '-24px' }}
               >
                 <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +185,7 @@ export default function CarbonInsights() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 onClick={scrollRight}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-lg border border-secondary-200 flex items-center justify-center text-text-muted hover:text-primary-700 hover:shadow-xl transition-all duration-200 group"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-soft border border-secondary-100 flex items-center justify-center text-text-muted hover:text-primary-600 hover:shadow-medium transition-all duration-200 group"
                 style={{ marginRight: '-24px' }}
               >
                 <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,7 +210,7 @@ export default function CarbonInsights() {
                 className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
               >
                 <Link href={card.href}>
-                  <div className="bg-background-primary rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full">
+                  <div className="bg-background-primary rounded-lg overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 group h-full">
                     {/* Image */}
                     <div className="relative overflow-hidden">
                       <img 
@@ -219,7 +219,7 @@ export default function CarbonInsights() {
                         className="w-full h-40 lg:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="inline-block bg-background-primary/90 backdrop-blur-sm text-primary-700 text-body-xs font-medium px-3 py-1 rounded-full">
+                        <span className="inline-block bg-background-primary/90 backdrop-blur-sm text-primary-600 text-body-xs font-medium px-3 py-1 rounded-md">
                           {card.category}
                         </span>
                       </div>
@@ -227,7 +227,7 @@ export default function CarbonInsights() {
                     
                     {/* Content */}
                     <div className="p-4 lg:p-6">
-                      <h3 className="text-heading-sm lg:text-heading-md font-bold text-text-primary mb-2 lg:mb-3 group-hover:text-primary-700 transition-colors line-clamp-2">
+                      <h3 className="text-heading-sm lg:text-heading-md font-semibold text-text-primary mb-2 lg:mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
                         {card.title}
                       </h3>
                       <p className="text-text-secondary text-body-sm leading-relaxed mb-4 lg:mb-6 line-clamp-3">
@@ -236,9 +236,9 @@ export default function CarbonInsights() {
                       
                       {/* Action Button */}
                       <div className="flex items-center justify-between">
-                        <span className="inline-flex items-center text-primary-700 font-bold text-body-xs lg:text-body-sm group-hover:text-primary-800 transition-colors">
+                        <span className="inline-flex items-center text-primary-600 font-medium text-body-xs lg:text-body-sm group-hover:text-primary-700 transition-colors">
                           {card.actionText}
-                          <svg className="ml-1 lg:ml-2 w-3 lg:w-4 h-3 lg:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="ml-1 lg:ml-2 w-3 lg:w-4 h-3 lg:h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </span>
@@ -259,7 +259,7 @@ export default function CarbonInsights() {
               onClick={() => scrollToIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex 
-                  ? 'bg-primary-700 w-8' 
+                  ? 'bg-primary-600 w-8' 
                   : 'bg-secondary-300 hover:bg-secondary-400'
               }`}
             />
@@ -270,7 +270,7 @@ export default function CarbonInsights() {
         <div className="text-center mt-16">
           <Link 
             href="/insights"
-            className="inline-flex items-center px-8 py-4 bg-primary-800 text-text-inverse font-bold rounded-lg hover:bg-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl text-button-md"
+            className="inline-flex items-center px-6 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-all duration-200 shadow-soft hover:shadow-medium text-button-md"
           >
             探索更多洞察
             <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

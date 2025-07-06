@@ -7,18 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        // South Pole 主色调系统
+        // South Pole 主色调系统 - 更现代的蓝绿色调
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#002145', // South Pole 深海军蓝
-          900: '#0c2340',
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6', // 主要的蓝绿色
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
         },
         // 辅助色系
         secondary: {
@@ -59,19 +59,19 @@ export default {
           800: '#92400e',
           900: '#78350f',
         },
-        // 文字颜色
+        // 文字颜色 - South Pole风格
         text: {
-          primary: '#002145',    // 深海军蓝用于标题
-          secondary: '#334155',  // 深灰色用于正文
-          muted: '#64748b',     // 浅灰色用于辅助文字
+          primary: '#1e293b',    // 深炭灰色用于标题
+          secondary: '#475569',  // 中灰色用于正文
+          muted: '#94a3b8',     // 浅灰色用于辅助文字
           inverse: '#ffffff',   // 白色用于反色文字
         },
-        // 背景色
+        // 背景色 - South Pole风格
         background: {
           primary: '#ffffff',    // 主背景
-          secondary: '#f8fafc',  // 次要背景
-          muted: '#f1f5f9',     // 柔和背景
-          accent: '#0369a1',    // 强调背景
+          secondary: '#fafafa',  // 浅灰背景
+          muted: '#f5f5f5',     // 柔和背景
+          accent: '#f0fdfa',    // 淡蓝绿背景
         },
       },
       fontFamily: {
@@ -113,6 +113,16 @@ export default {
       },
       borderRadius: {
         DEFAULT: '8px',
+        'sm': '6px',
+        'md': '8px',
+        'lg': '12px',
+        'xl': '16px',
+      },
+      boxShadow: {
+        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'soft': '0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        'medium': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'large': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
       },
     },
   },

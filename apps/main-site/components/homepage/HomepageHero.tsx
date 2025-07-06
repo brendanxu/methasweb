@@ -66,9 +66,9 @@ export default function HomepageHero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-display-lg md:text-display-lg lg:text-display-lg font-bold text-text-inverse mb-6 leading-tight drop-shadow-2xl">
+            <h1 className="text-display-md md:text-display-lg font-semibold text-text-inverse mb-6 leading-tight">
               Leading the Way in 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-success-400 to-primary-400 drop-shadow-lg">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-primary-500">
                 {" "}Climate Solutions
               </span>
             </h1>
@@ -81,16 +81,16 @@ export default function HomepageHero() {
             {/* Key Highlights */}
             <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">18+</div>
-                <div className="text-success-300 text-body-sm drop-shadow-md">Years Leading</div>
+                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">18+</div>
+                <div className="text-primary-200 text-body-sm">Years Leading</div>
               </div>
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">50M+</div>
-                <div className="text-success-300 text-body-sm drop-shadow-md">CO₂ Reduced</div>
+                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">50M+</div>
+                <div className="text-primary-200 text-body-sm">CO₂ Reduced</div>
               </div>
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">1000+</div>
-                <div className="text-success-300 text-body-sm drop-shadow-md">Clients Served</div>
+                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">1000+</div>
+                <div className="text-primary-200 text-body-sm">Clients Served</div>
               </div>
             </div>
 
@@ -98,16 +98,16 @@ export default function HomepageHero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/services"
-                className="inline-flex items-center px-8 py-4 bg-success-600 text-text-inverse font-bold rounded-lg hover:bg-success-700 transition-all duration-200 group text-button-lg shadow-lg hover:shadow-xl"
+                className="inline-flex items-center px-6 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-all duration-200 group text-button-md shadow-soft hover:shadow-medium"
               >
                 Explore Our Solutions
-                <svg className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 h-5 w-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link 
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 border-2 border-background-primary text-text-inverse font-bold rounded-lg hover:bg-background-primary hover:text-primary-800 transition-all duration-200 text-button-lg"
+                className="inline-flex items-center px-6 py-3 border border-background-primary/80 text-text-inverse font-medium rounded-lg hover:bg-background-primary/10 transition-all duration-200 text-button-md"
               >
                 Start Your Journey
               </Link>

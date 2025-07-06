@@ -103,7 +103,7 @@ export function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${isSticky ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
-            <span className="text-heading-lg font-bold text-primary-800">South Pole</span>
+            <span className="text-heading-lg font-semibold text-text-primary">South Pole</span>
           </a>
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
@@ -117,7 +117,7 @@ export function Header() {
                 <div className="flex items-center space-x-1">
                   <a
                     href={item.href}
-                    className="text-text-primary hover:text-primary-700 transition-colors font-medium text-body-md"
+                    className="text-text-secondary hover:text-text-primary transition-colors font-medium text-body-md"
                   >
                     {item.label}
                   </a>
@@ -139,7 +139,7 @@ export function Header() {
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-xl bg-background-primary shadow-2xl border border-secondary-200 overflow-hidden"
+                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-lg bg-background-primary shadow-medium border border-secondary-100 overflow-hidden"
                       initial={{ opacity: 0, y: -15, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -15, scale: 0.92 }}
@@ -149,7 +149,7 @@ export function Header() {
                       }}
                     >
                       {/* Header with gradient */}
-                      <div className="bg-gradient-to-r from-primary-50 to-primary-100 px-6 py-4 border-b border-secondary-200">
+                      <div className="bg-background-secondary px-6 py-4 border-b border-secondary-100">
                         <h3 className="font-semibold text-text-primary text-body-sm uppercase tracking-wider">
                           {item.label}
                         </h3>
@@ -160,13 +160,13 @@ export function Header() {
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="group flex items-start px-6 py-4 hover:bg-secondary-50 transition-all duration-200 border-l-4 border-transparent hover:border-primary-600"
+                            className="group flex items-start px-6 py-3 hover:bg-background-secondary transition-all duration-200"
                             initial={{ opacity: 0, x: -15 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.08, duration: 0.3 }}
                           >
                             <div className="flex-1">
-                              <div className="font-medium text-text-primary group-hover:text-primary-700 transition-colors text-body-sm">
+                              <div className="font-medium text-text-primary group-hover:text-primary-600 transition-colors text-body-sm">
                                 {child.label}
                               </div>
                               {child.description && (
@@ -176,7 +176,7 @@ export function Header() {
                               )}
                             </div>
                             <svg 
-                              className="h-4 w-4 text-secondary-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
+                              className="h-4 w-4 text-secondary-300 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"

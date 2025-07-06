@@ -56,7 +56,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#1a1f2e] text-white relative overflow-hidden">
+    <footer className="bg-secondary-900 text-white relative overflow-hidden">
       {/* Main footer content */}
       <div className="relative z-10">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ export function Footer() {
             <div className="lg:col-span-2">
               {/* Logo */}
               <div className="mb-6">
-                <h2 className="text-heading-lg font-bold text-text-inverse">
+                <h2 className="text-heading-lg font-semibold text-text-inverse">
                   妙盈
                 </h2>
               </div>
@@ -84,12 +84,12 @@ export function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="请输入邮箱"
-                    className="flex-1 px-4 py-3 bg-background-primary text-text-secondary border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none text-body-md"
+                    className="flex-1 px-4 py-3 bg-background-primary text-text-primary border border-secondary-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-body-md"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-primary-800 text-text-inverse font-bold rounded-lg hover:bg-primary-700 transition-colors duration-200 text-button-md"
+                    className="px-5 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-colors duration-200 text-button-md shadow-soft hover:shadow-medium"
                   >
                     订阅
                   </button>
@@ -98,7 +98,7 @@ export function Footer() {
               
               {/* Contact info */}
               <div className="mb-8">
-                <h4 className="text-heading-sm font-semibold mb-3 text-text-inverse">媒体联络</h4>
+                <h4 className="text-body-lg font-semibold mb-3 text-text-inverse">媒体联络</h4>
                 <a 
                   href="mailto:pr@miotech.com" 
                   className="text-primary-400 hover:text-primary-300 transition-colors duration-200 text-body-md"
@@ -112,7 +112,7 @@ export function Footer() {
                 {/* LinkedIn */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
+                  className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center hover:bg-primary-500 transition-colors duration-200 shadow-soft"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export function Footer() {
                 {/* WeChat */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-success-600 rounded-lg flex items-center justify-center hover:bg-success-700 transition-colors duration-200"
+                  className="w-10 h-10 bg-success-500 rounded-lg flex items-center justify-center hover:bg-success-600 transition-colors duration-200 shadow-soft"
                   aria-label="微信"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export function Footer() {
             <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
               {Object.entries(footerNavigation).map(([key, section]) => (
                 <div key={key}>
-                  <h3 className="text-heading-sm font-semibold text-text-inverse mb-4">
+                  <h3 className="text-body-lg font-semibold text-text-inverse mb-4">
                     {section.title}
                   </h3>
                   <ul className="space-y-3">
@@ -177,7 +177,7 @@ export function Footer() {
       </div>
       
       {/* Bottom copyright */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-secondary-700">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-secondary-400 text-body-sm">
