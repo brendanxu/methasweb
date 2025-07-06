@@ -3,13 +3,20 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:umbraco": "cd apps/umbraco-cms && dotnet build umbraco.sln",
     "dev": "turbo run dev",
+    "dev:umbraco": "cd apps/umbraco-cms && dotnet run --project src/Umbraco.Web.UI",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:umbraco\"",
     "start": "cd apps/main-site && npm run start",
+    "start:umbraco": "cd apps/umbraco-cms && dotnet run --project src/Umbraco.Web.UI --environment Production",
+    "migrate:data": "node shared/migration/migrate-data.js",
+    "setup:umbraco": "cd apps/umbraco-cms && dotnet restore",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "prettier": "^3.6.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "turbo": "^2.5.4"

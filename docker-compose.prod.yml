@@ -18,7 +18,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - api
+      - umbraco-cms
       - postgres
     networks:
       - southpole-network
@@ -29,31 +29,37 @@ services:
       - "traefik.http.routers.main-site.tls.certresolver=letsencrypt"
       - "traefik.http.services.main-site.loadbalancer.server.port=3000"
 
-  # API Backend
-  api:
+  # Umbraco CMS Backend
+  umbraco-cms:
     build:
-      context: ./apps/api
+      context: ./apps/umbraco-cms
       dockerfile: Dockerfile
-    container_name: southpole-api
+    container_name: southpole-umbraco
     restart: unless-stopped
     environment:
-      - NODE_ENV=production
-      - DATABASE_URL=${DATABASE_URL}
-      - JWT_SECRET=${JWT_SECRET}
-      - PORT=3001
-      - CORS_ORIGIN=${CORS_ORIGIN:-https://southpole.com}
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__umbracoDbDSN=${UMBRACO_DATABASE_URL:-Data Source=/app/App_Data/Umbraco.sqlite.db;Cache=Shared;Foreign Keys=True;Pooling=True}
+      - Umbraco__CMS__Global__Id=${UMBRACO_ID:-southpole-umbraco}
+      - Umbraco__CMS__Global__SuppressHostnameRedirect=true
+      - Umbraco__CMS__DeliveryApi__Enabled=true
+      - Umbraco__CMS__DeliveryApi__PublicAccess=true
+      - Umbraco__CMS__DeliveryApi__ApiKey=${UMBRACO_API_KEY:-southpole-api-key-2024}
     ports:
-      - "3001:3001"
+      - "5000:5000"
     depends_on:
       - postgres
     networks:
       - southpole-network
+    volumes:
+      - umbraco_data:/app/App_Data
+      - umbraco_media:/app/wwwroot/media
+      - umbraco_logs:/app/umbraco/Logs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`${API_DOMAIN:-api.southpole.com}`)"
-      - "traefik.http.routers.api.tls=true"
-      - "traefik.http.routers.api.tls.certresolver=letsencrypt"
-      - "traefik.http.services.api.loadbalancer.server.port=3001"
+      - "traefik.http.routers.umbraco.rule=Host(`${UMBRACO_DOMAIN:-cms.southpole.com}`)"
+      - "traefik.http.routers.umbraco.tls=true"
+      - "traefik.http.routers.umbraco.tls.certresolver=letsencrypt"
+      - "traefik.http.services.umbraco.loadbalancer.server.port=5000"
 
   # PostgreSQL Database
   postgres:
@@ -101,7 +107,7 @@ services:
       - ./certbot/www:/var/www/certbot:ro
     depends_on:
       - main-site
-      - api
+      - umbraco-cms
     networks:
       - southpole-network
 
@@ -155,6 +161,9 @@ volumes:
   redis_data:
   prometheus_data:
   grafana_data:
+  umbraco_data:
+  umbraco_media:
+  umbraco_logs:
 
 networks:
   southpole-network:

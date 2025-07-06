@@ -1,37 +1,12 @@
 import { mockCaseStudies, mockNewsArticles } from './mock-data'
+import { umbracoClient } from './umbraco-client'
 import type { CaseStudy, NewsArticle, AboutPageData, TeamMember, OfficeLocation, CompanyStat, Service, SearchParams, SearchResultsData, SearchResult } from './types'
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api'
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/case-studies`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch case studies')
-    }
-    
-    const data = await response.json()
-    
-    // Transform API data to match our CaseStudy interface
-    return data.data.map((item: any) => ({
-      id: item.id,
-      title: item.title,
-      slug: item.slug,
-      clientName: item.clientName,
-      heroImage: item.heroImageUrl,
-      summary: item.summary,
-      theGoal: item.theGoal,
-      theChallenge: item.theChallenge,
-      theSolution: item.theSolution,
-      relatedServices: item.services || [],
-      relatedIndustry: item.industry,
-      createdAt: item.publishedAt || item.createdAt
-    }))
+    return await umbracoClient.getCaseStudies()
   } catch (error) {
-    console.error('Error fetching case studies:', error)
+    console.error('Error fetching case studies from Umbraco:', error)
     // Return mock data as fallback
     return mockCaseStudies
   }
@@ -39,37 +14,9 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 
 export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
   try {
-    const response = await fetch(`${API_BASE_URL}/case-studies/${slug}`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      if (response.status === 404) {
-        return null
-      }
-      throw new Error('Failed to fetch case study')
-    }
-    
-    const data = await response.json()
-    const item = data.data
-    
-    // Transform API data to match our CaseStudy interface
-    return {
-      id: item.id,
-      title: item.title,
-      slug: item.slug,
-      clientName: item.clientName,
-      heroImage: item.heroImageUrl,
-      summary: item.summary,
-      theGoal: item.theGoal,
-      theChallenge: item.theChallenge,
-      theSolution: item.theSolution,
-      relatedServices: item.services || [],
-      relatedIndustry: item.industry,
-      createdAt: item.publishedAt || item.createdAt
-    }
+    return await umbracoClient.getCaseStudy(slug)
   } catch (error) {
-    console.error('Error fetching case study:', error)
+    console.error('Error fetching case study from Umbraco:', error)
     // Return mock data as fallback
     return mockCaseStudies.find(cs => cs.slug === slug) || null
   }
@@ -77,29 +24,9 @@ export async function getCaseStudy(slug: string): Promise<CaseStudy | null> {
 
 export async function getNewsArticles(): Promise<NewsArticle[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/news`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch news articles')
-    }
-    
-    const data = await response.json()
-    
-    // Transform API data to match our NewsArticle interface
-    return data.data.map((item: any) => ({
-      id: item.id,
-      title: item.title,
-      slug: item.slug,
-      publishDate: item.publishedAt || item.createdAt,
-      heroImage: item.featuredImageUrl,
-      content: item.content,
-      category: item.category,
-      summary: item.excerpt
-    }))
+    return await umbracoClient.getNewsArticles()
   } catch (error) {
-    console.error('Error fetching news articles:', error)
+    console.error('Error fetching news articles from Umbraco:', error)
     // Return mock data as fallback
     return mockNewsArticles
   }
@@ -107,33 +34,9 @@ export async function getNewsArticles(): Promise<NewsArticle[]> {
 
 export async function getNewsArticle(slug: string): Promise<NewsArticle | null> {
   try {
-    const response = await fetch(`${API_BASE_URL}/news/${slug}`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      if (response.status === 404) {
-        return null
-      }
-      throw new Error('Failed to fetch news article')
-    }
-    
-    const data = await response.json()
-    const item = data.data
-    
-    // Transform API data to match our NewsArticle interface
-    return {
-      id: item.id,
-      title: item.title,
-      slug: item.slug,
-      publishDate: item.publishedAt || item.createdAt,
-      heroImage: item.featuredImageUrl,
-      content: item.content,
-      category: item.category,
-      summary: item.excerpt
-    }
+    return await umbracoClient.getNewsArticle(slug)
   } catch (error) {
-    console.error('Error fetching news article:', error)
+    console.error('Error fetching news article from Umbraco:', error)
     // Return mock data as fallback
     return mockNewsArticles.find(article => article.slug === slug) || null
   }
@@ -183,58 +86,29 @@ export async function getAboutPageData(): Promise<AboutPageData> {
 
 export async function getTeamMembers(isLeadership?: boolean): Promise<TeamMember[]> {
   try {
-    const url = isLeadership 
-      ? `${API_BASE_URL}/team/leadership`
-      : `${API_BASE_URL}/team`
-    
-    const response = await fetch(url, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch team members')
-    }
-    
-    const data = await response.json()
-    return data.data
+    return isLeadership 
+      ? await umbracoClient.getLeadershipTeam()
+      : await umbracoClient.getTeamMembers()
   } catch (error) {
-    console.error('Error fetching team members:', error)
+    console.error('Error fetching team members from Umbraco:', error)
     return []
   }
 }
 
 export async function getOfficeLocations(): Promise<OfficeLocation[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/locations`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch office locations')
-    }
-    
-    const data = await response.json()
-    return data.data
+    return await umbracoClient.getOfficeLocations()
   } catch (error) {
-    console.error('Error fetching office locations:', error)
+    console.error('Error fetching office locations from Umbraco:', error)
     return []
   }
 }
 
 export async function getCompanyStats(): Promise<CompanyStat[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/company/stats`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch company stats')
-    }
-    
-    const data = await response.json()
-    return data.data
+    return await umbracoClient.getCompanyStats()
   } catch (error) {
-    console.error('Error fetching company stats:', error)
+    console.error('Error fetching company stats from Umbraco:', error)
     return []
   }
 }
@@ -284,21 +158,13 @@ export async function submitContactForm(formData: any) {
 // Services API Functions
 export async function getServicesPageData(): Promise<{ services: Service[], solutions: any[] }> {
   try {
-    const response = await fetch(`${API_BASE_URL}/services`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch services data')
-    }
-    
-    const data = await response.json()
+    const services = await umbracoClient.getServices()
     return { 
-      services: data.data || [], 
-      solutions: data.solutions || []
+      services: services || [], 
+      solutions: [] // Solutions not implemented yet
     }
   } catch (error) {
-    console.error('Error fetching services data:', error)
+    console.error('Error fetching services data from Umbraco:', error)
     
     // Return fallback data
     return { 
@@ -310,21 +176,9 @@ export async function getServicesPageData(): Promise<{ services: Service[], solu
 
 export async function getServiceBySlug(slug: string): Promise<Service | null> {
   try {
-    const response = await fetch(`${API_BASE_URL}/services/${slug}`, {
-      next: { revalidate: 3600 }
-    })
-    
-    if (!response.ok) {
-      if (response.status === 404) {
-        return null
-      }
-      throw new Error('Failed to fetch service')
-    }
-    
-    const data = await response.json()
-    return data.data
+    return await umbracoClient.getService(slug)
   } catch (error) {
-    console.error('Error fetching service:', error)
+    console.error('Error fetching service from Umbraco:', error)
     
     // Return fallback data for common services
     const fallbackServices: Record<string, Service> = {
@@ -369,21 +223,18 @@ export async function getTeamPageData(): Promise<{
   departments: any[] 
 }> {
   try {
-    const [statsResponse, leadershipResponse] = await Promise.all([
-      fetch(`${API_BASE_URL}/company/stats`, { next: { revalidate: 3600 } }),
-      fetch(`${API_BASE_URL}/team/leadership`, { next: { revalidate: 3600 } })
+    const [stats, leadership] = await Promise.all([
+      umbracoClient.getCompanyStats(),
+      umbracoClient.getLeadershipTeam()
     ])
     
-    const statsData = statsResponse.ok ? await statsResponse.json() : { data: [] }
-    const leadershipData = leadershipResponse.ok ? await leadershipResponse.json() : { data: [] }
-    
     return { 
-      stats: statsData.data || [],
-      leadership: leadershipData.data || [],
+      stats: stats || [],
+      leadership: leadership || [],
       departments: [] // Will be populated later when departments API is available
     }
   } catch (error) {
-    console.error('Error fetching team page data:', error)
+    console.error('Error fetching team page data from Umbraco:', error)
     
     // Return fallback data
     return { 
@@ -399,15 +250,13 @@ export async function getHomepageData(): Promise<{
   services: Service[]
 }> {
   try {
-    const servicesResponse = await fetch(`${API_BASE_URL}/services`, { next: { revalidate: 3600 } })
-    
-    const servicesData = servicesResponse.ok ? await servicesResponse.json() : { data: [] }
+    const services = await umbracoClient.getServices()
     
     return { 
-      services: servicesData.data || []
+      services: services || []
     }
   } catch (error) {
-    console.error('Error fetching homepage data:', error)
+    console.error('Error fetching homepage data from Umbraco:', error)
     
     // Return fallback data
     return { 

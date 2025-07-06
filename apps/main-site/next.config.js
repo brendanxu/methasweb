@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // External packages for server components
-  serverExternalPackages: ['@prisma/client'],
+  // External packages for server components (Prisma no longer needed)
+  serverExternalPackages: [],
 
   // Image configuration
   images: {
@@ -22,6 +22,16 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cdn.southpole.com',
+      },
+      // Umbraco media
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '5000',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cms.southpole.com',
       },
     ],
   },

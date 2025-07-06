@@ -1,0 +1,731 @@
+{
+  "documentTypes": [
+    {
+      "alias": "caseStudy",
+      "name": "Case Study",
+      "description": "A detailed case study showcasing our work and impact",
+      "icon": "icon-portfolio",
+      "allowAtRoot": false,
+      "isListView": true,
+      "properties": [
+        {
+          "alias": "title",
+          "name": "Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "urlSlug",
+          "name": "URL Slug",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "clientName",
+          "name": "Client Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "heroImage",
+          "name": "Hero Image",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "summary",
+          "name": "Summary",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        },
+        {
+          "alias": "theGoal",
+          "name": "The Goal",
+          "dataType": "Umbraco.TinyMCE",
+          "mandatory": true
+        },
+        {
+          "alias": "theChallenge",
+          "name": "The Challenge", 
+          "dataType": "Umbraco.TinyMCE",
+          "mandatory": true
+        },
+        {
+          "alias": "theSolution",
+          "name": "The Solution",
+          "dataType": "Umbraco.TinyMCE",
+          "mandatory": true
+        },
+        {
+          "alias": "services",
+          "name": "Related Services",
+          "dataType": "Umbraco.MultiNodeTreePicker",
+          "config": {
+            "startNode": {
+              "type": "content",
+              "query": "$current/ancestor-or-self::*[@isDoc][@contentTypeAlias='servicesPage']"
+            },
+            "filter": "service",
+            "minNumber": 0,
+            "maxNumber": 10
+          }
+        },
+        {
+          "alias": "industry",
+          "name": "Industry",
+          "dataType": "Umbraco.MultiNodeTreePicker",
+          "config": {
+            "startNode": {
+              "type": "content"
+            },
+            "filter": "industry",
+            "minNumber": 0,
+            "maxNumber": 1
+          }
+        },
+        {
+          "alias": "metaTitle",
+          "name": "Meta Title",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "metaDescription", 
+          "name": "Meta Description",
+          "dataType": "Umbraco.TextArea"
+        },
+        {
+          "alias": "publishedDate",
+          "name": "Published Date",
+          "dataType": "Umbraco.DateTime",
+          "mandatory": true
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Content",
+          "properties": ["title", "urlSlug", "clientName", "heroImage", "summary", "publishedDate"]
+        },
+        {
+          "name": "Details",
+          "properties": ["theGoal", "theChallenge", "theSolution", "services", "industry"]
+        },
+        {
+          "name": "SEO",
+          "properties": ["metaTitle", "metaDescription"]
+        }
+      ]
+    },
+    {
+      "alias": "newsArticle",
+      "name": "News Article",
+      "description": "News and insights article",
+      "icon": "icon-newspaper",
+      "allowAtRoot": false,
+      "isListView": true,
+      "properties": [
+        {
+          "alias": "title",
+          "name": "Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "urlSlug",
+          "name": "URL Slug",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "excerpt",
+          "name": "Excerpt",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        },
+        {
+          "alias": "featuredImage",
+          "name": "Featured Image",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "content",
+          "name": "Content",
+          "dataType": "Umbraco.TinyMCE",
+          "mandatory": true
+        },
+        {
+          "alias": "category",
+          "name": "Category",
+          "dataType": "Umbraco.MultiNodeTreePicker",
+          "config": {
+            "startNode": {
+              "type": "content"
+            },
+            "filter": "category",
+            "minNumber": 1,
+            "maxNumber": 1
+          }
+        },
+        {
+          "alias": "tags",
+          "name": "Tags",
+          "dataType": "Umbraco.Tags"
+        },
+        {
+          "alias": "metaTitle",
+          "name": "Meta Title",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "metaDescription",
+          "name": "Meta Description", 
+          "dataType": "Umbraco.TextArea"
+        },
+        {
+          "alias": "publishedDate",
+          "name": "Published Date",
+          "dataType": "Umbraco.DateTime",
+          "mandatory": true
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Content",
+          "properties": ["title", "urlSlug", "excerpt", "featuredImage", "content", "publishedDate"]
+        },
+        {
+          "name": "Classification",
+          "properties": ["category", "tags"]
+        },
+        {
+          "name": "SEO",
+          "properties": ["metaTitle", "metaDescription"]
+        }
+      ]
+    },
+    {
+      "alias": "service",
+      "name": "Service",
+      "description": "A service offered by South Pole",
+      "icon": "icon-settings",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "name",
+          "name": "Service Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "urlSlug",
+          "name": "URL Slug",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Short Description",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        },
+        {
+          "alias": "fullDescription",
+          "name": "Full Description",
+          "dataType": "Umbraco.TinyMCE"
+        },
+        {
+          "alias": "icon",
+          "name": "Service Icon",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "color",
+          "name": "Brand Color (Hex)",
+          "dataType": "Umbraco.ColorPicker"
+        },
+        {
+          "alias": "benefits",
+          "name": "Key Benefits",
+          "dataType": "Umbraco.MultipleTextstring"
+        },
+        {
+          "alias": "features",
+          "name": "Service Features",
+          "dataType": "Umbraco.NestedContent",
+          "config": {
+            "contentTypes": [
+              {
+                "ncAlias": "serviceFeature",
+                "ncTabAlias": "Feature",
+                "nameTemplate": "{{title}}"
+              }
+            ]
+          }
+        },
+        {
+          "alias": "process",
+          "name": "Service Process",
+          "dataType": "Umbraco.NestedContent",
+          "config": {
+            "contentTypes": [
+              {
+                "ncAlias": "processStep",
+                "ncTabAlias": "Step",
+                "nameTemplate": "Step {{step}}: {{title}}"
+              }
+            ]
+          }
+        },
+        {
+          "alias": "displayOrder",
+          "name": "Display Order",
+          "dataType": "Umbraco.Integer"
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Basic Info",
+          "properties": ["name", "urlSlug", "description", "icon", "color", "displayOrder"]
+        },
+        {
+          "name": "Details",
+          "properties": ["fullDescription", "benefits", "features", "process"]
+        }
+      ]
+    },
+    {
+      "alias": "industry",
+      "name": "Industry",
+      "description": "Industry classification for case studies",
+      "icon": "icon-folder",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "name",
+          "name": "Industry Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "urlSlug",
+          "name": "URL Slug",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Description",
+          "dataType": "Umbraco.TextArea"
+        }
+      ]
+    },
+    {
+      "alias": "category",
+      "name": "Category",
+      "description": "Category classification for news articles",
+      "icon": "icon-folder",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "name",
+          "name": "Category Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "urlSlug",
+          "name": "URL Slug",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Description",
+          "dataType": "Umbraco.TextArea"
+        },
+        {
+          "alias": "color",
+          "name": "Category Color (Hex)",
+          "dataType": "Umbraco.ColorPicker"
+        }
+      ]
+    },
+    {
+      "alias": "teamMember",
+      "name": "Team Member",
+      "description": "A team member profile",
+      "icon": "icon-user",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "name",
+          "name": "Full Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "title",
+          "name": "Job Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "department",
+          "name": "Department",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "bio",
+          "name": "Biography",
+          "dataType": "Umbraco.TinyMCE"
+        },
+        {
+          "alias": "profileImage",
+          "name": "Profile Image",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "linkedinUrl",
+          "name": "LinkedIn URL",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "email",
+          "name": "Email",
+          "dataType": "Umbraco.EmailAddress"
+        },
+        {
+          "alias": "isLeadership",
+          "name": "Is Leadership Team",
+          "dataType": "Umbraco.TrueFalse"
+        },
+        {
+          "alias": "displayOrder",
+          "name": "Display Order",
+          "dataType": "Umbraco.Integer"
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Profile",
+          "properties": ["name", "title", "department", "bio", "profileImage"]
+        },
+        {
+          "name": "Contact",
+          "properties": ["email", "linkedinUrl"]
+        },
+        {
+          "name": "Settings",
+          "properties": ["isLeadership", "displayOrder"]
+        }
+      ]
+    },
+    {
+      "alias": "officeLocation",
+      "name": "Office Location",
+      "description": "A South Pole office location",
+      "icon": "icon-location",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "name",
+          "name": "Office Name",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "address",
+          "name": "Address",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        },
+        {
+          "alias": "city",
+          "name": "City",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "country",
+          "name": "Country",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "countryCode",
+          "name": "Country Code",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "phone",
+          "name": "Phone Number",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "email",
+          "name": "Email",
+          "dataType": "Umbraco.EmailAddress"
+        },
+        {
+          "alias": "timezone",
+          "name": "Timezone",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "coordinates",
+          "name": "GPS Coordinates (lat,lng)",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "description",
+          "name": "Description",
+          "dataType": "Umbraco.TextArea"
+        },
+        {
+          "alias": "locationImage",
+          "name": "Location Image",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "isHeadquarters",
+          "name": "Is Headquarters",
+          "dataType": "Umbraco.TrueFalse"
+        },
+        {
+          "alias": "displayOrder",
+          "name": "Display Order",
+          "dataType": "Umbraco.Integer"
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Location Info",
+          "properties": ["name", "address", "city", "country", "countryCode", "locationImage"]
+        },
+        {
+          "name": "Contact",
+          "properties": ["phone", "email", "timezone", "coordinates"]
+        },
+        {
+          "name": "Details",
+          "properties": ["description", "isHeadquarters", "displayOrder"]
+        }
+      ]
+    },
+    {
+      "alias": "companyStat",
+      "name": "Company Statistic",
+      "description": "A key company statistic or metric",
+      "icon": "icon-chart",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "label",
+          "name": "Statistic Label",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "value",
+          "name": "Statistic Value",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Description",
+          "dataType": "Umbraco.TextArea"
+        },
+        {
+          "alias": "icon",
+          "name": "Icon",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "displayOrder",
+          "name": "Display Order",
+          "dataType": "Umbraco.Integer"
+        }
+      ]
+    },
+    {
+      "alias": "companyInfo",
+      "name": "Company Information",
+      "description": "Company information sections for about page",
+      "icon": "icon-info",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "alias": "section",
+          "name": "Section Type",
+          "dataType": "Umbraco.DropDown.Flexible",
+          "config": {
+            "items": [
+              { "value": "HERO", "text": "Hero Section" },
+              { "value": "MISSION", "text": "Mission" },
+              { "value": "VALUES", "text": "Values" },
+              { "value": "HISTORY", "text": "History" },
+              { "value": "COMMITMENT", "text": "Commitment" },
+              { "value": "IMPACT", "text": "Impact" }
+            ]
+          },
+          "mandatory": true
+        },
+        {
+          "alias": "title",
+          "name": "Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "subtitle",
+          "name": "Subtitle",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "content",
+          "name": "Content",
+          "dataType": "Umbraco.TinyMCE",
+          "mandatory": true
+        },
+        {
+          "alias": "image",
+          "name": "Section Image",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "video",
+          "name": "Section Video",
+          "dataType": "Umbraco.MediaPicker3",
+          "config": {
+            "multiple": false,
+            "validationLimit": {
+              "min": 0,
+              "max": 1
+            }
+          }
+        },
+        {
+          "alias": "ctaText",
+          "name": "Call to Action Text",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "ctaUrl",
+          "name": "Call to Action URL",
+          "dataType": "Umbraco.TextBox"
+        },
+        {
+          "alias": "displayOrder",
+          "name": "Display Order",
+          "dataType": "Umbraco.Integer"
+        }
+      ],
+      "tabs": [
+        {
+          "name": "Content",
+          "properties": ["section", "title", "subtitle", "content", "displayOrder"]
+        },
+        {
+          "name": "Media",
+          "properties": ["image", "video"]
+        },
+        {
+          "name": "Call to Action",
+          "properties": ["ctaText", "ctaUrl"]
+        }
+      ]
+    }
+  ],
+  "nestedContentTypes": [
+    {
+      "alias": "serviceFeature",
+      "name": "Service Feature",
+      "properties": [
+        {
+          "alias": "title",
+          "name": "Feature Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Feature Description",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "alias": "processStep",
+      "name": "Process Step",
+      "properties": [
+        {
+          "alias": "step",
+          "name": "Step Number",
+          "dataType": "Umbraco.Integer",
+          "mandatory": true
+        },
+        {
+          "alias": "title",
+          "name": "Step Title",
+          "dataType": "Umbraco.TextBox",
+          "mandatory": true
+        },
+        {
+          "alias": "description",
+          "name": "Step Description",
+          "dataType": "Umbraco.TextArea",
+          "mandatory": true
+        }
+      ]
+    }
+  ]
+}
