@@ -10,15 +10,15 @@ import {
   CompanyStat 
 } from './types'
 
-const UMBRACO_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5000'
-const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-api-key-2024'
+const UMBRACO_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5001'
+const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-railway-api-key-2024'
 
 class UmbracoClient {
   private baseUrl: string
   private apiKey: string
 
   constructor() {
-    this.baseUrl = `${UMBRACO_BASE_URL}/umbraco/delivery/api/v2`
+    this.baseUrl = `${UMBRACO_BASE_URL}/umbraco/delivery/api/v1`
     this.apiKey = UMBRACO_API_KEY
   }
 

@@ -5,7 +5,7 @@
     "build": "turbo run build",
     "build:umbraco": "cd apps/umbraco-cms && dotnet build umbraco.sln",
     "dev": "turbo run dev",
-    "dev:umbraco": "cd apps/umbraco-cms && dotnet run --project src/Umbraco.Web.UI",
+    "dev:umbraco": "cd apps/umbraco-simple && dotnet run",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:umbraco\"",
     "start": "cd apps/main-site && npm run start",
     "start:umbraco": "cd apps/umbraco-cms && dotnet run --project src/Umbraco.Web.UI --environment Production",

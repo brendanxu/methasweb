@@ -11,8 +11,8 @@
 #pragma warning disable CA2243
 
 [assembly: global::System.Reflection.AssemblyVersionAttribute("16.0.0.0")]
-[assembly: global::System.Reflection.AssemblyFileVersionAttribute("16.0.0.2")]
-[assembly: global::System.Reflection.AssemblyInformationalVersionAttribute("16.0.0+6506247")]
+[assembly: global::System.Reflection.AssemblyFileVersionAttribute("16.0.0.3")]
+[assembly: global::System.Reflection.AssemblyInformationalVersionAttribute("16.0.0+5fc2f17")]
 #if NETSTANDARD || NETFRAMEWORK || NETCOREAPP
 [global::System.CodeDom.Compiler.GeneratedCode("Nerdbank.GitVersioning.Tasks","3.7.115.8147")]
 #endif
@@ -21,14 +21,14 @@
 #endif
 internal static partial class ThisAssembly {
     internal const string AssemblyConfiguration = "Debug";
-    internal const string AssemblyFileVersion = "16.0.0.2";
-    internal const string AssemblyInformationalVersion = "16.0.0+6506247";
+    internal const string AssemblyFileVersion = "16.0.0.3";
+    internal const string AssemblyInformationalVersion = "16.0.0+5fc2f17";
     internal const string AssemblyName = "Umbraco.Infrastructure";
     internal const string AssemblyTitle = "Umbraco.Infrastructure";
     internal const string AssemblyVersion = "16.0.0.0";
-    internal static readonly global::System.DateTime GitCommitAuthorDate = new global::System.DateTime(638873892360000000L, global::System.DateTimeKind.Utc);
-    internal static readonly global::System.DateTime GitCommitDate = new global::System.DateTime(638873892360000000L, global::System.DateTimeKind.Utc);
-    internal const string GitCommitId = "6506247771c39a27bd90ff73790e5431da2924d5";
+    internal static readonly global::System.DateTime GitCommitAuthorDate = new global::System.DateTime(638873922750000000L, global::System.DateTimeKind.Utc);
+    internal static readonly global::System.DateTime GitCommitDate = new global::System.DateTime(638873922750000000L, global::System.DateTimeKind.Utc);
+    internal const string GitCommitId = "5fc2f173d7047128a33a167b2c372f32d5c3a73a";
     internal const bool IsPrerelease = false;
     internal const bool IsPublicRelease = true;
     internal const string RootNamespace = "Umbraco.Cms.Infrastructure";
