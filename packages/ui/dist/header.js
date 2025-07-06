@@ -54,6 +54,8 @@ function Header() {
     const [openMegaMenu, setOpenMegaMenu] = (0, react_1.useState)(null);
     const [mobileOpenSubmenu, setMobileOpenSubmenu] = (0, react_1.useState)(null);
     (0, react_1.useEffect)(() => {
+        // 设置初始状态
+        setIsScrolled(window.scrollY > 50);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };

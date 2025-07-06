@@ -17,7 +17,7 @@ import Link from 'next/link'
  */
 export default function HomepageHero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video - Desktop */}
       <div className="absolute inset-0 z-0">
         {/* Video for desktop (hidden on mobile for performance) */}
@@ -51,46 +51,39 @@ export default function HomepageHero() {
         ></div>
         
         {/* Video overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-black/40 z-1"></div>
       </div>
 
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-400/10 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-success-400/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-background-primary/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div className="relative z-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-display-md md:text-display-lg font-semibold text-text-inverse mb-6 leading-tight">
-              Leading the Way in 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-primary-500">
-                {" "}Climate Solutions
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+              Leading the Way in{' '}
+              <span className="text-white">
+                Climate Solutions
               </span>
             </h1>
             
-            <p className="text-body-lg md:text-body-lg text-text-inverse mb-8 max-w-2xl mx-auto drop-shadow-xl">
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
               Since 2006, we've helped organizations accelerate their transition to a 
               net-zero future through comprehensive climate action strategies and solutions.
             </p>
 
             {/* Key Highlights */}
-            <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+            <div className="grid grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">18+</div>
-                <div className="text-primary-200 text-body-sm">Years Leading</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>18+</div>
+                <div className="text-white/80 text-sm md:text-base">Years Leading</div>
               </div>
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">50M+</div>
-                <div className="text-primary-200 text-body-sm">CO₂ Reduced</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>50M+</div>
+                <div className="text-white/80 text-sm md:text-base">CO₂ Reduced</div>
               </div>
               <div className="text-center">
-                <div className="text-heading-lg md:text-heading-xl font-semibold text-text-inverse">1000+</div>
-                <div className="text-primary-200 text-body-sm">Clients Served</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>1000+</div>
+                <div className="text-white/80 text-sm md:text-base">Clients Served</div>
               </div>
             </div>
 
@@ -98,16 +91,16 @@ export default function HomepageHero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/services"
-                className="inline-flex items-center px-6 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-all duration-200 group text-button-md shadow-soft hover:shadow-medium"
+                className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-full hover:bg-gray-50 transition-all duration-300 group shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg"
               >
                 Explore Our Solutions
-                <svg className="ml-2 h-5 w-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
               <Link 
                 href="/contact"
-                className="inline-flex items-center px-6 py-3 border border-background-primary/80 text-text-inverse font-medium rounded-lg hover:bg-background-primary/10 transition-all duration-200 text-button-md"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary-600 transition-all duration-300 hover:-translate-y-0.5 text-lg"
               >
                 Start Your Journey
               </Link>

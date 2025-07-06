@@ -64,9 +64,13 @@ export function Header() {
   const [mobileOpenSubmenu, setMobileOpenSubmenu] = useState<string | null>(null)
 
   useEffect(() => {
+    // 设置初始状态
+    setIsScrolled(window.scrollY > 50)
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
+    
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
