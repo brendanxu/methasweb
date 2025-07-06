@@ -1,0 +1,182 @@
+{
+  "documentTypes": {
+    "caseStudy": {
+      "name": "Case Study",
+      "alias": "caseStudy",
+      "icon": "icon-lightbulb",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "name": "Title",
+          "alias": "title",
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "标题"
+        },
+        {
+          "name": "URL Slug",
+          "alias": "slug",
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "URL别名，用于生成页面链接"
+        },
+        {
+          "name": "Client Name",
+          "alias": "clientName", 
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "客户名称"
+        },
+        {
+          "name": "Hero Image",
+          "alias": "heroImage",
+          "dataType": "Media Picker",
+          "mandatory": true,
+          "description": "封面图片"
+        },
+        {
+          "name": "Summary",
+          "alias": "summary",
+          "dataType": "Textarea",
+          "mandatory": true,
+          "description": "项目摘要"
+        },
+        {
+          "name": "The Goal", 
+          "alias": "theGoal",
+          "dataType": "Rich Text Editor",
+          "mandatory": true,
+          "description": "项目目标"
+        },
+        {
+          "name": "The Challenge",
+          "alias": "theChallenge", 
+          "dataType": "Rich Text Editor",
+          "mandatory": true,
+          "description": "面临挑战"
+        },
+        {
+          "name": "The Solution",
+          "alias": "theSolution",
+          "dataType": "Rich Text Editor", 
+          "mandatory": true,
+          "description": "解决方案"
+        },
+        {
+          "name": "Published Date",
+          "alias": "publishedDate",
+          "dataType": "Date Picker",
+          "mandatory": false,
+          "description": "发布日期"
+        }
+      ]
+    },
+    "service": {
+      "name": "Service",
+      "alias": "service", 
+      "icon": "icon-settings",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "name": "Name",
+          "alias": "name",
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "服务名称"
+        },
+        {
+          "name": "URL Slug",
+          "alias": "slug", 
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "URL别名"
+        },
+        {
+          "name": "Description",
+          "alias": "description",
+          "dataType": "Textarea", 
+          "mandatory": true,
+          "description": "服务描述"
+        },
+        {
+          "name": "Icon",
+          "alias": "icon",
+          "dataType": "Media Picker",
+          "mandatory": false,
+          "description": "服务图标"
+        },
+        {
+          "name": "Full Description", 
+          "alias": "fullDescription",
+          "dataType": "Rich Text Editor",
+          "mandatory": false,
+          "description": "详细描述"
+        },
+        {
+          "name": "Display Order",
+          "alias": "displayOrder",
+          "dataType": "Numeric",
+          "mandatory": false,
+          "description": "显示顺序"
+        }
+      ]
+    },
+    "newsArticle": {
+      "name": "News Article",
+      "alias": "newsArticle",
+      "icon": "icon-newspaper",
+      "allowAtRoot": false,
+      "properties": [
+        {
+          "name": "Title",
+          "alias": "title", 
+          "dataType": "Textstring",
+          "mandatory": true,
+          "description": "文章标题"
+        },
+        {
+          "name": "URL Slug",
+          "alias": "slug",
+          "dataType": "Textstring",
+          "mandatory": true, 
+          "description": "URL别名"
+        },
+        {
+          "name": "Publish Date",
+          "alias": "publishDate",
+          "dataType": "Date Picker",
+          "mandatory": true,
+          "description": "发布日期"
+        },
+        {
+          "name": "Hero Image",
+          "alias": "heroImage",
+          "dataType": "Media Picker", 
+          "mandatory": true,
+          "description": "文章封面图"
+        },
+        {
+          "name": "Content",
+          "alias": "content",
+          "dataType": "Rich Text Editor",
+          "mandatory": true,
+          "description": "文章内容"
+        },
+        {
+          "name": "Summary",
+          "alias": "summary",
+          "dataType": "Textarea",
+          "mandatory": true,
+          "description": "文章摘要"
+        }
+      ]
+    },
+    "folder": {
+      "name": "Folder",
+      "alias": "folder",
+      "icon": "icon-folder",
+      "allowAtRoot": true,
+      "properties": []
+    }
+  }
+}

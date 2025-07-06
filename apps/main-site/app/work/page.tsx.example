@@ -1,0 +1,19 @@
+// 示例：如何在页面中使用数据源
+import { dataSource } from '@/lib/data-source'
+
+export default async function WorkPage() {
+  // 自动选择Umbraco或Mock数据
+  const caseStudies = await dataSource.getCaseStudies()
+  
+  return (
+    <div>
+      {/* 渲染案例研究 */}
+      {caseStudies.map(study => (
+        <div key={study.id}>
+          <h2>{study.title}</h2>
+          <p>{study.summary}</p>
+        </div>
+      ))}
+    </div>
+  )
+}
