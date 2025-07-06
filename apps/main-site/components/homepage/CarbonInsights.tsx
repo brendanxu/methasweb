@@ -135,7 +135,7 @@ export default function CarbonInsights() {
   const canScrollRight = currentIndex < insightCards.length - cardsPerView
 
   return (
-    <section className="py-24 bg-background-secondary relative overflow-hidden">
+    <section className="py-20 bg-background-secondary relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div 
@@ -148,8 +148,8 @@ export default function CarbonInsights() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-display-md font-semibold text-text-primary mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-display-md font-semibold text-text-primary mb-4">
             碳智观察
           </h2>
           <p className="text-body-lg text-text-secondary max-w-3xl mx-auto">
@@ -198,7 +198,7 @@ export default function CarbonInsights() {
           {/* Cards Container */}
           <div 
             ref={scrollContainerRef}
-            className="flex gap-4 lg:gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
+            className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {insightCards.map((card, index) => (
@@ -226,19 +226,19 @@ export default function CarbonInsights() {
                     </div>
                     
                     {/* Content */}
-                    <div className="p-4 lg:p-6">
-                      <h3 className="text-heading-sm lg:text-heading-md font-semibold text-text-primary mb-2 lg:mb-3 group-hover:text-primary-600 transition-colors line-clamp-2">
+                    <div className="p-4">
+                      <h3 className="text-heading-sm font-semibold text-text-primary mb-2 group-hover:text-primary-600 transition-colors line-clamp-2">
                         {card.title}
                       </h3>
-                      <p className="text-text-secondary text-body-sm leading-relaxed mb-4 lg:mb-6 line-clamp-3">
+                      <p className="text-text-secondary text-body-sm leading-relaxed mb-4 line-clamp-3">
                         {card.description}
                       </p>
                       
                       {/* Action Button */}
                       <div className="flex items-center justify-between">
-                        <span className="inline-flex items-center text-primary-600 font-medium text-body-xs lg:text-body-sm group-hover:text-primary-700 transition-colors">
+                        <span className="inline-flex items-center text-primary-600 font-medium text-body-sm group-hover:text-primary-700 transition-colors">
                           {card.actionText}
-                          <svg className="ml-1 lg:ml-2 w-3 lg:w-4 h-3 lg:h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </span>
@@ -267,10 +267,10 @@ export default function CarbonInsights() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12">
           <Link 
             href="/insights"
-            className="inline-flex items-center px-6 py-3 bg-primary-500 text-text-inverse font-medium rounded-lg hover:bg-primary-600 transition-all duration-200 shadow-soft hover:shadow-medium text-button-md"
+            className="inline-flex items-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-full hover:bg-primary-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-button-md min-h-[44px]"
           >
             探索更多洞察
             <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

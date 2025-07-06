@@ -59,6 +59,8 @@ const navItems: NavItem[] = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isHidden, setIsHidden] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null)
   const [mobileOpenSubmenu, setMobileOpenSubmenu] = useState<string | null>(null)
@@ -66,26 +68,53 @@ export function Header() {
   useEffect(() => {
     // 设置初始状态
     setIsScrolled(window.scrollY > 50)
+    setLastScrollY(window.scrollY)
     
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const currentScrollY = window.scrollY
+      
+      // 更新 isScrolled 状态（背景变化）
+      setIsScrolled(currentScrollY > 50)
+      
+      // South Pole 导航隐藏逻辑：滚动超过500px时开始隐藏/显示
+      if (currentScrollY > 500) {
+        if (currentScrollY > lastScrollY && currentScrollY > 500) {
+          // 向下滚动 - 隐藏导航
+          setIsHidden(true)
+        } else if (currentScrollY < lastScrollY) {
+          // 向上滚动 - 显示导航
+          setIsHidden(false)
+        }
+      } else {
+        // 在500px以下总是显示导航
+        setIsHidden(false)
+      }
+      
+      setLastScrollY(currentScrollY)
     }
     
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
       }`}
-      initial={{ backgroundColor: 'transparent' }}
+      initial={{ 
+        backgroundColor: 'transparent',
+        y: 0
+      }}
       animate={{
         backgroundColor: isScrolled ? '#ffffff' : 'transparent',
-        boxShadow: isScrolled ? '0 2px 4px rgba(0, 0, 0, 0.1)' : '0 0 0 0 rgba(0, 0, 0, 0)'
+        boxShadow: isScrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : '0 0 0 0 rgba(0, 0, 0, 0)',
+        y: isHidden ? -100 : 0
       }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ 
+        duration: 0.3, 
+        ease: [0.4, 0, 0.2, 1] // South Pole cubic-bezier
+      }}
     >
       <div className={`border-b border-white/20 ${isScrolled ? 'hidden' : 'block'}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -159,10 +188,10 @@ export function Header() {
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
                       className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-lg bg-white shadow-lg border border-gray-100 overflow-hidden"
-                      initial={{ opacity: 0, y: -15, scale: 0.92 }}
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -15, scale: 0.92 }}
-                      transition={{ duration: 0.25, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                       style={{
                         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)'
                       }}
@@ -180,9 +209,9 @@ export function Header() {
                             key={child.label}
                             href={child.href}
                             className="group flex items-start px-6 py-3 hover:bg-gray-50 transition-all duration-200"
-                            initial={{ opacity: 0, x: -15 }}
+                            initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.08, duration: 0.3 }}
+                            transition={{ delay: index * 0.05, duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                           >
                             <div className="flex-1">
                               <div className="font-medium text-gray-900 group-hover:text-primary-600 transition-colors text-body-sm">
@@ -268,7 +297,7 @@ export function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
           >
             <div className="mx-auto max-w-7xl px-4 py-4 space-y-2 overflow-hidden">
               {navItems.map((item, index) => (
@@ -311,7 +340,7 @@ export function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
                       >
                         {item.children.map((child, childIndex) => (
                           <motion.a

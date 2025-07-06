@@ -59,14 +59,14 @@ export default function HomepageHero() {
       <div className="relative z-2 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
+            <h1 className="text-hero-lg md:text-hero-xl font-bold text-white mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>
               Leading the Way in{' '}
               <span className="text-white">
                 Climate Solutions
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+            <p className="text-body-lg md:text-heading-md text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
               Since 2006, we've helped organizations accelerate their transition to a 
               net-zero future through comprehensive climate action strategies and solutions.
             </p>
@@ -91,7 +91,7 @@ export default function HomepageHero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/services"
-                className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-full hover:bg-gray-50 transition-all duration-300 group shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-lg"
+                className="inline-flex items-center px-8 py-4 bg-white text-primary-500 font-semibold rounded-full hover:bg-gray-50 hover:text-primary-600 transition-all duration-300 group shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-button-lg min-h-[52px]"
               >
                 Explore Our Solutions
                 <svg className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ export default function HomepageHero() {
               </Link>
               <Link 
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary-600 transition-all duration-300 hover:-translate-y-0.5 text-lg"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-primary-500 transition-all duration-300 hover:-translate-y-0.5 text-button-lg min-h-[52px]"
               >
                 Start Your Journey
               </Link>
