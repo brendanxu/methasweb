@@ -1,0 +1,15 @@
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/bin/Debug/net9.0/Umbraco.Core.deps.json
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/bin/Debug/net9.0/Umbraco.Core.dll
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/bin/Debug/net9.0/Umbraco.Core.pdb
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/bin/Debug/net9.0/Umbraco.Core.xml
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.csproj.AssemblyReference.cache
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.AssemblyInfoInputs.cache
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.AssemblyInfo.cs
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.csproj.CoreCompileInputs.cache
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.sourcelink.json
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.dll
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/refint/Umbraco.Core.dll
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.xml
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/Umbraco.Core.pdb
+/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/Debug/net9.0/ref/Umbraco.Core.dll

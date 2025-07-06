@@ -1,0 +1,1569 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Management/Umbraco.Cms.Api.Management.csproj": {}
+  },
+  "projects": {
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj",
+        "projectName": "Umbraco.Cms.Api.Common",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj"
+              },
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/Umbraco.Web.Common.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/Umbraco.Web.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Asp.Versioning.Mvc": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Asp.Versioning.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "OpenIddict.Abstractions": {
+              "target": "Package",
+              "version": "[6.2.1, )",
+              "versionCentrallyManaged": true
+            },
+            "OpenIddict.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.1, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[8.1.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Management/Umbraco.Cms.Api.Management.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Management/Umbraco.Cms.Api.Management.csproj",
+        "projectName": "Umbraco.Cms.Api.Management",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Management/Umbraco.Cms.Api.Management.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Management/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Cms.Api.Common/Umbraco.Cms.Api.Common.csproj"
+              },
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj"
+              },
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "JsonPatch.Net": {
+              "target": "Package",
+              "version": "[3.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[8.1.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj",
+        "projectName": "Umbraco.Cms.Core",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.FileProviders.Embedded": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.FileProviders.Physical": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Options.DataAnnotations": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj",
+        "projectName": "Umbraco.Cms.Examine.Lucene",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Examine": {
+              "target": "Package",
+              "version": "[3.7.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Lucene.Net.Replicator": {
+              "target": "Package",
+              "version": "[4.8.0-beta00017, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Security.Cryptography.Xml": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj",
+        "projectName": "Umbraco.Cms.Infrastructure",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Examine.Core": {
+              "target": "Package",
+              "version": "[3.7.1, )",
+              "versionCentrallyManaged": true
+            },
+            "HtmlAgilityPack": {
+              "target": "Package",
+              "version": "[1.12.1, )",
+              "versionCentrallyManaged": true
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.11.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Markdown": {
+              "target": "Package",
+              "version": "[2.2.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.CodeAnalysis.CSharp": {
+              "target": "Package",
+              "version": "[4.13.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "MiniProfiler.Shared": {
+              "target": "Package",
+              "version": "[4.5.4, )",
+              "versionCentrallyManaged": true
+            },
+            "NPoco": {
+              "target": "Package",
+              "version": "[5.7.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "OpenIddict.Abstractions": {
+              "target": "Package",
+              "version": "[6.2.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.2.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Enrichers.Process": {
+              "target": "Package",
+              "version": "[3.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Enrichers.Thread": {
+              "target": "Package",
+              "version": "[4.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Expressions": {
+              "target": "Package",
+              "version": "[5.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Formatting.Compact": {
+              "target": "Package",
+              "version": "[3.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Formatting.Compact.Reader": {
+              "target": "Package",
+              "version": "[4.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Settings.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Sinks.Async": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.Sinks.Map": {
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Text.RegularExpressions": {
+              "target": "Package",
+              "version": "[4.3.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            },
+            "ncrontab": {
+              "target": "Package",
+              "version": "[3.3.3, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj",
+        "projectName": "Umbraco.Cms.PublishedCache.HybridCache",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Core/Umbraco.Core.csproj"
+              },
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Infrastructure/Umbraco.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "K4os.Compression.LZ4": {
+              "target": "Package",
+              "version": "[1.3.8, )",
+              "versionCentrallyManaged": true
+            },
+            "MessagePack": {
+              "target": "Package",
+              "version": "[3.1.3, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.Extensions.Caching.Hybrid": {
+              "target": "Package",
+              "version": "[9.4.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/Umbraco.Web.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/Umbraco.Web.Common.csproj",
+        "projectName": "Umbraco.Cms.Web.Common",
+        "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/Umbraco.Web.Common.csproj",
+        "packagesPath": "/Users/brendanxu/.nuget/packages/",
+        "outputPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Web.Common/obj/",
+        "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
+        "configFilePaths": [
+          "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/NuGet.Config",
+          "/Users/brendanxu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.Examine.Lucene/Umbraco.Examine.Lucene.csproj"
+              },
+              "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj": {
+                "projectPath": "/Users/brendanxu/Desktop/projects/methasweb/southpole-clone/apps/umbraco-cms/src/Umbraco.PublishedCache.HybridCache/Umbraco.PublishedCache.HybridCache.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU5104"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ],
+          "warnNotAsError": [
+            "NU5104"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Asp.Versioning.Mvc": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Asp.Versioning.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Dazinator.Extensions.FileProviders": {
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Microsoft.IdentityModel.JsonWebTokens": {
+              "target": "Package",
+              "version": "[8.8.0, )",
+              "versionCentrallyManaged": true
+            },
+            "MiniProfiler.AspNetCore.Mvc": {
+              "target": "Package",
+              "version": "[4.5.4, )",
+              "versionCentrallyManaged": true
+            },
+            "Nerdbank.GitVersioning": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.7.115, )",
+              "versionCentrallyManaged": true
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )",
+              "versionCentrallyManaged": true
+            },
+            "StyleCop.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.0-beta.556, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Text.Encodings.Web": {
+              "target": "Package",
+              "version": "[9.0.4, )",
+              "versionCentrallyManaged": true
+            },
+            "System.Text.RegularExpressions": {
+              "target": "Package",
+              "version": "[4.3.1, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.Code": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Umbraco.GitVersioning.Extensions": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.2.0, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Asp.Versioning.Mvc": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
+            "Azure.Identity": "1.13.2",
+            "Dazinator.Extensions.FileProviders": "2.0.0",
+            "Examine": "3.7.1",
+            "Examine.Core": "3.7.1",
+            "HtmlAgilityPack": "1.12.1",
+            "JsonPatch.Net": "3.3.0",
+            "K4os.Compression.LZ4": "1.3.8",
+            "Lucene.Net.Replicator": "4.8.0-beta00017",
+            "MailKit": "4.11.0",
+            "Markdown": "2.2.1",
+            "MessagePack": "3.1.3",
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "9.0.4",
+            "Microsoft.CodeAnalysis.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp": "4.13.0",
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.Common": "4.13.0",
+            "Microsoft.CodeAnalysis.Workspaces.MSBuild": "4.13.0",
+            "Microsoft.Data.SqlClient": "6.0.1",
+            "Microsoft.Data.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.4",
+            "Microsoft.EntityFrameworkCore.Sqlite": "9.0.4",
+            "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
+            "Microsoft.Extensions.Caching.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Caching.Hybrid": "9.4.0",
+            "Microsoft.Extensions.Caching.Memory": "9.0.4",
+            "Microsoft.Extensions.Configuration.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Configuration.Json": "9.0.4",
+            "Microsoft.Extensions.DependencyInjection": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Embedded": "9.0.4",
+            "Microsoft.Extensions.FileProviders.Physical": "9.0.4",
+            "Microsoft.Extensions.Hosting.Abstractions": "9.0.4",
+            "Microsoft.Extensions.Http": "9.0.4",
+            "Microsoft.Extensions.Identity.Core": "9.0.4",
+            "Microsoft.Extensions.Identity.Stores": "9.0.4",
+            "Microsoft.Extensions.Logging": "9.0.4",
+            "Microsoft.Extensions.Options": "9.0.4",
+            "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.4",
+            "Microsoft.Extensions.Options.DataAnnotations": "9.0.4",
+            "Microsoft.IdentityModel.JsonWebTokens": "8.8.0",
+            "MiniProfiler.AspNetCore.Mvc": "4.5.4",
+            "MiniProfiler.Shared": "4.5.4",
+            "ncrontab": "3.3.3",
+            "Nerdbank.GitVersioning": "3.7.115",
+            "NPoco": "5.7.1",
+            "NPoco.SqlServer": "5.7.1",
+            "OpenIddict.Abstractions": "6.2.1",
+            "OpenIddict.AspNetCore": "6.2.1",
+            "OpenIddict.EntityFrameworkCore": "6.2.1",
+            "Serilog": "4.2.0",
+            "Serilog.AspNetCore": "9.0.0",
+            "Serilog.Enrichers.Process": "3.0.0",
+            "Serilog.Enrichers.Thread": "4.0.0",
+            "Serilog.Expressions": "5.0.0",
+            "Serilog.Extensions.Hosting": "9.0.0",
+            "Serilog.Formatting.Compact": "3.0.0",
+            "Serilog.Formatting.Compact.Reader": "4.0.0",
+            "Serilog.Settings.Configuration": "9.0.0",
+            "Serilog.Sinks.Async": "2.1.0",
+            "Serilog.Sinks.File": "6.0.0",
+            "Serilog.Sinks.Map": "2.0.0",
+            "SixLabors.ImageSharp": "3.1.7",
+            "SixLabors.ImageSharp.Web": "3.1.4",
+            "StyleCop.Analyzers": "1.2.0-beta.556",
+            "Swashbuckle.AspNetCore": "8.1.1",
+            "System.Net.Http": "4.3.4",
+            "System.Runtime.Caching": "9.0.4",
+            "System.Security.Cryptography.Xml": "9.0.4",
+            "System.Text.Encodings.Web": "9.0.4",
+            "System.Text.RegularExpressions": "4.3.1",
+            "Umbraco.Code": "2.3.0",
+            "Umbraco.GitVersioning.Extensions": "0.2.0",
+            "Umbraco.JsonSchema.Extensions": "0.3.0"
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
