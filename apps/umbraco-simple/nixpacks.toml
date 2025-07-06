@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["...", "dotnet-sdk_8"]
+
+[phases.build]
+cmds = ["dotnet publish --configuration Release --output out"]
+
+[phases.start]
+cmd = "dotnet out/SouthPoleUmbracoSimple.dll"
+
+[variables]
+DOTNET_ROOT = "/nix/var/nix/profiles/default"
+ASPNETCORE_URLS = "http://0.0.0.0:$PORT"

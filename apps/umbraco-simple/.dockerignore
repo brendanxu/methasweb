@@ -1,0 +1,14 @@
+bin/
+obj/
+.git/
+.gitignore
+.dockerignore
+Dockerfile
+README.md
+node_modules/
+npm-debug.log
+.nyc_output/
+coverage/
+.coverage/
+*.tmp
+*.log
