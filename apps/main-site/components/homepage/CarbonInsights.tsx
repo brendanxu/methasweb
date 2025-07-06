@@ -95,11 +95,12 @@ export default function CarbonInsights() {
   
   const getCardsPerView = () => {
     if (typeof window !== 'undefined') {
-      if (window.innerWidth < 768) return 1  // mobile
-      if (window.innerWidth < 1024) return 2 // tablet
-      return 3 // desktop
+      if (window.innerWidth < 640) return 1   // mobile small
+      if (window.innerWidth < 768) return 2   // mobile large
+      if (window.innerWidth < 1024) return 3  // tablet
+      return 4 // desktop
     }
-    return 3 // default/server-side
+    return 4 // default/server-side
   }
 
   const scrollToIndex = (index: number) => {
@@ -115,14 +116,17 @@ export default function CarbonInsights() {
   }
 
   const scrollLeft = () => {
-    const newIndex = Math.max(0, currentIndex - 1)
+    const cardsPerView = getCardsPerView()
+    const scrollStep = cardsPerView >= 4 ? 2 : 1  // 桌面端每次滚动2个，其他每次1个
+    const newIndex = Math.max(0, currentIndex - scrollStep)
     scrollToIndex(newIndex)
   }
 
   const scrollRight = () => {
     const cardsPerView = getCardsPerView()
+    const scrollStep = cardsPerView >= 4 ? 2 : 1  // 桌面端每次滚动2个，其他每次1个
     const maxIndex = insightCards.length - cardsPerView
-    const newIndex = Math.min(maxIndex, currentIndex + 1)
+    const newIndex = Math.min(maxIndex, currentIndex + scrollStep)
     scrollToIndex(newIndex)
   }
 
@@ -145,10 +149,10 @@ export default function CarbonInsights() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-display-lg md:text-display-lg font-bold text-text-primary mb-6">
             碳智观察
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-body-lg text-text-secondary max-w-3xl mx-auto">
             深度洞察碳市场动态，把握可持续发展机遇
           </p>
         </div>
@@ -163,7 +167,7 @@ export default function CarbonInsights() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 onClick={scrollLeft}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-blue-600 hover:shadow-xl transition-all duration-200 group"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-lg border border-secondary-200 flex items-center justify-center text-text-muted hover:text-primary-700 hover:shadow-xl transition-all duration-200 group"
                 style={{ marginLeft: '-24px' }}
               >
                 <svg className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,7 +185,7 @@ export default function CarbonInsights() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 onClick={scrollRight}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-blue-600 hover:shadow-xl transition-all duration-200 group"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-background-primary rounded-full shadow-lg border border-secondary-200 flex items-center justify-center text-text-muted hover:text-primary-700 hover:shadow-xl transition-all duration-200 group"
                 style={{ marginRight: '-24px' }}
               >
                 <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,7 +198,7 @@ export default function CarbonInsights() {
           {/* Cards Container */}
           <div 
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
+            className="flex gap-4 lg:gap-6 overflow-x-auto scrollbar-hide scroll-smooth"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {insightCards.map((card, index) => (
@@ -203,38 +207,38 @@ export default function CarbonInsights() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="flex-none w-full md:w-1/2 lg:w-1/3"
+                className="flex-none w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
               >
                 <Link href={card.href}>
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full">
+                  <div className="bg-background-primary rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group h-full">
                     {/* Image */}
                     <div className="relative overflow-hidden">
                       <img 
                         src={card.image}
                         alt={card.title}
-                        className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-40 lg:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="inline-block bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-medium px-3 py-1 rounded-full">
+                        <span className="inline-block bg-background-primary/90 backdrop-blur-sm text-primary-700 text-body-xs font-medium px-3 py-1 rounded-full">
                           {card.category}
                         </span>
                       </div>
                     </div>
                     
                     {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    <div className="p-4 lg:p-6">
+                      <h3 className="text-heading-sm lg:text-heading-md font-bold text-text-primary mb-2 lg:mb-3 group-hover:text-primary-700 transition-colors line-clamp-2">
                         {card.title}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-text-secondary text-body-sm leading-relaxed mb-4 lg:mb-6 line-clamp-3">
                         {card.description}
                       </p>
                       
                       {/* Action Button */}
                       <div className="flex items-center justify-between">
-                        <span className="inline-flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors">
+                        <span className="inline-flex items-center text-primary-700 font-bold text-body-xs lg:text-body-sm group-hover:text-primary-800 transition-colors">
                           {card.actionText}
-                          <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="ml-1 lg:ml-2 w-3 lg:w-4 h-3 lg:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </span>
@@ -255,8 +259,8 @@ export default function CarbonInsights() {
               onClick={() => scrollToIndex(index)}
               className={`w-2 h-2 rounded-full transition-all duration-200 ${
                 index === currentIndex 
-                  ? 'bg-blue-600 w-8' 
-                  : 'bg-gray-300 hover:bg-gray-400'
+                  ? 'bg-primary-700 w-8' 
+                  : 'bg-secondary-300 hover:bg-secondary-400'
               }`}
             />
           ))}
@@ -266,7 +270,7 @@ export default function CarbonInsights() {
         <div className="text-center mt-16">
           <Link 
             href="/insights"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-4 bg-primary-800 text-text-inverse font-bold rounded-lg hover:bg-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl text-button-md"
           >
             探索更多洞察
             <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

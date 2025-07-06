@@ -57,23 +57,23 @@ export default function HomepageHero() {
 
       {/* Floating Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-green-400/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-400/10 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-success-400/10 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 left-1/4 w-16 h-16 bg-background-primary/10 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 className="text-display-lg md:text-display-lg lg:text-display-lg font-bold text-text-inverse mb-6 leading-tight drop-shadow-2xl">
               Leading the Way in 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 drop-shadow-lg">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-success-400 to-primary-400 drop-shadow-lg">
                 {" "}Climate Solutions
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto drop-shadow-xl">
+            <p className="text-body-lg md:text-body-lg text-text-inverse mb-8 max-w-2xl mx-auto drop-shadow-xl">
               Since 2006, we've helped organizations accelerate their transition to a 
               net-zero future through comprehensive climate action strategies and solutions.
             </p>
@@ -81,16 +81,16 @@ export default function HomepageHero() {
             {/* Key Highlights */}
             <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">18+</div>
-                <div className="text-green-300 text-sm drop-shadow-md">Years Leading</div>
+                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">18+</div>
+                <div className="text-success-300 text-body-sm drop-shadow-md">Years Leading</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">50M+</div>
-                <div className="text-green-300 text-sm drop-shadow-md">CO₂ Reduced</div>
+                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">50M+</div>
+                <div className="text-success-300 text-body-sm drop-shadow-md">CO₂ Reduced</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">1000+</div>
-                <div className="text-green-300 text-sm drop-shadow-md">Clients Served</div>
+                <div className="text-heading-lg md:text-heading-xl font-bold text-text-inverse drop-shadow-lg">1000+</div>
+                <div className="text-success-300 text-body-sm drop-shadow-md">Clients Served</div>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ export default function HomepageHero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/services"
-                className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-200 group"
+                className="inline-flex items-center px-8 py-4 bg-success-600 text-text-inverse font-bold rounded-lg hover:bg-success-700 transition-all duration-200 group text-button-lg shadow-lg hover:shadow-xl"
               >
                 Explore Our Solutions
                 <svg className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +107,7 @@ export default function HomepageHero() {
               </Link>
               <Link 
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition-all duration-200"
+                className="inline-flex items-center px-8 py-4 border-2 border-background-primary text-text-inverse font-bold rounded-lg hover:bg-background-primary hover:text-primary-800 transition-all duration-200 text-button-lg"
               >
                 Start Your Journey
               </Link>

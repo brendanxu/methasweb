@@ -66,13 +66,13 @@ export function Footer() {
             <div className="lg:col-span-2">
               {/* Logo */}
               <div className="mb-6">
-                <h2 className="text-3xl font-bold text-white">
+                <h2 className="text-heading-lg font-bold text-text-inverse">
                   妙盈
                 </h2>
               </div>
               
               {/* Slogan */}
-              <p className="mb-6 text-gray-300 text-lg">
+              <p className="mb-6 text-secondary-300 text-body-lg">
                 关注我们随时收到最新讯息
               </p>
               
@@ -84,12 +84,12 @@ export function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="请输入邮箱"
-                    className="flex-1 px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="flex-1 px-4 py-3 bg-background-primary text-text-secondary border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent outline-none text-body-md"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                    className="px-6 py-3 bg-primary-800 text-text-inverse font-bold rounded-lg hover:bg-primary-700 transition-colors duration-200 text-button-md"
                   >
                     订阅
                   </button>
@@ -98,10 +98,10 @@ export function Footer() {
               
               {/* Contact info */}
               <div className="mb-8">
-                <h4 className="text-lg font-semibold mb-3">媒体联络</h4>
+                <h4 className="text-heading-sm font-semibold mb-3 text-text-inverse">媒体联络</h4>
                 <a 
                   href="mailto:pr@miotech.com" 
-                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                  className="text-primary-400 hover:text-primary-300 transition-colors duration-200 text-body-md"
                 >
                   pr@miotech.com
                 </a>
@@ -112,7 +112,7 @@ export function Footer() {
                 {/* LinkedIn */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-[#0077b5] rounded-lg flex items-center justify-center hover:bg-[#005582] transition-colors duration-200"
+                  className="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export function Footer() {
                 {/* WeChat */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-[#07c160] rounded-lg flex items-center justify-center hover:bg-[#06a850] transition-colors duration-200"
+                  className="w-10 h-10 bg-success-600 rounded-lg flex items-center justify-center hover:bg-success-700 transition-colors duration-200"
                   aria-label="微信"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export function Footer() {
             <div className="lg:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-8">
               {Object.entries(footerNavigation).map(([key, section]) => (
                 <div key={key}>
-                  <h3 className="text-lg font-semibold text-white mb-4">
+                  <h3 className="text-heading-sm font-semibold text-text-inverse mb-4">
                     {section.title}
                   </h3>
                   <ul className="space-y-3">
@@ -145,7 +145,7 @@ export function Footer() {
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm leading-relaxed"
+                          className="text-secondary-300 hover:text-text-inverse transition-colors duration-200 text-body-sm leading-relaxed"
                         >
                           {link.label}
                         </a>
@@ -180,17 +180,17 @@ export function Footer() {
       <div className="border-t border-gray-700">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-secondary-400 text-body-sm">
               © {new Date().getFullYear()} 妙盈科技. 保留所有权利.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
                 隐私政策
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
                 使用条款
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+              <a href="#" className="text-secondary-400 hover:text-text-inverse text-body-sm transition-colors duration-200">
                 网站地图
               </a>
             </div>

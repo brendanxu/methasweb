@@ -82,15 +82,15 @@ export function Header() {
       }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className={`border-b border-gray/20 ${isSticky ? 'hidden' : 'block'}`}>
+      <div className={`border-b border-secondary-200 ${isSticky ? 'hidden' : 'block'}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-12 items-center justify-between text-sm">
+          <div className="flex h-12 items-center justify-between text-body-sm">
             <div className="hidden md:flex items-center space-x-6">
-              <a href="/contact" className="text-gray hover:text-primary transition-colors">Contact</a>
-              <a href="/locations" className="text-gray hover:text-primary transition-colors">Locations</a>
+              <a href="/contact" className="text-text-muted hover:text-primary-800 transition-colors">Contact</a>
+              <a href="/locations" className="text-text-muted hover:text-primary-800 transition-colors">Locations</a>
             </div>
             <div className="flex items-center space-x-6 ml-auto">
-              <select className="bg-transparent text-gray text-sm">
+              <select className="bg-transparent text-text-muted text-body-sm">
                 <option>EN</option>
                 <option>DE</option>
                 <option>FR</option>
@@ -103,7 +103,7 @@ export function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${isSticky ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary">South Pole</span>
+            <span className="text-heading-lg font-bold text-primary-800">South Pole</span>
           </a>
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
@@ -117,13 +117,13 @@ export function Header() {
                 <div className="flex items-center space-x-1">
                   <a
                     href={item.href}
-                    className="text-dark hover:text-primary transition-colors font-medium"
+                    className="text-text-primary hover:text-primary-700 transition-colors font-medium text-body-md"
                   >
                     {item.label}
                   </a>
                   {item.children && (
                     <motion.svg
-                      className="h-4 w-4 text-gray-500 transition-transform duration-200"
+                      className="h-4 w-4 text-text-muted transition-transform duration-200"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -139,7 +139,7 @@ export function Header() {
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden"
+                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-xl bg-background-primary shadow-2xl border border-secondary-200 overflow-hidden"
                       initial={{ opacity: 0, y: -15, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -15, scale: 0.92 }}
@@ -149,8 +149,8 @@ export function Header() {
                       }}
                     >
                       {/* Header with gradient */}
-                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
-                        <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">
+                      <div className="bg-gradient-to-r from-primary-50 to-primary-100 px-6 py-4 border-b border-secondary-200">
+                        <h3 className="font-semibold text-text-primary text-body-sm uppercase tracking-wider">
                           {item.label}
                         </h3>
                       </div>
@@ -160,23 +160,23 @@ export function Header() {
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="group flex items-start px-6 py-4 hover:bg-gray-50 transition-all duration-200 border-l-4 border-transparent hover:border-blue-500"
+                            className="group flex items-start px-6 py-4 hover:bg-secondary-50 transition-all duration-200 border-l-4 border-transparent hover:border-primary-600"
                             initial={{ opacity: 0, x: -15 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.08, duration: 0.3 }}
                           >
                             <div className="flex-1">
-                              <div className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors text-sm">
+                              <div className="font-medium text-text-primary group-hover:text-primary-700 transition-colors text-body-sm">
                                 {child.label}
                               </div>
                               {child.description && (
-                                <div className="mt-1 text-xs text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
+                                <div className="mt-1 text-body-xs text-text-muted group-hover:text-text-secondary transition-colors leading-relaxed">
                                   {child.description}
                                 </div>
                               )}
                             </div>
                             <svg 
-                              className="h-4 w-4 text-gray-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
+                              className="h-4 w-4 text-secondary-300 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
@@ -212,7 +212,7 @@ export function Header() {
             </Button>
             
             <motion.button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray/10 transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-secondary-100 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
             >
@@ -241,7 +241,7 @@ export function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            className="lg:hidden border-t border-gray/20 bg-white"
+            className="lg:hidden border-t border-secondary-200 bg-background-primary"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -258,17 +258,17 @@ export function Header() {
                   <div className="flex items-center justify-between py-2">
                     <a
                       href={item.href}
-                      className="text-dark hover:text-primary font-medium flex-1"
+                      className="text-text-primary hover:text-primary-700 font-medium flex-1 text-body-md"
                     >
                       {item.label}
                     </a>
                     {item.children && (
                       <motion.button
                         onClick={() => setMobileOpenSubmenu(mobileOpenSubmenu === item.label ? null : item.label)}
-                        className="p-1 rounded hover:bg-gray-100 transition-colors"
+                        className="p-1 rounded hover:bg-secondary-100 transition-colors"
                       >
                         <motion.svg
-                          className="h-4 w-4 text-gray-500 transition-transform duration-200"
+                          className="h-4 w-4 text-text-muted transition-transform duration-200"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -294,14 +294,14 @@ export function Header() {
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="block py-2 px-3 text-sm text-gray hover:text-primary hover:bg-gray-50 rounded transition-colors"
+                            className="block py-2 px-3 text-body-sm text-text-muted hover:text-primary-700 hover:bg-secondary-50 rounded transition-colors"
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: childIndex * 0.05, duration: 0.2 }}
                           >
                             <div className="font-medium">{child.label}</div>
                             {child.description && (
-                              <div className="text-xs text-gray-500 mt-1">{child.description}</div>
+                              <div className="text-body-xs text-text-muted mt-1">{child.description}</div>
                             )}
                           </motion.a>
                         ))}
