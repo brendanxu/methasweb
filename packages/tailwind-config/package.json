@@ -5,6 +5,7 @@
   "private": true,
   "exports": {
     ".": "./shared-styles.css",
+    "./design-tokens.css": "./design-tokens.css",
     "./postcss": "./postcss.config.js",
     "./tailwind": "./tailwind.config.js"
   },

@@ -7,86 +7,84 @@ export default {
   theme: {
     extend: {
       colors: {
-        // South Pole 精确色彩系统 (#0066CC 主蓝色)
+        // 新设计系统 - 主色调
         primary: {
-          50: '#e6f2ff',
-          100: '#ccddff',
-          200: '#99bbff',
-          300: '#6699ff',
-          400: '#3377ff',
-          500: '#0066CC', // South Pole 主蓝色 
-          600: '#0052A3', // 深蓝色
-          700: '#004080',
-          800: '#002d5c',
-          900: '#001a38',
+          50: '#e6f0ff',
+          100: '#cce0ff',
+          200: '#99c1ff',
+          300: '#66a1ff',
+          400: '#3382ff',
+          500: '#0052CC', // 主要按钮、强调色 (原accent)
+          600: '#0042a3',
+          700: '#00327a',
+          800: '#002352',
+          900: '#002145', // 深海军蓝 - 品牌主色
+          DEFAULT: '#002145',
+          light: '#003366',
+          accent: '#0052CC',
         },
         // 辅助色系
         secondary: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          50: '#e6f5f0',
+          100: '#ccebe1',
+          200: '#99d7c3',
+          300: '#66c3a5',
+          400: '#33af87',
+          500: '#00875A', // 环保绿
+          600: '#006e48',
+          700: '#005436',
+          800: '#003a24',
+          900: '#002112',
+          green: '#00875A',
+          teal: '#00B8A9',
+          orange: '#FF8B00',
         },
-        // South Pole 成功色系统 (#00A651 绿色)
-        success: {
-          50: '#e6fff0',
-          100: '#ccfae1',
-          200: '#99f5c3',
-          300: '#66f0a5',
-          400: '#33eb87',
-          500: '#00A651', // South Pole 绿色
-          600: '#008a44',
-          700: '#006e37',
-          800: '#00522a',
-          900: '#00361d',
+        // 中性色系统
+        neutral: {
+          0: '#FFFFFF',
+          50: '#FAFBFC',
+          100: '#F4F5F7',
+          200: '#EBECF0',
+          300: '#DFE1E6',
+          400: '#C1C7D0',
+          500: '#A5ADBA',
+          600: '#6B778C',
+          700: '#505F79',
+          800: '#253858',
+          900: '#091E42',
         },
-        // South Pole 强调色系统 (#FF6B35 橙红色)
-        accent: {
-          50: '#fff4f0',
-          100: '#ffe9e1',
-          200: '#ffd3c3',
-          300: '#ffbda5',
-          400: '#ffa787',
-          500: '#FF6B35', // South Pole 橙红色
-          600: '#e55a2b',
-          700: '#cc4921',
-          800: '#b23817',
-          900: '#99270d',
-        },
-        // South Pole 文字颜色系统
+        // 语义色
+        success: '#00875A',
+        warning: '#FF8B00',
+        error: '#DE350B',
+        info: '#0065FF',
+        // 文字颜色系统 - 使用中性色
         text: {
-          primary: '#1A1A1A',    // South Pole 黑色
-          secondary: '#666666',  // South Pole 灰色
-          muted: '#999999',     // 浅灰色用于辅助文字
-          inverse: '#ffffff',   // 白色用于反色文字
+          primary: '#253858',    // neutral-800
+          secondary: '#6B778C',  // neutral-600
+          muted: '#A5ADBA',     // neutral-500
+          inverse: '#FFFFFF',   // neutral-0
         },
-        // South Pole 背景色系统
+        // 背景色系统 - 使用中性色
         background: {
-          primary: '#ffffff',    // 主背景
-          secondary: '#F5F5F5',  // South Pole 浅灰背景
-          muted: '#f8f9fa',     // 更柔和的背景
-          dark: '#1A1A1A',      // 深色背景
+          primary: '#FFFFFF',    // neutral-0
+          secondary: '#FAFBFC',  // neutral-50
+          muted: '#F4F5F7',     // neutral-100
+          dark: '#091E42',      // neutral-900
         },
       },
       fontFamily: {
-        // 参考 MioTech 字体系统
+        // 新设计系统字体
         sans: [
-          'Ubuntu', 
-          'Roboto', 
-          'Source Han Sans CN', 
-          'PingFang SC', 
-          'Microsoft YaHei', 
-          'Helvetica Neue', 
-          'Arial', 
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          '"Helvetica Neue"',
+          'Arial',
           'sans-serif'
         ],
-        mono: ['Consolas', 'Monaco', 'Courier New', 'monospace'],
+        serif: ['Georgia', '"Times New Roman"', 'serif'],
+        mono: ['"SF Mono"', 'Monaco', 'Inconsolata', '"Fira Code"', 'monospace'],
       },
       fontSize: {
         // South Pole 字体系统 - 精确匹配官网规格
@@ -133,17 +131,45 @@ export default {
         'none': '0',
         'sm': '0.25rem',      // 4px
         DEFAULT: '0.5rem',    // 8px
-        'md': '0.75rem',      // 12px
-        'lg': '1rem',         // 16px
-        'xl': '1.5rem',       // 24px
-        '2xl': '2rem',        // 32px
-        'full': '3.125rem',   // 50px - South Pole 按钮圆角
+        'md': '0.5rem',       // 8px
+        'lg': '0.75rem',      // 12px
+        'xl': '1rem',         // 16px
+        '2xl': '1.5rem',      // 24px
+        'full': '9999px',     // 完全圆角
       },
       boxShadow: {
+        'xs': '0 1px 2px rgba(0, 0, 0, 0.05)',
+        'sm': '0 2px 4px rgba(0, 0, 0, 0.06)',
+        'md': '0 4px 8px rgba(0, 0, 0, 0.08)',
+        'lg': '0 8px 16px rgba(0, 0, 0, 0.1)',
+        'xl': '0 16px 32px rgba(0, 0, 0, 0.12)',
         'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
         'soft': '0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-        'medium': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'large': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'medium': '0 4px 8px rgba(0, 0, 0, 0.08)',
+        'large': '0 8px 16px rgba(0, 0, 0, 0.1)',
+      },
+      // 新增设计系统配置
+      opacity: {
+        'hover': '0.9',
+        'disabled': '0.6',
+        'overlay': '0.85',
+        'backdrop': '0.5',
+      },
+      transitionDuration: {
+        'instant': '100ms',
+        'fast': '200ms',
+        'normal': '300ms',
+        'slow': '500ms',
+      },
+      transitionTimingFunction: {
+        'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'out': 'cubic-bezier(0, 0, 0.2, 1)',
+        'in': 'cubic-bezier(0.4, 0, 1, 1)',
+        'bounce': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+      },
+      screens: {
+        'xs': '480px',
+        // 默认断点保持不变
       },
     },
   },

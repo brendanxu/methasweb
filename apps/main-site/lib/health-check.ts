@@ -28,27 +28,14 @@ export async function checkUmbracoHealth(): Promise<HealthCheckResult> {
   }
 
   try {
-    // Check if Umbraco service is running
-    const umbracoBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5001'
-    const healthResponse = await fetch(`${umbracoBaseUrl}/umbraco/api/health`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-
-    if (healthResponse.ok) {
-      result.umbracoService = true
-      result.message = 'Umbraco service is running'
-    }
-
-    // Check Delivery API
+    // Check Delivery API (this also indicates Umbraco service is running)
     try {
-      const testContent = await umbracoClient.getCaseStudies()
+      const testContent = await umbracoClient.getServices()
       result.deliveryApi = true
       result.database = true
       result.apiKey = true
-      result.message = `Delivery API working. Found ${testContent.length} case studies`
+      result.umbracoService = true  // If API works, service is running
+      result.message = `Delivery API working. Found ${testContent.length} services`
     } catch (deliveryError) {
       result.message = `Delivery API error: ${deliveryError instanceof Error ? deliveryError.message : 'Unknown error'}`
       

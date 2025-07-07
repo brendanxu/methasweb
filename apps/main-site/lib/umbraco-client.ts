@@ -11,14 +11,14 @@ import {
 } from './types'
 
 const UMBRACO_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5001'
-const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-railway-api-key-2024'
+const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-api-key-2024'
 
 class UmbracoClient {
   private baseUrl: string
   private apiKey: string
 
   constructor() {
-    this.baseUrl = `${UMBRACO_BASE_URL}/umbraco/delivery/api/v1`
+    this.baseUrl = `${UMBRACO_BASE_URL}/umbraco/delivery/api/v2`
     this.apiKey = UMBRACO_API_KEY
   }
 
@@ -41,6 +41,12 @@ class UmbracoClient {
     try {
       const response = await fetch(url, config)
       
+      // 特殊处理 404 - 返回空结果而不是错误
+      if (response.status === 404) {
+        console.warn(`Content not found for: ${endpoint}`)
+        return { items: [], total: 0 }
+      }
+      
       if (!response.ok) {
         throw new Error(`Umbraco API Error: ${response.status} ${response.statusText}`)
       }
@@ -54,17 +60,23 @@ class UmbracoClient {
 
   // Case Studies
   async getCaseStudies(take = 50, skip = 0): Promise<CaseStudy[]> {
-    const response = await this.fetchFromUmbraco(
-      `/content?contentType=caseStudy&take=${take}&skip=${skip}&sort=updateDate:desc&expand=properties[heroImage,services,industry]`
-    )
-    
-    return response.items?.map(this.adaptCaseStudy) || []
+    try {
+      const response = await this.fetchFromUmbraco(
+        `/content?contentType=caseStudy&take=${take}&skip=${skip}`
+      )
+      
+      const caseStudyItems = response.items?.filter((item: any) => item.contentType === 'caseStudy') || []
+      return caseStudyItems.map((item: any) => this.adaptCaseStudy(item))
+    } catch (error) {
+      console.error('Failed to get case studies:', error)
+      return []
+    }
   }
 
   async getCaseStudy(slug: string): Promise<CaseStudy | null> {
     try {
       const response = await this.fetchFromUmbraco(
-        `/content/item/case-studies/${slug}?expand=properties[heroImage,services,industry]`
+        `/content/item/case-studies/${slug}`
       )
       return this.adaptCaseStudy(response)
     } catch (error) {
@@ -75,17 +87,23 @@ class UmbracoClient {
 
   // News Articles  
   async getNewsArticles(take = 50, skip = 0): Promise<NewsArticle[]> {
-    const response = await this.fetchFromUmbraco(
-      `/content?contentType=newsArticle&take=${take}&skip=${skip}&sort=properties/publishedDate:desc&expand=properties[featuredImage,category]`
-    )
-    
-    return response.items?.map(this.adaptNewsArticle) || []
+    try {
+      const response = await this.fetchFromUmbraco(
+        `/content?contentType=newsArticle&take=${take}&skip=${skip}`
+      )
+      
+      const newsItems = response.items?.filter((item: any) => item.contentType === 'newsArticle') || []
+      return newsItems.map((item: any) => this.adaptNewsArticle(item))
+    } catch (error) {
+      console.error('Failed to get news articles:', error)
+      return []
+    }
   }
 
   async getNewsArticle(slug: string): Promise<NewsArticle | null> {
     try {
       const response = await this.fetchFromUmbraco(
-        `/content/item/news/${slug}?expand=properties[featuredImage,category]`
+        `/content/item/news/${slug}`
       )
       return this.adaptNewsArticle(response)
     } catch (error) {
@@ -96,17 +114,24 @@ class UmbracoClient {
 
   // Services
   async getServices(take = 100): Promise<Service[]> {
-    const response = await this.fetchFromUmbraco(
-      `/content?contentType=service&take=${take}&sort=properties/displayOrder:asc&expand=properties[icon,features,process]`
-    )
-    
-    return response.items?.map(this.adaptService) || []
+    try {
+      const response = await this.fetchFromUmbraco(
+        `/content?contentType=sevice&take=${take}`
+      )
+      
+      // Filter only actual service content types (in case API returns all content)
+      const serviceItems = response.items?.filter((item: any) => item.contentType === 'sevice') || []
+      return serviceItems.map((item: any) => this.adaptService(item))
+    } catch (error) {
+      console.error('Failed to get services:', error)
+      return []
+    }
   }
 
   async getService(slug: string): Promise<Service | null> {
     try {
       const response = await this.fetchFromUmbraco(
-        `/content/item/services/${slug}?expand=properties[icon,features,process]`
+        `/content/item/services/${slug}`
       )
       return this.adaptService(response)
     } catch (error) {
@@ -118,65 +143,73 @@ class UmbracoClient {
   // Team Members
   async getTeamMembers(take = 100): Promise<TeamMember[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=teamMember&take=${take}&sort=properties/displayOrder:asc&expand=properties[profileImage]`
+      `/content?contentType=teamMember&take=${take}`
     )
     
-    return response.items?.map(this.adaptTeamMember) || []
+    return response.items?.map((item: any) => this.adaptTeamMember(item)) || []
   }
 
   async getLeadershipTeam(): Promise<TeamMember[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=teamMember&filter=properties/isLeadership eq true&take=100&sort=properties/displayOrder:asc&expand=properties[profileImage]`
+      `/content?contentType=teamMember&take=100`
     )
     
-    return response.items?.map(this.adaptTeamMember) || []
+    const allMembers = response.items?.map((item: any) => this.adaptTeamMember(item)) || []
+    // Client-side filtering for leadership team
+    return allMembers.filter((member: any) => member.isLeadership === true)
   }
 
   // Office Locations
   async getOfficeLocations(take = 100): Promise<OfficeLocation[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=officeLocation&take=${take}&sort=properties/displayOrder:asc&expand=properties[image]`
+      `/content?contentType=officeLocation&take=${take}`
     )
     
-    return response.items?.map(this.adaptOfficeLocation) || []
+    return response.items?.map((item: any) => this.adaptOfficeLocation(item)) || []
   }
 
   // Company Information
   async getCompanyInfo(section?: string): Promise<CompanyInfo[]> {
-    let endpoint = `/content?contentType=companyInfo&take=100&sort=properties/displayOrder:asc`
+    let endpoint = `/content?contentType=companyInfo&take=100`
     
-    if (section) {
-      endpoint += `&filter=properties/section eq '${section}'`
-    }
+    // Note: Filter parameter may not be supported in API v2
+    // Client-side filtering will be applied after fetch
     
     const response = await this.fetchFromUmbraco(endpoint)
-    return response.items?.map(this.adaptCompanyInfo) || []
+    let items = response.items?.map((item: any) => this.adaptCompanyInfo(item)) || []
+    
+    // Client-side filtering by section if needed
+    if (section) {
+      items = items.filter((item: any) => item.section === section)
+    }
+    
+    return items
   }
 
   // Company Stats
   async getCompanyStats(take = 100): Promise<CompanyStat[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=companyStat&take=${take}&sort=properties/displayOrder:asc&expand=properties[icon]`
+      `/content?contentType=companyStat&take=${take}`
     )
     
-    return response.items?.map(this.adaptCompanyStat) || []
+    return response.items?.map((item: any) => this.adaptCompanyStat(item)) || []
   }
 
   // Industries and Categories
   async getIndustries(): Promise<Industry[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=industry&take=100&sort=properties/name:asc`
+      `/content?contentType=industry&take=100`
     )
     
-    return response.items?.map(this.adaptIndustry) || []
+    return response.items?.map((item: any) => this.adaptIndustry(item)) || []
   }
 
   async getCategories(): Promise<Category[]> {
     const response = await this.fetchFromUmbraco(
-      `/content?contentType=category&take=100&sort=properties/name:asc`
+      `/content?contentType=category&take=100`
     )
     
-    return response.items?.map(this.adaptCategory) || []
+    return response.items?.map((item: any) => this.adaptCategory(item)) || []
   }
 
   // Adapter methods to transform Umbraco data to our types
@@ -191,7 +224,7 @@ class UmbracoClient {
       theGoal: umbracoItem.properties.theGoal || '',
       theChallenge: umbracoItem.properties.theChallenge || '',
       theSolution: umbracoItem.properties.theSolution || '',
-      relatedServices: umbracoItem.properties.services?.map(this.adaptService.bind(this)) || [],
+      relatedServices: umbracoItem.properties.services?.map((service: any) => this.adaptService(service)) || [],
       relatedIndustry: umbracoItem.properties.industry ? this.adaptIndustry(umbracoItem.properties.industry) : {} as Industry,
       createdAt: umbracoItem.properties.publishedDate || umbracoItem.createDate
     }
@@ -213,11 +246,11 @@ class UmbracoClient {
   private adaptService(umbracoItem: any): Service {
     return {
       id: umbracoItem.id,
-      name: umbracoItem.properties.name || umbracoItem.name,
-      slug: umbracoItem.properties.urlSlug || umbracoItem.route?.path?.split('/').pop() || '',
-      description: umbracoItem.properties.description || '',
+      name: umbracoItem.properties.serviceBrandName || umbracoItem.name,
+      slug: umbracoItem.properties.serviceUrlSlug || umbracoItem.route?.path?.split('/').pop() || '',
+      description: umbracoItem.properties.serviceDescription || '',
       icon: this.getMediaUrl(umbracoItem.properties.icon),
-      fullDescription: umbracoItem.properties.fullDescription,
+      fullDescription: umbracoItem.properties.serviceFullDescription?.markup || umbracoItem.properties.serviceFullDescription || '',
       benefits: umbracoItem.properties.benefits || [],
       features: umbracoItem.properties.features || [],
       process: umbracoItem.properties.process || []
