@@ -27,23 +27,26 @@
 /* Carousel Styles */
 .carouselWrapper {
   position: relative;
+  margin: 0 -24px; /* 补偿按钮空间 */
+  padding: 0 24px;
 }
 
 .carouselViewport {
   overflow: hidden;
-  border-radius: 12px;
+  width: 100%;
 }
 
 .carouselContainer {
   display: flex;
   gap: 24px;
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
+  width: 100%;
 }
 
 .carouselSlide {
-  flex: 0 0 calc(25% - 18px);
-  min-width: 0;
-  transition: opacity 0.3s ease-out;
+  flex: 0 0 calc((100% - 72px) / 4); /* 4个卡片，3个间隙 */
+  min-width: 280px;
+  max-width: 320px;
 }
 
 /* Navigation Buttons */

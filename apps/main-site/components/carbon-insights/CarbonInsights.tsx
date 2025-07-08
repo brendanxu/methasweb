@@ -28,7 +28,9 @@ export function CarbonInsightsV2({
     loop,
     align: 'start' as const,
     skipSnaps: false,
-    containScroll: 'trimSnaps' as const
+    containScroll: 'trimSnaps' as const,
+    slidesToScroll: 1,
+    dragFree: false
   }
 
   // Configure autoplay
@@ -106,15 +108,14 @@ export function CarbonInsightsV2({
         <div className={styles.carouselWrapper}>
           <div className={styles.carouselViewport} ref={emblaRef}>
             <div className={styles.carouselContainer}>
-              {articles.map((article, index) => (
+              {articles.map((article) => (
                 <div
                   key={article.id}
                   className={styles.carouselSlide}
-                  data-active={index === selectedIndex}
                 >
                   <ArticleCard
                     article={article}
-                    isActive={Math.abs(index - selectedIndex) <= 3}
+                    isActive={true}
                   />
                 </div>
               ))}

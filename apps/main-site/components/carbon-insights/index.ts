@@ -1,3 +1,5 @@
 export { CarbonInsightsV2 } from './CarbonInsights'
+export { CarbonInsightsGrid } from './CarbonInsightsGrid'
+export { CarbonInsightsSimple } from './CarbonInsightsSimple'
 export { ArticleCard } from './ArticleCard'
 export type { Article, CarbonInsightsProps, ArticleCardProps } from '@/lib/types/carbon-insights'

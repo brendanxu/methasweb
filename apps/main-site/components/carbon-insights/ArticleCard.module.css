@@ -5,6 +5,8 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease-out;
   height: 100%;
+  width: 100%;
+  min-width: 0; /* 防止flex子项溢出 */
 }
 
 .card:hover {
