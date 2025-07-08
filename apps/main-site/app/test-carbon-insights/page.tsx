@@ -4,11 +4,29 @@ import React from 'react'
 import { CarbonInsightsV2 } from '@/components/carbon-insights'
 import { CarbonInsightsGrid } from '@/components/carbon-insights/CarbonInsightsGrid'
 import { CarbonInsightsSimple } from '@/components/carbon-insights/CarbonInsightsSimple'
+import { CarbonInsightsFinal } from '@/components/carbon-insights/CarbonInsightsFinal'
+import { CarbonInsightsFixed } from '@/components/carbon-insights/CarbonInsightsFixed'
 import { mockArticles } from '@/lib/mock-data/carbon-insights-data'
 
 export default function TestCarbonInsightsPage() {
   return (
     <div className="min-h-screen bg-neutral-0">
+      {/* 🚀 NEW: 终极修复版 - 内联样式 */}
+      <div className="border-b-4 border-red-500">
+        <h2 className="text-2xl font-bold text-center py-4 bg-red-500 text-white">
+          🚀 终极修复版: 内联样式 - 保证4个并排！
+        </h2>
+        <CarbonInsightsFixed articles={mockArticles} />
+      </div>
+
+      {/* 🔧 NEW: Final版本 */}
+      <div className="border-b-4 border-purple-500">
+        <h2 className="text-2xl font-bold text-center py-4 bg-purple-500 text-white">
+          🔧 Final版本: 修复Flex布局
+        </h2>
+        <CarbonInsightsFinal articles={mockArticles} />
+      </div>
+
       {/* 版本1: Grid布局（最稳定） */}
       <div className="border-b-4 border-primary">
         <h2 className="text-2xl font-bold text-center py-4 bg-primary text-white">
