@@ -26,9 +26,9 @@ export function CarbonInsightsV2({
   // Configure Embla options
   const options = {
     loop,
-    align: 'start',
+    align: 'start' as const,
     skipSnaps: false,
-    containScroll: 'trimSnaps'
+    containScroll: 'trimSnaps' as const
   }
 
   // Configure autoplay
