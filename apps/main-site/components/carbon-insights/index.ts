@@ -1,3 +1,4 @@
+export { CarbonInsightsCarousel } from './CarbonInsightsCarousel'
 export { CarbonInsightsBulletproof } from './CarbonInsightsBulletproof'
 export { CarbonInsightsV2 } from './CarbonInsights'
 export { CarbonInsightsGrid } from './CarbonInsightsGrid'

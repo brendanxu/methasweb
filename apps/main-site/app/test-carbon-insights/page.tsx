@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { CarbonInsightsCarousel } from '@/components/carbon-insights'
 import { CarbonInsightsBulletproof } from '@/components/carbon-insights'
 import { CarbonInsightsV2 } from '@/components/carbon-insights'
 import { CarbonInsightsGrid } from '@/components/carbon-insights/CarbonInsightsGrid'
@@ -12,6 +13,14 @@ import { mockArticles } from '@/lib/mock-data/carbon-insights-data'
 export default function TestCarbonInsightsPage() {
   return (
     <div className="min-h-screen bg-neutral-0">
+      {/* 🎯 NEW CAROUSEL: 完整轮播解决方案 */}
+      <div className="border-b-4 border-blue-600">
+        <h2 className="text-2xl font-bold text-center py-4 bg-blue-600 text-white">
+          🎯 NEW CAROUSEL: 完整轮播 - 4个并排 + 滑动导航！
+        </h2>
+        <CarbonInsightsCarousel articles={mockArticles} />
+      </div>
+
       {/* 💎 BULLETPROOF: 最终解决方案 */}
       <div className="border-b-4 border-green-600">
         <h2 className="text-2xl font-bold text-center py-4 bg-green-600 text-white">
