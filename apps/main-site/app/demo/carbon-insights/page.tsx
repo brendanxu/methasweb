@@ -1,31 +1,21 @@
 import React from 'react'
-import { CarbonInsightsV2 } from '@/components/carbon-insights'
-import { mockArticles } from '@/lib/mock-data/carbon-insights-data'
+import { CarbonInsights } from '@/components/carbon-insights'
 
 export default function CarbonInsightsDemoPage() {
   return (
     <div className="min-h-screen bg-neutral-0">
-      {/* 标准版本 */}
-      <CarbonInsightsV2 articles={mockArticles} />
+      {/* 全新版本 - 从零重建 */}
+      <CarbonInsights />
       
-      {/* 自动播放版本 */}
-      <div className="bg-neutral-100">
-        <CarbonInsightsV2 
-          articles={mockArticles}
-          title="最新资讯"
-          subtitle="了解碳市场的最新动态和行业趋势"
-          autoplay={true}
-          autoplayInterval={3000}
-        />
+      {/* 不同背景测试 */}
+      <div className="bg-white">
+        <CarbonInsights />
       </div>
       
-      {/* 少量文章测试 */}
-      <CarbonInsightsV2 
-        articles={mockArticles.slice(0, 3)}
-        title="精选文章"
-        subtitle="我们为您精心挑选的优质内容"
-        loop={false}
-      />
+      {/* 第三个实例 */}
+      <div className="bg-gray-50">
+        <CarbonInsights />
+      </div>
     </div>
   )
 }
