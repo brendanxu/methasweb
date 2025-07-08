@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { CarbonInsightsBulletproof } from '@/components/carbon-insights'
 import { CarbonInsightsV2 } from '@/components/carbon-insights'
 import { CarbonInsightsGrid } from '@/components/carbon-insights/CarbonInsightsGrid'
 import { CarbonInsightsSimple } from '@/components/carbon-insights/CarbonInsightsSimple'
@@ -11,6 +12,14 @@ import { mockArticles } from '@/lib/mock-data/carbon-insights-data'
 export default function TestCarbonInsightsPage() {
   return (
     <div className="min-h-screen bg-neutral-0">
+      {/* 💎 BULLETPROOF: 最终解决方案 */}
+      <div className="border-b-4 border-green-600">
+        <h2 className="text-2xl font-bold text-center py-4 bg-green-600 text-white">
+          💎 BULLETPROOF: 防弹布局 - 保证4个并排显示！
+        </h2>
+        <CarbonInsightsBulletproof articles={mockArticles} />
+      </div>
+
       {/* 🚀 NEW: 终极修复版 - 内联样式 */}
       <div className="border-b-4 border-red-500">
         <h2 className="text-2xl font-bold text-center py-4 bg-red-500 text-white">
