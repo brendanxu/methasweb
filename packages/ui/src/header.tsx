@@ -108,12 +108,12 @@ export function Header() {
       }}
       animate={{
         backgroundColor: isScrolled ? '#ffffff' : 'transparent',
-        boxShadow: isScrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : '0 0 0 0 rgba(0, 0, 0, 0)',
+        boxShadow: isScrolled ? 'var(--methas-shadow-lg)' : '0 0 0 0 rgba(0, 0, 0, 0)',
         y: isHidden ? -100 : 0
       }}
       transition={{ 
         duration: 0.3, 
-        ease: [0.4, 0, 0.2, 1] // 碳智METHAS cubic-bezier
+        ease: 'var(--methas-ease-out)' // 碳智METHAS 缓动函数
       }}
     >
       <div className={`border-b border-white/20 ${isScrolled ? 'hidden' : 'block'}`}>
@@ -121,10 +121,10 @@ export function Header() {
           <div className="flex h-12 items-center justify-between text-body-sm">
             <div className="hidden md:flex items-center space-x-6">
               <a href="/contact" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white/80 hover:text-white'
+                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
               }`}>Contact</a>
               <a href="/locations" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white/80 hover:text-white'
+                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
               }`}>Locations</a>
             </div>
             <div className="flex items-center space-x-6 ml-auto">
@@ -143,7 +143,7 @@ export function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
-            <span className={`text-heading-lg font-semibold transition-colors duration-300 ${
+            <span className={`text-heading-lg font-semibold transition-colors duration-normal ${
               isScrolled ? 'text-gray-900' : 'text-white'
             }`}>碳智METHAS</span>
           </a>
@@ -187,7 +187,7 @@ export function Header() {
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-lg bg-white shadow-lg border border-gray-100 overflow-hidden"
+                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-lg bg-white shadow-lg border border-gray-200 overflow-hidden"
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
