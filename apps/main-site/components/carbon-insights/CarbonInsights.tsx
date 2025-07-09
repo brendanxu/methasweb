@@ -1,8 +1,183 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+// 多语言翻译
+const carbonInsightsTranslations = {
+  'zh-CN': {
+    title: '碳智观察',
+    subtitle: '深度洞察碳市场动态，把握可持续发展机遇',
+    articles: [
+      {
+        title: '碳市场月度报告',
+        description: '深入分析全球碳市场走势，为您的碳资产管理提供专业指导和前瞻性洞察。',
+        category: '市场分析',
+        actionText: '下载报告'
+      },
+      {
+        title: 'Article 6 实施指南',
+        description: '详解《巴黎协定》第六条机制，帮助企业掌握国际碳信用交易新规则。',
+        category: '政策解读',
+        actionText: '了解更多'
+      },
+      {
+        title: 'CCER重启深度解读',
+        description: '中国核证自愿减排量重启，解析最新政策要点及市场机遇。',
+        category: '政策动态',
+        actionText: '了解更多'
+      },
+      {
+        title: '企业碳管理指南',
+        description: '从碳盘查到碳中和，帮助企业构建完整的碳管理体系。',
+        category: '实践指南',
+        actionText: '了解更多'
+      },
+      {
+        title: '碳金融创新产品',
+        description: '探索碳期货、碳期权等创新金融工具在碳市场中的应用。',
+        category: '金融创新',
+        actionText: '了解更多'
+      },
+      {
+        title: '全球碳市场链接',
+        description: '分析EU ETS、RGGI等国际碳市场互联互通最新进展。',
+        category: '国际视野',
+        actionText: '了解更多'
+      }
+    ]
+  },
+  'en': {
+    title: 'Carbon Insights',
+    subtitle: 'Deep insights into carbon market dynamics, seizing sustainable development opportunities',
+    articles: [
+      {
+        title: 'Monthly Carbon Market Report',
+        description: 'In-depth analysis of global carbon market trends, providing professional guidance and forward-looking insights for your carbon asset management.',
+        category: 'Market Analysis',
+        actionText: 'Download Report'
+      },
+      {
+        title: 'Article 6 Implementation Guide',
+        description: 'Detailed explanation of Article 6 mechanisms of the Paris Agreement, helping companies master new rules for international carbon credit trading.',
+        category: 'Policy Interpretation',
+        actionText: 'Learn More'
+      },
+      {
+        title: 'CCER Restart Deep Analysis',
+        description: 'China Certified Emission Reduction restart, analyzing latest policy points and market opportunities.',
+        category: 'Policy Updates',
+        actionText: 'Learn More'
+      },
+      {
+        title: 'Corporate Carbon Management Guide',
+        description: 'From carbon inventory to carbon neutrality, helping companies build complete carbon management systems.',
+        category: 'Practice Guide',
+        actionText: 'Learn More'
+      },
+      {
+        title: 'Carbon Financial Innovation Products',
+        description: 'Explore the application of innovative financial instruments such as carbon futures and carbon options in carbon markets.',
+        category: 'Financial Innovation',
+        actionText: 'Learn More'
+      },
+      {
+        title: 'Global Carbon Market Linkage',
+        description: 'Analyze the latest progress in interconnection of international carbon markets such as EU ETS and RGGI.',
+        category: 'International Perspective',
+        actionText: 'Learn More'
+      }
+    ]
+  },
+  'de': {
+    title: 'Carbon Insights',
+    subtitle: 'Tiefe Einblicke in die Dynamik des Kohlenstoffmarktes, nachhaltige Entwicklungschancen nutzen',
+    articles: [
+      {
+        title: 'Monatlicher Kohlenstoffmarktbericht',
+        description: 'Tiefgreifende Analyse der globalen Kohlenstoffmarkttrends, professionelle Beratung und zukunftsweisende Einblicke für Ihr Kohlenstoff-Asset-Management.',
+        category: 'Marktanalyse',
+        actionText: 'Bericht herunterladen'
+      },
+      {
+        title: 'Artikel 6 Umsetzungsleitfaden',
+        description: 'Detaillierte Erklärung der Artikel 6-Mechanismen des Pariser Abkommens, Unternehmen bei der Beherrschung neuer Regeln für den internationalen Kohlenstoffkredithandel zu helfen.',
+        category: 'Politikinterpretation',
+        actionText: 'Mehr erfahren'
+      },
+      {
+        title: 'CCER Neustart Tiefenanalyse',
+        description: 'China Certified Emission Reduction Neustart, Analyse der neuesten Politikpunkte und Marktchancen.',
+        category: 'Politik-Updates',
+        actionText: 'Mehr erfahren'
+      },
+      {
+        title: 'Unternehmens-Kohlenstoffmanagement-Leitfaden',
+        description: 'Von der Kohlenstoffinventur zur Kohlenstoffneutralität, Unternehmen beim Aufbau vollständiger Kohlenstoffmanagementsysteme helfen.',
+        category: 'Praxisleitfaden',
+        actionText: 'Mehr erfahren'
+      },
+      {
+        title: 'Kohlenstoff-Finanzinnovationsprodukte',
+        description: 'Erkunden Sie die Anwendung innovativer Finanzinstrumente wie Kohlenstoff-Futures und Kohlenstoff-Optionen in Kohlenstoffmärkten.',
+        category: 'Finanzinnovation',
+        actionText: 'Mehr erfahren'
+      },
+      {
+        title: 'Globale Kohlenstoffmarkt-Verknüpfung',
+        description: 'Analysieren Sie die neuesten Fortschritte bei der Vernetzung internationaler Kohlenstoffmärkte wie EU ETS und RGGI.',
+        category: 'Internationale Perspektive',
+        actionText: 'Mehr erfahren'
+      }
+    ]
+  },
+  'fr': {
+    title: 'Perspectives Carbone',
+    subtitle: 'Aperçus approfondis de la dynamique du marché du carbone, saisir les opportunités de développement durable',
+    articles: [
+      {
+        title: 'Rapport mensuel du marché du carbone',
+        description: 'Analyse approfondie des tendances du marché mondial du carbone, fournissant des conseils professionnels et des perspectives prospectives pour votre gestion d\'actifs carbone.',
+        category: 'Analyse de marché',
+        actionText: 'Télécharger le rapport'
+      },
+      {
+        title: 'Guide de mise en œuvre Article 6',
+        description: 'Explication détaillée des mécanismes de l\'Article 6 de l\'Accord de Paris, aidant les entreprises à maîtriser les nouvelles règles du commerce international de crédits carbone.',
+        category: 'Interprétation politique',
+        actionText: 'En savoir plus'
+      },
+      {
+        title: 'Analyse approfondie du redémarrage CCER',
+        description: 'Redémarrage de la réduction certifiée des émissions de Chine, analyse des derniers points politiques et opportunités de marché.',
+        category: 'Mises à jour politiques',
+        actionText: 'En savoir plus'
+      },
+      {
+        title: 'Guide de gestion du carbone d\'entreprise',
+        description: 'De l\'inventaire carbone à la neutralité carbone, aider les entreprises à construire des systèmes complets de gestion du carbone.',
+        category: 'Guide pratique',
+        actionText: 'En savoir plus'
+      },
+      {
+        title: 'Produits d\'innovation financière carbone',
+        description: 'Explorer l\'application d\'instruments financiers innovants tels que les contrats à terme sur le carbone et les options carbone dans les marchés du carbone.',
+        category: 'Innovation financière',
+        actionText: 'En savoir plus'
+      },
+      {
+        title: 'Liaison du marché mondial du carbone',
+        description: 'Analyser les derniers progrès dans l\'interconnexion des marchés internationaux du carbone tels que EU ETS et RGGI.',
+        category: 'Perspective internationale',
+        actionText: 'En savoir plus'
+      }
+    ]
+  }
+}
 
 export function CarbonInsights() {
+  const { language } = useLanguage()
+  const t = carbonInsightsTranslations[language]
   useEffect(() => {
     // 碳智观察轮播功能
     let currentIndex = 0;
@@ -117,8 +292,8 @@ export function CarbonInsights() {
     <>
       <section className="carbon-insights-new">
         <div className="ci-header">
-          <h2 className="ci-title">碳智观察</h2>
-          <p className="ci-subtitle">深度洞察碳市场动态，把握可持续发展机遇</p>
+          <h2 className="ci-title">{t.title}</h2>
+          <p className="ci-subtitle">{t.subtitle}</p>
         </div>
         
         <div className="ci-carousel">
@@ -128,71 +303,25 @@ export function CarbonInsights() {
           
           <div className="ci-viewport">
             <div className="ci-track" id="ciTrack">
-              {/* 文章1 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/0066cc/ffffff?text=Article+1" alt="碳市场月度报告" />
-                  <span className="ci-tag">市场分析</span>
-                </div>
-                <h3 className="ci-card-title">碳市场月度报告</h3>
-                <p className="ci-card-desc">深入分析全球碳市场走势，为您的碳资产管理提供专业指导和前瞻性洞察。</p>
-                <a href="#" className="ci-card-link">下载报告 →</a>
-              </article>
-              
-              {/* 文章2 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/00aa66/ffffff?text=Article+2" alt="Article 6 实施指南" />
-                  <span className="ci-tag">政策解读</span>
-                </div>
-                <h3 className="ci-card-title">Article 6 实施指南</h3>
-                <p className="ci-card-desc">详解《巴黎协定》第六条机制，帮助企业掌握国际碳信用交易新规则。</p>
-                <a href="#" className="ci-card-link">了解更多 →</a>
-              </article>
-              
-              {/* 文章3 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/ff6633/ffffff?text=Article+3" alt="CCER重启解读" />
-                  <span className="ci-tag">政策动态</span>
-                </div>
-                <h3 className="ci-card-title">CCER重启深度解读</h3>
-                <p className="ci-card-desc">中国核证自愿减排量重启，解析最新政策要点及市场机遇。</p>
-                <a href="#" className="ci-card-link">了解更多 →</a>
-              </article>
-              
-              {/* 文章4 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/9933ff/ffffff?text=Article+4" alt="企业碳管理" />
-                  <span className="ci-tag">实践指南</span>
-                </div>
-                <h3 className="ci-card-title">企业碳管理指南</h3>
-                <p className="ci-card-desc">从碳盘查到碳中和，帮助企业构建完整的碳管理体系。</p>
-                <a href="#" className="ci-card-link">了解更多 →</a>
-              </article>
-              
-              {/* 文章5 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/ff3366/ffffff?text=Article+5" alt="碳金融创新" />
-                  <span className="ci-tag">金融创新</span>
-                </div>
-                <h3 className="ci-card-title">碳金融创新产品</h3>
-                <p className="ci-card-desc">探索碳期货、碳期权等创新金融工具在碳市场中的应用。</p>
-                <a href="#" className="ci-card-link">了解更多 →</a>
-              </article>
-              
-              {/* 文章6 */}
-              <article className="ci-card">
-                <div className="ci-card-image">
-                  <img src="https://via.placeholder.com/300x200/33ccff/ffffff?text=Article+6" alt="国际碳市场" />
-                  <span className="ci-tag">国际视野</span>
-                </div>
-                <h3 className="ci-card-title">全球碳市场链接</h3>
-                <p className="ci-card-desc">分析EU ETS、RGGI等国际碳市场互联互通最新进展。</p>
-                <a href="#" className="ci-card-link">了解更多 →</a>
-              </article>
+              {t.articles.map((article, index) => (
+                <article key={index} className="ci-card">
+                  <div className="ci-card-image">
+                    <img 
+                      src={`https://via.placeholder.com/300x200/${['0066cc', '00aa66', 'ff6633', '9933ff', 'ff3366', '33ccff'][index]}/ffffff?text=Article+${index + 1}`} 
+                      alt={article.title} 
+                      loading="lazy"
+                      style={{
+                        transition: 'transform 0.3s ease',
+                        willChange: 'transform'
+                      }}
+                    />
+                    <span className="ci-tag">{article.category}</span>
+                  </div>
+                  <h3 className="ci-card-title">{article.title}</h3>
+                  <p className="ci-card-desc">{article.description}</p>
+                  <a href="#" className="ci-card-link">{article.actionText} →</a>
+                </article>
+              ))}
             </div>
           </div>
           

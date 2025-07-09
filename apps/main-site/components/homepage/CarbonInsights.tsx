@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 interface InsightCard {
   id: string
@@ -89,9 +90,46 @@ const insightCards: InsightCard[] = [
   }
 ]
 
+// 多语言内容
+const carbonInsightsTranslations = {
+  'zh-CN': {
+    title: '碳智观察',
+    subtitle: '深度洞察碳市场动态，把握可持续发展机遇',
+    exploreMore: '探索更多洞察'
+  },
+  'en': {
+    title: 'Carbon Insights',
+    subtitle: 'Deep insights into carbon market dynamics, seizing sustainable development opportunities',
+    exploreMore: 'Explore More Insights'
+  },
+  'de': {
+    title: 'Carbon Einblicke',
+    subtitle: 'Tiefe Einblicke in die Dynamik des Kohlenstoffmarktes, nachhaltige Entwicklungschancen nutzen',
+    exploreMore: 'Weitere Einblicke erkunden'
+  },
+  'fr': {
+    title: 'Perspectives Carbone',
+    subtitle: 'Aperçus approfondis de la dynamique du marché du carbone, saisir les opportunités de développement durable',
+    exploreMore: 'Explorer plus de perspectives'
+  }
+}
+
 export default function CarbonInsights() {
+  const { language } = useLanguage()
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isComponentMounted, setIsComponentMounted] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const t = carbonInsightsTranslations[language]
+  
+  // 防止重复渲染
+  useEffect(() => {
+    setIsComponentMounted(true)
+    
+    // 清理函数确保组件卸载时清理状态
+    return () => {
+      setIsComponentMounted(false)
+    }
+  }, [])
   
   const getCardsPerView = () => {
     if (typeof window !== 'undefined') {
@@ -134,6 +172,27 @@ export default function CarbonInsights() {
   const canScrollLeft = currentIndex > 0
   const canScrollRight = currentIndex < insightCards.length - cardsPerView
 
+  // 防止重复渲染 - 只在组件挂载后渲染
+  if (!isComponentMounted) {
+    return (
+      <section className="py-20 bg-background-secondary">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-display-md font-semibold text-text-primary mb-4">
+              {t.title}
+            </h2>
+            <p className="text-body-lg text-text-secondary max-w-3xl mx-auto">
+              {t.subtitle}
+            </p>
+          </div>
+          <div className="text-center py-8">
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-500"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="py-20 bg-background-secondary relative overflow-hidden">
       {/* Background Pattern */}
@@ -150,10 +209,10 @@ export default function CarbonInsights() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-display-md font-semibold text-text-primary mb-4">
-            碳智观察
+            {t.title}
           </h2>
           <p className="text-body-lg text-text-secondary max-w-3xl mx-auto">
-            深度洞察碳市场动态，把握可持续发展机遇
+            {t.subtitle}
           </p>
         </div>
 
@@ -272,7 +331,7 @@ export default function CarbonInsights() {
             href="/insights"
             className="inline-flex items-center px-6 py-3 bg-primary-500 text-white font-semibold rounded-full hover:bg-primary-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-button-md min-h-[44px]"
           >
-            探索更多洞察
+            {t.exploreMore}
             <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

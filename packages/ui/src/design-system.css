@@ -255,21 +255,31 @@
 }
 
 /* ===============================
-   7. 响应式断点
+   7. 响应式断点 - 现代化设备支持
 ================================ */
 :root {
-  --screen-sm: 640px;
-  --screen-md: 768px;
-  --screen-lg: 1024px;
-  --screen-xl: 1280px;
-  --screen-2xl: 1536px;
+  /* 移动设备 */
+  --screen-xs: 480px;       /* 小屏手机 */
+  --screen-sm: 640px;       /* 大屏手机 */
+  --screen-md: 768px;       /* 平板竖屏 */
+  --screen-lg: 1024px;      /* 平板横屏/小笔记本 */
+  --screen-xl: 1280px;      /* 桌面/笔记本 */
+  --screen-2xl: 1536px;     /* 大屏桌面 */
+  --screen-3xl: 1920px;     /* 超宽屏 */
+  
+  /* 特殊设备断点 */
+  --screen-mobile: 640px;   /* 移动设备上限 */
+  --screen-tablet: 1024px;  /* 平板设备上限 */
+  --screen-desktop: 1280px; /* 桌面设备下限 */
   
   /* Tailwind 兼容性断点变量 */
+  --methas-breakpoint-xs: var(--screen-xs);
   --methas-breakpoint-sm: var(--screen-sm);
   --methas-breakpoint-md: var(--screen-md);
   --methas-breakpoint-lg: var(--screen-lg);
   --methas-breakpoint-xl: var(--screen-xl);
   --methas-breakpoint-2xl: var(--screen-2xl);
+  --methas-breakpoint-3xl: var(--screen-3xl);
 }
 
 /* ===============================
@@ -301,13 +311,22 @@ body {
    9. 专业组件基础样式
 ================================ */
 
-/* 容器系统 */
+/* 容器系统 - 现代化响应式设计 */
 .container {
   width: 100%;
   margin: 0 auto;
   padding: 0 var(--space-4);
 }
 
+/* 小屏手机 */
+@media (min-width: 480px) {
+  .container { 
+    max-width: 480px;
+    padding: 0 var(--space-4);
+  }
+}
+
+/* 大屏手机 */
 @media (min-width: 640px) {
   .container { 
     max-width: 640px;
@@ -315,6 +334,7 @@ body {
   }
 }
 
+/* 平板竖屏 */
 @media (min-width: 768px) {
   .container { 
     max-width: 768px;
@@ -322,6 +342,7 @@ body {
   }
 }
 
+/* 平板横屏/小笔记本 */
 @media (min-width: 1024px) {
   .container { 
     max-width: 1024px;
@@ -329,6 +350,7 @@ body {
   }
 }
 
+/* 桌面/笔记本 */
 @media (min-width: 1280px) {
   .container { 
     max-width: 1280px;
@@ -336,10 +358,19 @@ body {
   }
 }
 
+/* 大屏桌面 */
 @media (min-width: 1536px) {
   .container { 
     max-width: 1536px;
     padding: 0 var(--space-10);
+  }
+}
+
+/* 超宽屏 */
+@media (min-width: 1920px) {
+  .container { 
+    max-width: 1920px;
+    padding: 0 var(--space-12);
   }
 }
 
@@ -674,16 +705,63 @@ body {
 .p-6 { padding: var(--space-6); }
 .p-8 { padding: var(--space-8); }
 
-/* 网格系统 */
+/* 网格系统 - 响应式网格布局 */
 .grid {
   display: grid;
   gap: var(--space-6);
 }
 
+/* 基础网格 */
 .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
 .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* 响应式网格 - 小屏手机 */
+@media (min-width: 480px) {
+  .xs\:grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .xs\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .xs\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 响应式网格 - 大屏手机 */
+@media (min-width: 640px) {
+  .sm\:grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .sm\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .sm\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* 响应式网格 - 平板 */
+@media (min-width: 768px) {
+  .md\:grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .md\:grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* 响应式网格 - 桌面 */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .lg\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .lg\:grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .lg\:grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* 响应式网格 - 大屏 */
+@media (min-width: 1280px) {
+  .xl\:grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+  .xl\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .xl\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .xl\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .xl\:grid-cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .xl\:grid-cols-6 { grid-template-columns: repeat(6, 1fr); }
+}
 
 /* 弹性布局 */
 .flex { display: flex; }

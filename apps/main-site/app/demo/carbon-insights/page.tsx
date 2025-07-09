@@ -4,18 +4,8 @@ import { CarbonInsights } from '@/components/carbon-insights'
 export default function CarbonInsightsDemoPage() {
   return (
     <div className="min-h-screen bg-neutral-0">
-      {/* 全新版本 - 从零重建 */}
+      {/* 碳智观察组件演示 - 只显示一次 */}
       <CarbonInsights />
-      
-      {/* 不同背景测试 */}
-      <div className="bg-white">
-        <CarbonInsights />
-      </div>
-      
-      {/* 第三个实例 */}
-      <div className="bg-gray-50">
-        <CarbonInsights />
-      </div>
     </div>
   )
 }

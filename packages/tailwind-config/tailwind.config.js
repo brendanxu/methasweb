@@ -176,11 +176,13 @@ export default {
         'DEFAULT': 'var(--methas-ease-out)',
       },
       screens: {
+        'xs': 'var(--methas-breakpoint-xs)',
         'sm': 'var(--methas-breakpoint-sm)',
         'md': 'var(--methas-breakpoint-md)',
         'lg': 'var(--methas-breakpoint-lg)',
         'xl': 'var(--methas-breakpoint-xl)',
         '2xl': 'var(--methas-breakpoint-2xl)',
+        '3xl': 'var(--methas-breakpoint-3xl)',
       },
       zIndex: {
         'dropdown': 'var(--methas-z-dropdown)',

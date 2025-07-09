@@ -4,6 +4,80 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from './button'
 
+// Simple language state management for header
+const useLanguageState = () => {
+  const [language, setLanguage] = useState<'zh-CN' | 'en' | 'de' | 'fr'>('zh-CN')
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('preferred-language') as 'zh-CN' | 'en' | 'de' | 'fr'
+      if (saved) setLanguage(saved)
+    }
+  }, [])
+  
+  const updateLanguage = (lang: 'zh-CN' | 'en' | 'de' | 'fr') => {
+    setLanguage(lang)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-language', lang)
+      // Dispatch custom event for other components to listen
+      window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }))
+    }
+  }
+  
+  return { language, setLanguage: updateLanguage }
+}
+
+// Translation mappings for header
+const headerTranslations = {
+  'zh-CN': {
+    brandName: '碳智METHAS',
+    contact: '联系我们',
+    locations: '办公地点',
+    getStarted: '开始合作',
+    aboutUs: '关于我们',
+    whatWeDo: '我们的服务',
+    ourImpact: '我们的影响',
+    newsInsights: '新闻与洞察'
+  },
+  'en': {
+    brandName: 'METHAS',
+    contact: 'Contact',
+    locations: 'Locations',
+    getStarted: 'Get started',
+    aboutUs: 'About us',
+    whatWeDo: 'What we do',
+    ourImpact: 'Our impact',
+    newsInsights: 'News & insights'
+  },
+  'de': {
+    brandName: 'METHAS',
+    contact: 'Kontakt',
+    locations: 'Standorte',
+    getStarted: 'Loslegen',
+    aboutUs: 'Über uns',
+    whatWeDo: 'Was wir tun',
+    ourImpact: 'Unsere Wirkung',
+    newsInsights: 'News & Einblicke'
+  },
+  'fr': {
+    brandName: 'METHAS',
+    contact: 'Contact',
+    locations: 'Emplacements',
+    getStarted: 'Commencer',
+    aboutUs: 'À propos',
+    whatWeDo: 'Ce que nous faisons',
+    ourImpact: 'Notre impact',
+    newsInsights: 'Actualités et perspectives'
+  }
+}
+
+const languageLabels = {
+  'zh-CN': '中文',
+  'en': 'EN',
+  'de': 'DE',
+  'fr': 'FR'
+}
+
 interface NavItem {
   label: string
   href: string
@@ -14,56 +88,232 @@ interface NavItem {
   }[]
 }
 
-const navItems: NavItem[] = [
-  {
-    label: 'About us',
-    href: '/about',
-    children: [
-      { label: 'Our story', href: '/about/story', description: 'How 碳智METHAS became a climate leader' },
-      { label: 'Leadership team', href: '/about/leadership', description: 'Meet our executive team and board' },
-      { label: 'Mission & values', href: '/about/mission', description: 'Our purpose and core principles' },
-      { label: 'Locations', href: '/about/locations', description: 'Our global offices and presence' },
-    ]
-  },
-  {
-    label: 'What we do',
-    href: '/services',
-    children: [
-      { label: 'Services', href: '/services', description: 'Complete climate action solutions' },
-      { label: 'Solutions', href: '/services/solutions', description: 'Tailored climate strategies' },
-      { label: 'Industries', href: '/services/industries', description: 'Sector-specific expertise' },
-      { label: 'Approach', href: '/services/approach', description: 'Our methodology and process' },
-    ]
-  },
-  {
-    label: 'Our impact',
-    href: '/impact',
-    children: [
-      { label: 'Case studies', href: '/impact/case-studies', description: 'Real-world climate projects' },
-      { label: 'Sustainability reports', href: '/impact/reports', description: 'Annual impact assessments' },
-      { label: 'Client success', href: '/impact/success-stories', description: 'Customer transformation stories' },
-      { label: 'Metrics', href: '/impact/metrics', description: 'Measurable climate outcomes' },
-    ]
-  },
-  {
-    label: 'News & insights',
-    href: '/news',
-    children: [
-      { label: 'Latest news', href: '/news', description: 'Company announcements and updates' },
-      { label: 'Blog', href: '/news/blog', description: 'Expert insights and analysis' },
-      { label: 'Resources', href: '/news/resources', description: 'Reports, guides, and tools' },
-      { label: 'Events', href: '/news/events', description: 'Conferences and webinars' },
-    ]
-  },
-]
+const getNavItems = (language: 'zh-CN' | 'en' | 'de' | 'fr'): NavItem[] => {
+  const navTranslations = {
+    'zh-CN': {
+      aboutUs: '关于我们',
+      ourStory: '我们的故事',
+      leadership: '领导团队',
+      mission: '使命与价值',
+      locations: '办公地点',
+      storyDesc: '碳智METHAS如何成为气候领域的领导者',
+      leadershipDesc: '认识我们的执行团队和董事会',
+      missionDesc: '我们的目标和核心原则',
+      locationsDesc: '我们的全球办公室和业务范围',
+      
+      whatWeDo: '我们的服务',
+      services: '服务',
+      solutions: '解决方案',
+      industries: '行业',
+      approach: '方法',
+      servicesDesc: '完整的气候行动解决方案',
+      solutionsDesc: '量身定制的气候策略',
+      industriesDesc: '特定行业的专业知识',
+      approachDesc: '我们的方法论和流程',
+      
+      ourImpact: '我们的影响',
+      caseStudies: '案例研究',
+      reports: '可持续发展报告',
+      clientSuccess: '客户成功',
+      metrics: '指标',
+      caseStudiesDesc: '真实的气候项目',
+      reportsDesc: '年度影响评估',
+      clientSuccessDesc: '客户转型故事',
+      metricsDesc: '可衡量的气候成果',
+      
+      newsInsights: '新闻与洞察',
+      latestNews: '最新新闻',
+      blog: '博客',
+      resources: '资源',
+      events: '活动',
+      latestNewsDesc: '公司公告和更新',
+      blogDesc: '专家见解和分析',
+      resourcesDesc: '报告、指南和工具',
+      eventsDesc: '会议和网络研讨会',
+    },
+    'en': {
+      aboutUs: 'About us',
+      ourStory: 'Our story',
+      leadership: 'Leadership team',
+      mission: 'Mission & values',
+      locations: 'Locations',
+      storyDesc: 'How 碳智METHAS became a climate leader',
+      leadershipDesc: 'Meet our executive team and board',
+      missionDesc: 'Our purpose and core principles',
+      locationsDesc: 'Our global offices and presence',
+      
+      whatWeDo: 'What we do',
+      services: 'Services',
+      solutions: 'Solutions',
+      industries: 'Industries',
+      approach: 'Approach',
+      servicesDesc: 'Complete climate action solutions',
+      solutionsDesc: 'Tailored climate strategies',
+      industriesDesc: 'Sector-specific expertise',
+      approachDesc: 'Our methodology and process',
+      
+      ourImpact: 'Our impact',
+      caseStudies: 'Case studies',
+      reports: 'Sustainability reports',
+      clientSuccess: 'Client success',
+      metrics: 'Metrics',
+      caseStudiesDesc: 'Real-world climate projects',
+      reportsDesc: 'Annual impact assessments',
+      clientSuccessDesc: 'Customer transformation stories',
+      metricsDesc: 'Measurable climate outcomes',
+      
+      newsInsights: 'News & insights',
+      latestNews: 'Latest news',
+      blog: 'Blog',
+      resources: 'Resources',
+      events: 'Events',
+      latestNewsDesc: 'Company announcements and updates',
+      blogDesc: 'Expert insights and analysis',
+      resourcesDesc: 'Reports, guides, and tools',
+      eventsDesc: 'Conferences and webinars',
+    },
+    'de': {
+      aboutUs: 'Über uns',
+      ourStory: 'Unsere Geschichte',
+      leadership: 'Führungsteam',
+      mission: 'Mission & Werte',
+      locations: 'Standorte',
+      storyDesc: 'Wie 碳智METHAS zu einem Klimaführer wurde',
+      leadershipDesc: 'Lernen Sie unser Führungsteam und den Vorstand kennen',
+      missionDesc: 'Unser Zweck und unsere Grundprinzipien',
+      locationsDesc: 'Unsere globalen Büros und Präsenz',
+      
+      whatWeDo: 'Was wir tun',
+      services: 'Dienstleistungen',
+      solutions: 'Lösungen',
+      industries: 'Branchen',
+      approach: 'Ansatz',
+      servicesDesc: 'Komplette Klimaschutzlösungen',
+      solutionsDesc: 'Maßgeschneiderte Klimastrategien',
+      industriesDesc: 'Branchenspezifische Expertise',
+      approachDesc: 'Unsere Methodik und unser Prozess',
+      
+      ourImpact: 'Unsere Wirkung',
+      caseStudies: 'Fallstudien',
+      reports: 'Nachhaltigkeitsberichte',
+      clientSuccess: 'Kundenerfolg',
+      metrics: 'Metriken',
+      caseStudiesDesc: 'Reale Klimaprojekte',
+      reportsDesc: 'Jährliche Wirkungsbeurteilungen',
+      clientSuccessDesc: 'Geschichten über Kundentransformation',
+      metricsDesc: 'Messbare Klimaergebnisse',
+      
+      newsInsights: 'News & Einblicke',
+      latestNews: 'Neueste Nachrichten',
+      blog: 'Blog',
+      resources: 'Ressourcen',
+      events: 'Veranstaltungen',
+      latestNewsDesc: 'Unternehmensankündigungen und Updates',
+      blogDesc: 'Experteneinblicke und Analysen',
+      resourcesDesc: 'Berichte, Leitfäden und Tools',
+      eventsDesc: 'Konferenzen und Webinare',
+    },
+    'fr': {
+      aboutUs: 'À propos',
+      ourStory: 'Notre histoire',
+      leadership: 'Équipe dirigeante',
+      mission: 'Mission et valeurs',
+      locations: 'Emplacements',
+      storyDesc: 'Comment 碳智METHAS est devenu un leader climatique',
+      leadershipDesc: 'Rencontrez notre équipe dirigeante et notre conseil',
+      missionDesc: 'Notre objectif et nos principes fondamentaux',
+      locationsDesc: 'Nos bureaux mondiaux et notre présence',
+      
+      whatWeDo: 'Ce que nous faisons',
+      services: 'Services',
+      solutions: 'Solutions',
+      industries: 'Industries',
+      approach: 'Approche',
+      servicesDesc: 'Solutions complètes d\'action climatique',
+      solutionsDesc: 'Stratégies climatiques sur mesure',
+      industriesDesc: 'Expertise sectorielle',
+      approachDesc: 'Notre méthodologie et notre processus',
+      
+      ourImpact: 'Notre impact',
+      caseStudies: 'Études de cas',
+      reports: 'Rapports de durabilité',
+      clientSuccess: 'Succès clients',
+      metrics: 'Métriques',
+      caseStudiesDesc: 'Projets climatiques réels',
+      reportsDesc: 'Évaluations d\'impact annuelles',
+      clientSuccessDesc: 'Histoires de transformation client',
+      metricsDesc: 'Résultats climatiques mesurables',
+      
+      newsInsights: 'Actualités et perspectives',
+      latestNews: 'Dernières nouvelles',
+      blog: 'Blog',
+      resources: 'Ressources',
+      events: 'Événements',
+      latestNewsDesc: 'Annonces d\'entreprise et mises à jour',
+      blogDesc: 'Aperçus et analyses d\'experts',
+      resourcesDesc: 'Rapports, guides et outils',
+      eventsDesc: 'Conférences et webinaires',
+    }
+  }
+  
+  const t = navTranslations[language]
+  
+  return [
+    {
+      label: t.aboutUs,
+      href: '/about',
+      children: [
+        { label: t.ourStory, href: '/about/story', description: t.storyDesc },
+        { label: t.leadership, href: '/about/leadership', description: t.leadershipDesc },
+        { label: t.mission, href: '/about/mission', description: t.missionDesc },
+        { label: t.locations, href: '/about/locations', description: t.locationsDesc },
+      ]
+    },
+    {
+      label: t.whatWeDo,
+      href: '/services',
+      children: [
+        { label: t.services, href: '/services', description: t.servicesDesc },
+        { label: t.solutions, href: '/services/solutions', description: t.solutionsDesc },
+        { label: t.industries, href: '/services/industries', description: t.industriesDesc },
+        { label: t.approach, href: '/services/approach', description: t.approachDesc },
+      ]
+    },
+    {
+      label: t.ourImpact,
+      href: '/impact',
+      children: [
+        { label: t.caseStudies, href: '/impact/case-studies', description: t.caseStudiesDesc },
+        { label: t.reports, href: '/impact/reports', description: t.reportsDesc },
+        { label: t.clientSuccess, href: '/impact/success-stories', description: t.clientSuccessDesc },
+        { label: t.metrics, href: '/impact/metrics', description: t.metricsDesc },
+      ]
+    },
+    {
+      label: t.newsInsights,
+      href: '/news',
+      children: [
+        { label: t.latestNews, href: '/news', description: t.latestNewsDesc },
+        { label: t.blog, href: '/news/blog', description: t.blogDesc },
+        { label: t.resources, href: '/news/resources', description: t.resourcesDesc },
+        { label: t.events, href: '/news/events', description: t.eventsDesc },
+      ]
+    },
+  ]
+}
 
 export function Header() {
+  const { language, setLanguage } = useLanguageState()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isHidden, setIsHidden] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null)
   const [mobileOpenSubmenu, setMobileOpenSubmenu] = useState<string | null>(null)
+  
+  // Get translated content
+  const t = headerTranslations[language]
+  const navItems = getNavItems(language)
 
   useEffect(() => {
     // 设置初始状态
@@ -122,18 +372,23 @@ export function Header() {
             <div className="hidden md:flex items-center space-x-6">
               <a href="/contact" className={`transition-colors text-body-sm ${
                 isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
-              }`}>Contact</a>
+              }`}>{t.contact}</a>
               <a href="/locations" className={`transition-colors text-body-sm ${
                 isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
-              }`}>Locations</a>
+              }`}>{t.locations}</a>
             </div>
             <div className="flex items-center space-x-6 ml-auto">
-              <select className={`bg-transparent text-body-sm ${
-                isScrolled ? 'text-gray-600' : 'text-white/80'
-              }`}>
-                <option>EN</option>
-                <option>DE</option>
-                <option>FR</option>
+              <select 
+                className={`bg-transparent text-body-sm cursor-pointer border-none outline-none ${
+                  isScrolled ? 'text-gray-600' : 'text-white/80'
+                }`}
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as 'zh-CN' | 'en' | 'de' | 'fr')}
+              >
+                <option value="zh-CN">{languageLabels['zh-CN']}</option>
+                <option value="en">{languageLabels['en']}</option>
+                <option value="de">{languageLabels['de']}</option>
+                <option value="fr">{languageLabels['fr']}</option>
               </select>
             </div>
           </div>
@@ -145,7 +400,7 @@ export function Header() {
           <a href="/" className="flex items-center">
             <span className={`text-heading-lg font-semibold transition-colors duration-normal ${
               isScrolled ? 'text-gray-900' : 'text-white'
-            }`}>碳智METHAS</span>
+            }`}>{t.brandName}</span>
           </a>
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
@@ -256,7 +511,7 @@ export function Header() {
 
           <div className="flex items-center space-x-4">
             <Button variant="primary" size="md">
-              Get started
+              {t.getStarted}
             </Button>
             
             <motion.button
