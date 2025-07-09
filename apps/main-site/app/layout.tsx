@@ -33,7 +33,7 @@ export default function RootLayout({
         <LanguageProvider>
           <AuthProvider>
             <Header />
-            <main className="min-h-screen pt-24 md:pt-28 lg:pt-32">
+            <main className="min-h-screen pt-24 md:pt-28 lg:pt-32" style={{ paddingLeft: 'max(0px, env(safe-area-inset-left))', paddingRight: 'max(0px, env(safe-area-inset-right))' }}>
               {children}
             </main>
             <Footer />

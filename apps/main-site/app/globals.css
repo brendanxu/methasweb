@@ -179,3 +179,40 @@ a:hover {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* 紧急修复：确保所有内容都有最小边距 */
+.safe-container {
+  padding-left: max(1rem, var(--space-4)) !important;
+  padding-right: max(1rem, var(--space-4)) !important;
+}
+
+/* 确保所有section都有适当的边距 */
+section {
+  padding-left: max(1rem, var(--space-4));
+  padding-right: max(1rem, var(--space-4));
+}
+
+/* 覆盖任何可能导致内容紧贴边缘的样式 */
+.w-full, .w-screen {
+  max-width: calc(100vw - 2rem);
+}
+
+/* 确保主要内容区域不会紧贴边缘 */
+main {
+  min-padding: 1rem;
+}
+
+/* 响应式安全边距 */
+@media (min-width: 640px) {
+  section {
+    padding-left: max(1.5rem, var(--space-6));
+    padding-right: max(1.5rem, var(--space-6));
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding-left: max(2rem, var(--space-8));
+    padding-right: max(2rem, var(--space-8));
+  }
+}

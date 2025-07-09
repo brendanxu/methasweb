@@ -286,9 +286,13 @@
    8. 全局基础样式
 ================================ */
 * {
+  box-sizing: border-box;
+}
+
+/* 只重置特定元素的margin和padding，不影响所有元素 */
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, figure, figcaption {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -305,6 +309,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===============================

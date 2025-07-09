@@ -1420,9 +1420,11 @@
   --methas-breakpoint-3xl: var(--screen-3xl);
 }
 * {
+  box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, figure, figcaption {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 html {
   font-size: 16px;
@@ -1437,6 +1439,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 .container {
   width: 100%;

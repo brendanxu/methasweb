@@ -24,7 +24,7 @@ export default function HomepageHero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video - Desktop */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ left: 0, right: 0 }}>
         {/* Video for desktop (hidden on mobile for performance) */}
         <video 
           className="hidden md:block w-full h-full object-cover"
