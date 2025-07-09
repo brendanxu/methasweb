@@ -86,6 +86,17 @@ export default {
           800: 'var(--methas-gray-800)',
           900: 'var(--methas-gray-900)',
         },
+        // 语义化文字颜色
+        text: {
+          primary: 'var(--methas-text-primary)',
+          secondary: 'var(--methas-text-secondary)',
+          tertiary: 'var(--methas-text-tertiary)',
+          disabled: 'var(--methas-text-disabled)',
+          inverse: 'var(--methas-text-inverse)',
+          brand: 'var(--methas-text-brand)',
+          link: 'var(--methas-text-link)',
+          'link-hover': 'var(--methas-text-link-hover)',
+        },
       },
       fontFamily: {
         // 碳智METHAS 字体系统 - 基于 CSS Variables

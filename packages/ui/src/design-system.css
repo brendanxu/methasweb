@@ -29,6 +29,16 @@
   --neutral-100: #F1F5F9;    /* 背景灰 - 面板背景 */
   --neutral-50: #F8FAFC;     /* 浅背景 - 页面背景 */
   --white: #FFFFFF;
+
+  /* 文字颜色层级 - 提高可读性 */
+  --text-primary: var(--neutral-900);      /* 主要文字 - 最高对比度 */
+  --text-secondary: var(--neutral-700);    /* 次要文字 - 中等对比度 */
+  --text-tertiary: var(--neutral-500);     /* 辅助文字 - 较低对比度 */
+  --text-disabled: var(--neutral-400);     /* 禁用文字 - 最低对比度 */
+  --text-inverse: var(--white);            /* 反向文字 - 深色背景上使用 */
+  --text-brand: var(--primary-600);        /* 品牌色文字 - 强调使用 */
+  --text-link: var(--primary-700);         /* 链接文字 - 更深的品牌色 */
+  --text-link-hover: var(--primary-800);   /* 链接悬停 - 最深的品牌色 */
   
   /* 功能色 - 克制使用 */
   --accent-blue: #0EA5E9;    /* 数据可视化主色 */
@@ -71,6 +81,16 @@
   --methas-warning: var(--warning);
   --methas-error: var(--error);
   --methas-info: var(--info);
+
+  /* 文字颜色 Tailwind 映射 */
+  --methas-text-primary: var(--text-primary);
+  --methas-text-secondary: var(--text-secondary);
+  --methas-text-tertiary: var(--text-tertiary);
+  --methas-text-disabled: var(--text-disabled);
+  --methas-text-inverse: var(--text-inverse);
+  --methas-text-brand: var(--text-brand);
+  --methas-text-link: var(--text-link);
+  --methas-text-link-hover: var(--text-link-hover);
   
   /* 专业渐变 - 提升质感 */
   --gradient-primary: linear-gradient(135deg, #0F5132 0%, #198754 100%);

@@ -314,10 +314,6 @@ export function Header() {
   // Get translated content
   const t = headerTranslations[language]
   const navItems = getNavItems(language)
-  
-  // Debug logging
-  console.log('Header rendering with language:', language)
-  console.log('Navigation items:', navItems)
 
   useEffect(() => {
     // 设置初始状态
@@ -375,10 +371,10 @@ export function Header() {
           <div className="flex h-12 items-center justify-between text-body-sm">
             <div className="hidden md:flex items-center space-x-6">
               <a href="/contact" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white drop-shadow-md'
+                isScrolled ? 'text-secondary hover:text-brand' : 'text-inverse/90 hover:text-inverse drop-shadow-md'
               }`}>{t.contact}</a>
               <a href="/locations" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white drop-shadow-md'
+                isScrolled ? 'text-secondary hover:text-brand' : 'text-inverse/90 hover:text-inverse drop-shadow-md'
               }`}>{t.locations}</a>
             </div>
             <div className="flex items-center space-x-6 ml-auto">
@@ -403,7 +399,7 @@ export function Header() {
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
             <span className={`text-heading-lg font-semibold transition-colors duration-normal ${
-              isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
+              isScrolled ? 'text-primary' : 'text-inverse drop-shadow-lg'
             }`}>{t.brandName}</span>
           </a>
 
@@ -420,8 +416,8 @@ export function Header() {
                     href={item.href}
                     className={`transition-colors font-medium text-body-md ${
                       isScrolled 
-                        ? 'text-gray-700 hover:text-gray-900' 
-                        : 'text-white/90 hover:text-white drop-shadow-md'
+                        ? 'text-secondary hover:text-primary' 
+                        : 'text-inverse/90 hover:text-inverse drop-shadow-md'
                     }`}
                   >
                     {item.label}
@@ -494,11 +490,11 @@ export function Header() {
                             </div>
                             
                             <div className="flex-1">
-                              <div className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors text-body-md">
+                              <div className="font-semibold text-primary group-hover:text-brand transition-colors text-body-md">
                                 {child.label}
                               </div>
                               {child.description && (
-                                <div className="mt-1 text-body-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
+                                <div className="mt-1 text-body-sm text-secondary group-hover:text-primary transition-colors leading-relaxed">
                                   {child.description}
                                 </div>
                               )}
@@ -551,38 +547,18 @@ export function Header() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+            <Button 
+              variant="primary" 
+              size="md"
             >
-              <Button 
-                variant="primary" 
-                size="md"
-                className="font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <span className="flex items-center gap-2">
-                  {t.getStarted}
-                  <motion.svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 2 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </motion.svg>
-                </span>
-              </Button>
-            </motion.div>
+              {t.getStarted}
+            </Button>
             
             <motion.button
               className={`md:hidden p-2 rounded-lg transition-colors ${
                 isScrolled 
-                  ? 'text-gray-700 hover:bg-gray-100' 
-                  : 'text-white hover:bg-white/10 drop-shadow-md'
+                  ? 'text-secondary hover:bg-neutral-100' 
+                  : 'text-inverse hover:bg-white/10 drop-shadow-md'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
@@ -629,7 +605,7 @@ export function Header() {
                   <div className="flex items-center justify-between py-2">
                     <a
                       href={item.href}
-                      className="text-gray-900 hover:text-primary-600 font-medium flex-1 text-body-md"
+                      className="text-primary hover:text-brand font-medium flex-1 text-body-md"
                     >
                       {item.label}
                     </a>
@@ -665,14 +641,14 @@ export function Header() {
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="block py-2 px-3 text-body-sm text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded transition-colors"
+                            className="block py-2 px-3 text-body-sm text-secondary hover:text-brand hover:bg-neutral-50 rounded transition-colors"
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: childIndex * 0.05, duration: 0.2 }}
                           >
                             <div className="font-medium">{child.label}</div>
                             {child.description && (
-                              <div className="text-body-xs text-gray-500 mt-1">{child.description}</div>
+                              <div className="text-body-xs text-tertiary mt-1">{child.description}</div>
                             )}
                           </motion.a>
                         ))}

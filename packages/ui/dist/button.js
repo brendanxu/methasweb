@@ -15,12 +15,12 @@ const buttonVariants = (0, class_variance_authority_1.cva)(
 'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-normal focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed relative overflow-hidden', {
     variants: {
         variant: {
-            primary: 'bg-gradient-to-r text-white shadow-sm hover:shadow-lg hover:-translate-y-0.5',
-            secondary: 'bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-primary-500 transition-colors',
-            outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent',
-            ghost: 'text-primary-700 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',
+            primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-lg hover:shadow-xl hover:-translate-y-0.5 border-0',
+            secondary: 'bg-white text-primary-700 border-2 border-primary-700 hover:bg-primary-50 hover:text-primary-800 focus:ring-primary-500 shadow-md hover:shadow-lg',
+            outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent hover:bg-neutral-50',
+            ghost: 'text-primary-700 hover:bg-primary-50 hover:text-primary-800 focus:ring-primary-500 bg-transparent',
             link: 'text-primary-700 hover:text-primary-800 underline-offset-4 hover:underline focus:ring-primary-500 bg-transparent p-0',
-            destructive: 'bg-error text-white hover:bg-red-600 focus:ring-red-500 shadow-sm hover:shadow-md',
+            destructive: 'bg-error text-white hover:bg-red-600 focus:ring-red-500 shadow-md hover:shadow-lg',
         },
         size: {
             sm: 'px-4 py-2 text-sm font-medium',
@@ -55,14 +55,7 @@ const Button = react_1.default.forwardRef(({ className, variant, size, loading =
             ...props
         });
     }
-    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.button, { ref: ref, className: buttonVariants({ variant, size, loading, className }), disabled: isDisabled, onClick: onClick, whileHover: !isDisabled ? { scale: 1.02 } : {}, whileTap: !isDisabled ? { scale: 0.98 } : {}, transition: { type: "spring", stiffness: 400, damping: 17 }, style: {
-            ...(variant === 'primary' && {
-                background: 'linear-gradient(to right, #0F5132, #198754)',
-                color: '#ffffff',
-                border: 'none'
-            }),
-            ...props.style
-        }, ...props, children: [loading && (0, jsx_runtime_1.jsx)(LoadingIcon, {}), !loading && leftIcon && leftIcon, children, !loading && rightIcon && rightIcon] }));
+    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.button, { ref: ref, className: buttonVariants({ variant, size, loading, className }), disabled: isDisabled, onClick: onClick, whileHover: !isDisabled ? { scale: 1.02 } : {}, whileTap: !isDisabled ? { scale: 0.98 } : {}, transition: { type: "spring", stiffness: 400, damping: 17 }, style: props.style, ...props, children: [loading && (0, jsx_runtime_1.jsx)(LoadingIcon, {}), !loading && leftIcon && leftIcon, children, !loading && rightIcon && rightIcon] }));
 });
 exports.Button = Button;
 Button.displayName = "Button";
