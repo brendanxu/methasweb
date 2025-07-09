@@ -314,6 +314,10 @@ export function Header() {
   // Get translated content
   const t = headerTranslations[language]
   const navItems = getNavItems(language)
+  
+  // Debug logging
+  console.log('Header rendering with language:', language)
+  console.log('Navigation items:', navItems)
 
   useEffect(() => {
     // 设置初始状态

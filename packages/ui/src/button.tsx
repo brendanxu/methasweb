@@ -115,7 +115,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
         style={{
           ...(variant === 'primary' && {
-            background: 'linear-gradient(135deg, #0F5132 0%, #198754 100%)',
+            background: 'linear-gradient(to right, #0F5132, #198754)',
             color: '#ffffff',
             border: 'none'
           }),

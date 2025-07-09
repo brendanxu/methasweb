@@ -57,7 +57,7 @@ const Button = react_1.default.forwardRef(({ className, variant, size, loading =
     }
     return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.button, { ref: ref, className: buttonVariants({ variant, size, loading, className }), disabled: isDisabled, onClick: onClick, whileHover: !isDisabled ? { scale: 1.02 } : {}, whileTap: !isDisabled ? { scale: 0.98 } : {}, transition: { type: "spring", stiffness: 400, damping: 17 }, style: {
             ...(variant === 'primary' && {
-                background: 'linear-gradient(135deg, #0F5132 0%, #198754 100%)',
+                background: 'linear-gradient(to right, #0F5132, #198754)',
                 color: '#ffffff',
                 border: 'none'
             }),

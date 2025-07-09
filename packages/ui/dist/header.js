@@ -285,6 +285,9 @@ function Header() {
     // Get translated content
     const t = headerTranslations[language];
     const navItems = getNavItems(language);
+    // Debug logging
+    console.log('Header rendering with language:', language);
+    console.log('Navigation items:', navItems);
     (0, react_1.useEffect)(() => {
         // 设置初始状态
         setIsScrolled(window.scrollY > 50);
