@@ -1,2 +1,5 @@
 /* Component-level styles for the UI package */
 @import "tailwindcss";
+
+/* 导入专业设计系统 */
+@import './design-system.css';

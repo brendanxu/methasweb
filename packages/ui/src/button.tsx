@@ -4,26 +4,26 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { type VariantProps, cva } from 'class-variance-authority'
 
-// 按钮变体配置 - 使用新设计系统
+// 按钮变体配置 - 使用专业设计系统
 const buttonVariants = cva(
-  // 基础样式
-  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed',
+  // 基础样式 - 专业设计系统
+  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-normal focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed relative overflow-hidden',
   {
     variants: {
       variant: {
-        primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-md',
-        secondary: 'bg-green-500 text-white hover:bg-green-600 focus:ring-green-500 shadow-sm hover:shadow-md',
-        outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500 bg-transparent',
-        ghost: 'text-primary-500 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',
-        link: 'text-primary-500 hover:text-primary-600 underline-offset-4 hover:underline focus:ring-primary-500 bg-transparent p-0',
+        primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5',
+        secondary: 'bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-primary-500 transition-colors',
+        outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent',
+        ghost: 'text-primary-700 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',
+        link: 'text-primary-700 hover:text-primary-800 underline-offset-4 hover:underline focus:ring-primary-500 bg-transparent p-0',
         destructive: 'bg-error text-white hover:bg-red-600 focus:ring-red-500 shadow-sm hover:shadow-md',
       },
       size: {
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-10 px-4 text-base',
-        lg: 'h-12 px-6 text-lg',
-        xl: 'h-14 px-8 text-xl',
-        icon: 'h-10 w-10',
+        sm: 'px-4 py-2 text-sm font-medium',
+        md: 'px-6 py-3 text-base font-medium',
+        lg: 'px-8 py-4 text-lg font-medium',
+        xl: 'px-10 py-5 text-xl font-semibold',
+        icon: 'p-2 w-10 h-10',
       },
       loading: {
         true: 'cursor-not-allowed',

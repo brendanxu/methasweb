@@ -56,7 +56,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-gray-900 text-white relative overflow-hidden">
+    <footer className="bg-neutral-900 text-white relative overflow-hidden">
       {/* Main footer content */}
       <div className="relative z-10">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -72,7 +72,7 @@ export function Footer() {
               </div>
               
               {/* Slogan */}
-              <p className="mb-6 text-gray-400 text-body-lg">
+              <p className="mb-6 text-neutral-400 text-body-lg">
                 关注我们随时收到最新讯息
               </p>
               
@@ -84,12 +84,12 @@ export function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="请输入邮箱"
-                    className="flex-1 px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-body-md"
+                    className="flex-1 px-4 py-3 bg-white text-neutral-900 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-body-md"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-5 py-3 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-colors duration-200 text-button-md shadow-lg hover:shadow-xl"
+                    className="px-5 py-3 bg-gradient-to-r from-primary-700 to-primary-500 text-white font-medium rounded-lg hover:from-primary-800 hover:to-primary-600 transition-all duration-normal text-button-md shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                   >
                     订阅
                   </button>
@@ -101,7 +101,7 @@ export function Footer() {
                 <h4 className="text-body-lg font-semibold mb-3 text-white">媒体联络</h4>
                 <a 
                   href="mailto:pr@miotech.com" 
-                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200 text-body-md"
+                  className="text-accent-blue hover:text-accent-blue-light transition-colors duration-normal text-body-md"
                 >
                   pr@miotech.com
                 </a>
@@ -112,7 +112,7 @@ export function Footer() {
                 {/* LinkedIn */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center hover:bg-primary-500 transition-colors duration-200 shadow-soft"
+                  className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center hover:bg-primary-500 transition-all duration-normal shadow-md hover:shadow-lg hover:-translate-y-0.5"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -123,7 +123,7 @@ export function Footer() {
                 {/* WeChat */}
                 <a
                   href="#"
-                  className="w-10 h-10 bg-success-500 rounded-lg flex items-center justify-center hover:bg-success-600 transition-colors duration-200 shadow-soft"
+                  className="w-10 h-10 bg-success rounded-lg flex items-center justify-center hover:bg-success-light transition-all duration-normal shadow-md hover:shadow-lg hover:-translate-y-0.5"
                   aria-label="微信"
                 >
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -145,7 +145,7 @@ export function Footer() {
                       <li key={index}>
                         <a
                           href={link.href}
-                          className="text-gray-400 hover:text-white transition-colors duration-200 text-body-sm leading-relaxed"
+                          className="text-neutral-400 hover:text-white transition-colors duration-normal text-body-sm leading-relaxed"
                         >
                           {link.label}
                         </a>
@@ -159,17 +159,17 @@ export function Footer() {
             {/* Right decoration */}
             <div className="lg:col-span-1 flex justify-center lg:justify-end">
               <div className="relative">
-                {/* Cute cartoon character decoration */}
-                <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center opacity-80">
+                {/* Professional environmental decoration */}
+                <div className="w-32 h-32 bg-gradient-to-br from-primary-600 to-primary-400 rounded-full flex items-center justify-center opacity-80">
                   <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
                 </div>
                 
-                {/* Floating elements */}
-                <div className="absolute -top-2 -right-2 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
-                <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-green-400 rounded-full animate-pulse delay-500"></div>
-                <div className="absolute top-1/2 -right-4 w-2 h-2 bg-pink-400 rounded-full animate-pulse delay-1000"></div>
+                {/* Professional floating elements */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-accent-amber rounded-full animate-pulse"></div>
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-success rounded-full animate-pulse delay-500"></div>
+                <div className="absolute top-1/2 -right-4 w-2 h-2 bg-accent-blue rounded-full animate-pulse delay-1000"></div>
               </div>
             </div>
           </div>
@@ -177,20 +177,20 @@ export function Footer() {
       </div>
       
       {/* Bottom copyright */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-neutral-700">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-body-sm">
+            <p className="text-neutral-400 text-body-sm">
               © {new Date().getFullYear()} 碳智METHAS. 保留所有权利.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
+              <a href="#" className="text-neutral-400 hover:text-white text-body-sm transition-colors duration-normal">
                 隐私政策
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
+              <a href="#" className="text-neutral-400 hover:text-white text-body-sm transition-colors duration-normal">
                 使用条款
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">
+              <a href="#" className="text-neutral-400 hover:text-white text-body-sm transition-colors duration-normal">
                 网站地图
               </a>
             </div>

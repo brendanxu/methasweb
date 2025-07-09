@@ -83,16 +83,16 @@ function Header() {
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY]);
-    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.header, { className: `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`, initial: {
+    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.header, { className: `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`, initial: {
             backgroundColor: 'transparent',
             y: 0
         }, animate: {
-            backgroundColor: isScrolled ? '#ffffff' : 'transparent',
-            boxShadow: isScrolled ? 'var(--methas-shadow-lg)' : '0 0 0 0 rgba(0, 0, 0, 0)',
+            backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+            boxShadow: isScrolled ? '0 10px 40px rgba(10, 61, 46, 0.08)' : '0 0 0 0 rgba(0, 0, 0, 0)',
             y: isHidden ? -100 : 0
         }, transition: {
             duration: 0.3,
-            ease: 'var(--methas-ease-out)' // 碳智METHAS 缓动函数
+            ease: [0.4, 0, 0.2, 1] // 专业缓动函数
         }, children: [(0, jsx_runtime_1.jsx)("div", { className: `border-b border-white/20 ${isScrolled ? 'hidden' : 'block'}`, children: (0, jsx_runtime_1.jsx)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex h-12 items-center justify-between text-body-sm", children: [(0, jsx_runtime_1.jsxs)("div", { className: "hidden md:flex items-center space-x-6", children: [(0, jsx_runtime_1.jsx)("a", { href: "/contact", className: `transition-colors text-body-sm ${isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'}`, children: "Contact" }), (0, jsx_runtime_1.jsx)("a", { href: "/locations", className: `transition-colors text-body-sm ${isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'}`, children: "Locations" })] }), (0, jsx_runtime_1.jsx)("div", { className: "flex items-center space-x-6 ml-auto", children: (0, jsx_runtime_1.jsxs)("select", { className: `bg-transparent text-body-sm ${isScrolled ? 'text-gray-600' : 'text-white/80'}`, children: [(0, jsx_runtime_1.jsx)("option", { children: "EN" }), (0, jsx_runtime_1.jsx)("option", { children: "DE" }), (0, jsx_runtime_1.jsx)("option", { children: "FR" })] }) })] }) }) }), (0, jsx_runtime_1.jsx)("nav", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: (0, jsx_runtime_1.jsxs)("div", { className: `flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`, children: [(0, jsx_runtime_1.jsx)("a", { href: "/", className: "flex items-center", children: (0, jsx_runtime_1.jsx)("span", { className: `text-heading-lg font-semibold transition-colors duration-normal ${isScrolled ? 'text-gray-900' : 'text-white'}`, children: "\u78B3\u667AMETHAS" }) }), (0, jsx_runtime_1.jsx)("div", { className: "hidden lg:flex lg:items-center lg:space-x-8", children: navItems.map((item) => ((0, jsx_runtime_1.jsxs)("div", { className: "relative", onMouseEnter: () => item.children && setOpenMegaMenu(item.label), onMouseLeave: () => setOpenMegaMenu(null), children: [(0, jsx_runtime_1.jsxs)("div", { className: "flex items-center space-x-1", children: [(0, jsx_runtime_1.jsx)("a", { href: item.href, className: `transition-colors font-medium text-body-md ${isScrolled
                                                     ? 'text-gray-700 hover:text-gray-900'
                                                     : 'text-white/90 hover:text-white'}`, children: item.label }), item.children && ((0, jsx_runtime_1.jsx)(framer_motion_1.motion.svg, { className: `h-4 w-4 transition-all duration-200 ${isScrolled ? 'text-gray-500' : 'text-white/70'}`, fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", animate: {

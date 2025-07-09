@@ -100,20 +100,20 @@ export function Header() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
       initial={{ 
         backgroundColor: 'transparent',
         y: 0
       }}
       animate={{
-        backgroundColor: isScrolled ? '#ffffff' : 'transparent',
-        boxShadow: isScrolled ? 'var(--methas-shadow-lg)' : '0 0 0 0 rgba(0, 0, 0, 0)',
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+        boxShadow: isScrolled ? '0 10px 40px rgba(10, 61, 46, 0.08)' : '0 0 0 0 rgba(0, 0, 0, 0)',
         y: isHidden ? -100 : 0
       }}
       transition={{ 
         duration: 0.3, 
-        ease: 'var(--methas-ease-out)' // 碳智METHAS 缓动函数
+        ease: [0.4, 0, 0.2, 1] // 专业缓动函数
       }}
     >
       <div className={`border-b border-white/20 ${isScrolled ? 'hidden' : 'block'}`}>
