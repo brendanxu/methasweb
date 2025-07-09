@@ -20,14 +20,16 @@ const translations = {
     brandTagline: '专业碳中和解决方案提供商',
     
     // Hero Section
-    heroTitle: '引领气候解决方案之路',
-    heroSubtitle: '自2006年以来，我们帮助组织加速向净零未来的转型，通过全面的气候行动策略和解决方案。',
+    heroTitle: '专业的碳中和解决方案提供商',
+    heroSubtitleLine1: '助力企业实现双碳目标，',
+    heroSubtitleLine2: '构建可持续发展未来',
+    heroSubtitle: '助力企业实现双碳目标，构建可持续发展未来',
     yearsLeading: '年领先经验',
     co2Reduced: 'CO₂ 减排量',
     clientsServed: '服务客户',
-    exploreButton: '探索我们的解决方案',
+    exploreButton: '查看案例详情',
     startButton: '开始您的旅程',
-    discoverImpact: '发现我们的影响',
+    discoverImpact: '继续探索',
     
     // Navigation
     aboutUs: '关于我们',
@@ -60,14 +62,16 @@ const translations = {
     brandTagline: 'Professional Carbon Neutral Solutions Provider',
     
     // Hero Section
-    heroTitle: 'Leading the Way in Climate Solutions',
-    heroSubtitle: 'Since 2006, we\'ve helped organizations accelerate their transition to a net-zero future through comprehensive climate action strategies and solutions.',
+    heroTitle: 'Professional Carbon Neutral Solutions Provider',
+    heroSubtitleLine1: 'Helping enterprises achieve dual carbon goals,',
+    heroSubtitleLine2: 'Building a sustainable future',
+    heroSubtitle: 'Helping enterprises achieve dual carbon goals, Building a sustainable future',
     yearsLeading: 'Years Leading',
     co2Reduced: 'CO₂ Reduced',
     clientsServed: 'Clients Served',
-    exploreButton: 'Explore Our Solutions',
+    exploreButton: 'View Case Studies',
     startButton: 'Start Your Journey',
-    discoverImpact: 'Discover our impact',
+    discoverImpact: 'Continue Exploring',
     
     // Navigation
     aboutUs: 'About us',
@@ -100,14 +104,16 @@ const translations = {
     brandTagline: 'Professioneller Anbieter für CO₂-Neutralitätslösungen',
     
     // Hero Section
-    heroTitle: 'Wegweisend bei Klimalösungen',
-    heroSubtitle: 'Seit 2006 helfen wir Organisationen dabei, ihren Übergang zu einer Net-Zero-Zukunft durch umfassende Klimaschutzstrategien und -lösungen zu beschleunigen.',
+    heroTitle: 'Professioneller Anbieter für Kohlenstoffneutralitätslösungen',
+    heroSubtitleLine1: 'Unternehmen bei der Erreichung der Dual-Carbon-Ziele helfen,',
+    heroSubtitleLine2: 'Eine nachhaltige Zukunft aufbauen',
+    heroSubtitle: 'Unternehmen bei der Erreichung der Dual-Carbon-Ziele helfen, Eine nachhaltige Zukunft aufbauen',
     yearsLeading: 'Jahre führend',
     co2Reduced: 'CO₂ reduziert',
     clientsServed: 'Kunden betreut',
-    exploreButton: 'Unsere Lösungen erkunden',
+    exploreButton: 'Fallstudien ansehen',
     startButton: 'Ihre Reise beginnen',
-    discoverImpact: 'Entdecken Sie unsere Wirkung',
+    discoverImpact: 'Weiter erkunden',
     
     // Navigation
     aboutUs: 'Über uns',
@@ -140,14 +146,16 @@ const translations = {
     brandTagline: 'Fournisseur professionnel de solutions neutres en carbone',
     
     // Hero Section
-    heroTitle: 'Ouvrir la voie aux solutions climatiques',
-    heroSubtitle: 'Depuis 2006, nous aidons les organisations à accélérer leur transition vers un avenir net zéro grâce à des stratégies et solutions d\'action climatique complètes.',
+    heroTitle: 'Fournisseur professionnel de solutions neutres en carbone',
+    heroSubtitleLine1: 'Aider les entreprises à atteindre les objectifs de double carbone,',
+    heroSubtitleLine2: 'Construire un avenir durable',
+    heroSubtitle: 'Aider les entreprises à atteindre les objectifs de double carbone, Construire un avenir durable',
     yearsLeading: 'Années de leadership',
     co2Reduced: 'CO₂ réduit',
     clientsServed: 'Clients servis',
-    exploreButton: 'Explorer nos solutions',
+    exploreButton: 'Voir les études de cas',
     startButton: 'Commencer votre parcours',
-    discoverImpact: 'Découvrez notre impact',
+    discoverImpact: 'Continuer à explorer',
     
     // Navigation
     aboutUs: 'À propos',
