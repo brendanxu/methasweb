@@ -127,7 +127,6 @@ interface AnimatedProps {
   delay?: number
   duration?: number
   className?: string
-  as?: React.ElementType
 }
 
 export function Animated({ 
@@ -135,14 +134,12 @@ export function Animated({
   variant = 'fadeIn', 
   delay = 0, 
   duration = methasAnimations.duration.normal,
-  className = '',
-  as: Component = 'div'
+  className = ''
 }: AnimatedProps) {
   const animationVariant = methasAnimations.variants[variant]
   
   return (
     <motion.div
-      as={Component}
       className={className}
       initial={animationVariant.initial}
       animate={animationVariant.animate}
@@ -164,21 +161,18 @@ interface ScrollAnimatedProps {
   variant?: keyof typeof methasAnimations.variants
   delay?: number
   className?: string
-  as?: React.ElementType
 }
 
 export function ScrollAnimated({ 
   children, 
   variant = 'slideUp', 
   delay = 0,
-  className = '',
-  as: Component = 'div'
+  className = ''
 }: ScrollAnimatedProps) {
   const animationVariant = methasAnimations.variants[variant]
   
   return (
     <motion.div
-      as={Component}
       className={className}
       initial={animationVariant.initial}
       whileInView={animationVariant.animate}
@@ -200,7 +194,6 @@ interface InteractiveProps {
   tap?: boolean
   focus?: boolean
   className?: string
-  as?: React.ElementType
   onClick?: () => void
 }
 
@@ -210,7 +203,6 @@ export function Interactive({
   tap = true, 
   focus = false,
   className = '',
-  as: Component = 'div',
   onClick
 }: InteractiveProps) {
   const whileHover = hover ? methasAnimations.interactions.hover : undefined
@@ -219,7 +211,6 @@ export function Interactive({
   
   return (
     <motion.div
-      as={Component}
       className={className}
       whileHover={whileHover}
       whileTap={whileTap}

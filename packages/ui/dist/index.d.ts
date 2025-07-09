@@ -9,5 +9,5 @@ export { Select } from './select';
 export { Container } from './container';
 export { Section } from './section';
 export { Grid, Flex, Stack } from './grid';
-export { AnimatedElement, StaggerContainer, HoverLift, ClickScale, Parallax, fadeInUpVariants, fadeInVariants, scaleInVariants, slideInLeftVariants, slideInRightVariants, staggerContainerVariants } from './animations';
+export { methasAnimations, Animated, ScrollAnimated, Interactive, Staggered, PageTransition, LoadingSpinner, useMethasAnimations } from './animations';
 //# sourceMappingURL=index.d.ts.map

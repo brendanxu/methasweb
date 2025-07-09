@@ -40,7 +40,9 @@ const buttonVariants = cva(
 
 // 按钮属性类型
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 
+    'onDrag' | 'onDragEnd' | 'onDragEnter' | 'onDragExit' | 'onDragLeave' | 'onDragOver' | 'onDragStart' | 'onDrop' |
+    'onAnimationStart' | 'onAnimationEnd'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
   loading?: boolean
@@ -86,6 +88,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     rightIcon,
     children,
     asChild = false,
+    onClick,
     ...props 
   }, ref) => {
     const isDisabled = disabled || loading
@@ -96,6 +99,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className: buttonVariants({ variant, size, loading, className }),
         ref,
         disabled: isDisabled,
+        onClick,
         ...props
       } as any)
     }
@@ -105,6 +109,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={buttonVariants({ variant, size, loading, className })}
         disabled={isDisabled}
+        onClick={onClick}
         whileHover={!isDisabled ? { scale: 1.02 } : {}}
         whileTap={!isDisabled ? { scale: 0.98 } : {}}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}

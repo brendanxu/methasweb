@@ -8,38 +8,54 @@ exports.Button = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const framer_motion_1 = require("framer-motion");
-const Button = react_1.default.forwardRef(({ variant = 'primary', size = 'md', asChild = false, className = '', children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center font-semibold rounded focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-disabled disabled:cursor-not-allowed transition-all duration-fast ease-out';
-    const variants = {
-        primary: 'bg-primary text-neutral-0 hover:bg-primary-accent active:bg-primary-700 focus:ring-primary-500 shadow-md hover:shadow-lg',
-        secondary: 'bg-transparent text-primary border-2 border-primary hover:bg-primary-50 active:bg-primary-100 focus:ring-primary-500',
-        outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary hover:text-primary focus:ring-primary-500',
-        ghost: 'text-neutral-600 hover:text-primary hover:bg-neutral-50 focus:ring-primary-300'
-    };
-    const hoverVariants = {
-        primary: { y: -1 },
-        secondary: { y: -1 },
-        outline: { y: -1 },
-        ghost: { scale: 1 }
-    };
-    const sizes = {
-        sm: 'px-4 py-2 text-sm min-h-[32px]', // 小按钮
-        md: 'px-6 py-3 text-base min-h-[44px]', // 中按钮（默认）  
-        lg: 'px-8 py-4 text-lg min-h-[52px]' // 大按钮
-    };
-    const buttonClasses = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+const class_variance_authority_1 = require("class-variance-authority");
+// 按钮变体配置 - 使用新设计系统
+const buttonVariants = (0, class_variance_authority_1.cva)(
+// 基础样式
+'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed', {
+    variants: {
+        variant: {
+            primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-md',
+            secondary: 'bg-green-500 text-white hover:bg-green-600 focus:ring-green-500 shadow-sm hover:shadow-md',
+            outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus:ring-primary-500 bg-transparent',
+            ghost: 'text-primary-500 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',
+            link: 'text-primary-500 hover:text-primary-600 underline-offset-4 hover:underline focus:ring-primary-500 bg-transparent p-0',
+            destructive: 'bg-error text-white hover:bg-red-600 focus:ring-red-500 shadow-sm hover:shadow-md',
+        },
+        size: {
+            sm: 'h-8 px-3 text-sm',
+            md: 'h-10 px-4 text-base',
+            lg: 'h-12 px-6 text-lg',
+            xl: 'h-14 px-8 text-xl',
+            icon: 'h-10 w-10',
+        },
+        loading: {
+            true: 'cursor-not-allowed',
+            false: '',
+        },
+    },
+    defaultVariants: {
+        variant: 'primary',
+        size: 'md',
+        loading: false,
+    },
+});
+// 加载中图标组件
+const LoadingIcon = () => ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.svg, { className: "h-4 w-4", xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", animate: { rotate: 360 }, transition: { duration: 1, repeat: Infinity, ease: "linear" }, children: [(0, jsx_runtime_1.jsx)("circle", { className: "opacity-25", cx: "12", cy: "12", r: "10", stroke: "currentColor", strokeWidth: "4" }), (0, jsx_runtime_1.jsx)("path", { className: "opacity-75", fill: "currentColor", d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" })] }));
+// 按钮组件
+const Button = react_1.default.forwardRef(({ className, variant, size, loading = false, disabled, leftIcon, rightIcon, children, asChild = false, onClick, ...props }, ref) => {
+    const isDisabled = disabled || loading;
+    // asChild 支持 - 向后兼容
     if (asChild && react_1.default.isValidElement(children)) {
         return react_1.default.cloneElement(children, {
-            className: buttonClasses,
+            className: buttonVariants({ variant, size, loading, className }),
             ref,
+            disabled: isDisabled,
+            onClick,
             ...props
         });
     }
-    const { onDrag, onDragStart, onDragEnd, onAnimationStart, onAnimationEnd, ...otherProps } = props;
-    return ((0, jsx_runtime_1.jsx)(framer_motion_1.motion.button, { ref: ref, className: buttonClasses, whileHover: hoverVariants[variant], whileTap: { scale: 0.98 }, transition: {
-            duration: 0.2,
-            ease: [0, 0, 0.2, 1]
-        }, ...otherProps, children: children }));
+    return ((0, jsx_runtime_1.jsxs)(framer_motion_1.motion.button, { ref: ref, className: buttonVariants({ variant, size, loading, className }), disabled: isDisabled, onClick: onClick, whileHover: !isDisabled ? { scale: 1.02 } : {}, whileTap: !isDisabled ? { scale: 0.98 } : {}, transition: { type: "spring", stiffness: 400, damping: 17 }, ...props, children: [loading && (0, jsx_runtime_1.jsx)(LoadingIcon, {}), !loading && leftIcon && leftIcon, children, !loading && rightIcon && rightIcon] }));
 });
 exports.Button = Button;
-Button.displayName = 'Button';
+Button.displayName = "Button";
