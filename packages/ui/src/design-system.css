@@ -797,4 +797,61 @@ body {
 .justify-between { justify-content: space-between; }
 .gap-4 { gap: var(--space-4); }
 .gap-6 { gap: var(--space-6); }
+
+/* ===============================
+   Header组件专用文字类
+================================ */
+.text-heading-lg {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+}
+
+.text-body-md {
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+.text-body-sm {
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+.text-body-xs {
+  font-size: var(--text-xs);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+
+/* 文字颜色类 */
+.text-inverse {
+  color: var(--text-inverse);
+}
+
+.text-primary-800 {
+  color: var(--primary-800);
+}
+
+.text-primary-700 {
+  color: var(--primary-700);
+}
+
+.text-primary-600 {
+  color: var(--primary-600);
+}
+
+/* 悬停颜色 */
+.hover\:text-primary-700:hover {
+  color: var(--primary-700);
+}
+
+.hover\:text-primary-600:hover {
+  color: var(--primary-600);
+}
+
+.hover\:text-inverse:hover {
+  color: var(--text-inverse);
+}
 .gap-8 { gap: var(--space-8); }

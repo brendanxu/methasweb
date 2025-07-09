@@ -391,9 +391,6 @@
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
-  .h-15 {
-    height: calc(var(--spacing) * 15);
-  }
   .h-16 {
     height: calc(var(--spacing) * 16);
   }
@@ -1971,6 +1968,47 @@ body {
 }
 .gap-6 {
   gap: var(--space-6);
+}
+.text-heading-lg {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+}
+.text-body-md {
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+.text-body-sm {
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+.text-body-xs {
+  font-size: var(--text-xs);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+}
+.text-inverse {
+  color: var(--text-inverse);
+}
+.text-primary-800 {
+  color: var(--primary-800);
+}
+.text-primary-700 {
+  color: var(--primary-700);
+}
+.text-primary-600 {
+  color: var(--primary-600);
+}
+.hover\:text-primary-700:hover {
+  color: var(--primary-700);
+}
+.hover\:text-primary-600:hover {
+  color: var(--primary-600);
+}
+.hover\:text-inverse:hover {
+  color: var(--text-inverse);
 }
 .gap-8 {
   gap: var(--space-8);

@@ -422,7 +422,7 @@ export function Header() {
       </div>
 
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-15' : 'h-20'}`}>
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
             <motion.span className={`text-heading-lg font-semibold transition-colors duration-normal ${
               isScrolled ? 'text-primary-800' : 'text-inverse drop-shadow-lg'
