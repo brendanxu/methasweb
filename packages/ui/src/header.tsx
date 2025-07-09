@@ -4,6 +4,21 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from './button'
 
+/**
+ * Professional Header Component
+ * 
+ * Features:
+ * - Southpole.com inspired blue theme design
+ * - 4 main navigation items with mega menu dropdowns
+ * - Multi-language support (zh-CN, en, de, fr)
+ * - Scroll effects: height reduction from 80px to 60px
+ * - Mobile bottom navigation bar
+ * - Smooth animations and transitions
+ * 
+ * Last updated: 2025-01-10
+ * Fixed: Export issue resolved, component now properly exports via 'export function'
+ */
+
 // Simple language state management for header
 const useLanguageState = () => {
   const [language, setLanguage] = useState<'zh-CN' | 'en' | 'de' | 'fr'>('zh-CN')

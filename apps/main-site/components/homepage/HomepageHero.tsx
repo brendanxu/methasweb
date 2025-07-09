@@ -17,6 +17,15 @@ import { useLanguage } from '../../contexts/LanguageContext'
  * - Staggered text animations
  * - Responsive design with mobile optimization
  * - Performance optimized with lazy loading
+ * - Ken Burns effect for static images
+ * - Smart device/network detection for video fallback
+ * 
+ * Content:
+ * - Title: 专业的碳中和解决方案提供商
+ * - Subtitle: 助力企业实现双碳目标，构建可持续发展未来
+ * - CTA: 查看案例详情
+ * 
+ * Last updated: 2025-01-10
  */
 
 // Animation variants for text entrance

@@ -6,6 +6,20 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
 const framer_motion_1 = require("framer-motion");
 const button_1 = require("./button");
+/**
+ * Professional Header Component
+ *
+ * Features:
+ * - Southpole.com inspired blue theme design
+ * - 4 main navigation items with mega menu dropdowns
+ * - Multi-language support (zh-CN, en, de, fr)
+ * - Scroll effects: height reduction from 80px to 60px
+ * - Mobile bottom navigation bar
+ * - Smooth animations and transitions
+ *
+ * Last updated: 2025-01-10
+ * Fixed: Export issue resolved, component now properly exports via 'export function'
+ */
 // Simple language state management for header
 const useLanguageState = () => {
     const [language, setLanguage] = (0, react_1.useState)('zh-CN');
