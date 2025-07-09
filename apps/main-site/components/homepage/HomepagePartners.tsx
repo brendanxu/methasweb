@@ -1,3 +1,5 @@
+'use client'
+
 import { useLanguage } from '@/contexts/LanguageContext'
 
 // 多语言翻译
