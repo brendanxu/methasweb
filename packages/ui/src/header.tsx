@@ -442,65 +442,102 @@ export function Header() {
                 <AnimatePresence>
                   {item.children && openMegaMenu === item.label && (
                     <motion.div 
-                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 w-80 rounded-lg bg-white shadow-lg border border-gray-200 overflow-hidden"
-                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="absolute left-1/2 transform -translate-x-1/2 top-full mt-4 w-96 rounded-xl bg-white shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm"
+                      initial={{ opacity: 0, y: -15, scale: 0.92 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                      exit={{ opacity: 0, y: -15, scale: 0.92 }}
+                      transition={{ 
+                        duration: 0.25, 
+                        ease: [0.16, 1, 0.3, 1],
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 25
+                      }}
                       style={{
-                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05)'
+                        boxShadow: '0 32px 64px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                       }}
                     >
                       {/* Header with gradient */}
-                      <div className="bg-gray-50 px-6 py-4 border-b border-gray-100">
-                        <h3 className="font-semibold text-gray-900 text-body-sm uppercase tracking-wider">
+                      <div className="bg-gradient-to-r from-primary-50 to-green-50 px-6 py-4 border-b border-primary-100 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/5 to-green-500/5"></div>
+                        <h3 className="relative font-semibold text-primary-800 text-body-sm uppercase tracking-wider">
                           {item.label}
                         </h3>
                       </div>
                       
-                      <div className="py-2">
+                      <div className="py-3">
                         {item.children.map((child, index) => (
                           <motion.a
                             key={child.label}
                             href={child.href}
-                            className="group flex items-start px-6 py-3 hover:bg-gray-50 transition-all duration-200"
-                            initial={{ opacity: 0, x: -10 }}
+                            className="group flex items-start px-6 py-4 hover:bg-gradient-to-r hover:from-primary-50/50 hover:to-green-50/50 transition-all duration-300 border-l-2 border-transparent hover:border-primary-500"
+                            initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05, duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                            transition={{ 
+                              delay: index * 0.08, 
+                              duration: 0.3, 
+                              ease: [0.16, 1, 0.3, 1] 
+                            }}
+                            whileHover={{ x: 4 }}
                           >
+                            {/* Icon */}
+                            <div className="mr-4 mt-1">
+                              <div className="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center group-hover:bg-primary-200 transition-colors duration-300">
+                                <svg className="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                            
                             <div className="flex-1">
-                              <div className="font-medium text-gray-900 group-hover:text-primary-600 transition-colors text-body-sm">
+                              <div className="font-semibold text-gray-900 group-hover:text-primary-700 transition-colors text-body-md">
                                 {child.label}
                               </div>
                               {child.description && (
-                                <div className="mt-1 text-body-xs text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
+                                <div className="mt-1 text-body-sm text-gray-600 group-hover:text-gray-700 transition-colors leading-relaxed">
                                   {child.description}
                                 </div>
                               )}
                             </div>
-                            <svg 
-                              className="h-4 w-4 text-gray-300 group-hover:text-primary-500 group-hover:translate-x-0.5 transition-all duration-200 mt-0.5 ml-3 flex-shrink-0" 
+                            
+                            <motion.svg 
+                              className="h-5 w-5 text-gray-400 group-hover:text-primary-500 flex-shrink-0 ml-3" 
                               fill="none" 
                               stroke="currentColor" 
                               viewBox="0 0 24 24"
+                              initial={{ x: 0, opacity: 0.6 }}
+                              whileHover={{ x: 3, opacity: 1 }}
+                              transition={{ duration: 0.2 }}
                             >
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
+                            </motion.svg>
                           </motion.a>
                         ))}
                       </div>
                       
                       {/* Footer CTA */}
-                      <div className="bg-gray-50 px-6 py-3 border-t border-gray-100">
-                        <a 
+                      <div className="bg-gradient-to-r from-primary-500 to-green-500 px-6 py-4 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 to-green-600/10"></div>
+                        <motion.a 
                           href={item.href}
-                          className="text-xs font-medium text-blue-600 hover:text-blue-700 transition-colors flex items-center"
+                          className="relative text-sm font-semibold text-white hover:text-white/90 transition-colors flex items-center group"
+                          whileHover={{ scale: 1.02 }}
+                          transition={{ duration: 0.2 }}
                         >
+                          <span className="mr-2">💡</span>
                           View all {item.label.toLowerCase()}
-                          <svg className="h-3 w-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </a>
+                          <motion.svg 
+                            className="h-4 w-4 ml-2" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                            initial={{ x: 0 }}
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </motion.svg>
+                        </motion.a>
                       </div>
                     </motion.div>
                   )}
@@ -510,9 +547,32 @@ export function Header() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button variant="primary" size="md">
-              {t.getStarted}
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <Button 
+                variant="primary" 
+                size="md"
+                className="bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-0 px-6 py-3"
+              >
+                <span className="flex items-center gap-2">
+                  {t.getStarted}
+                  <motion.svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </motion.svg>
+                </span>
+              </Button>
+            </motion.div>
             
             <motion.button
               className={`md:hidden p-2 rounded-lg transition-colors ${
