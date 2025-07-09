@@ -15,7 +15,7 @@ const buttonVariants = (0, class_variance_authority_1.cva)(
 'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-normal focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed relative overflow-hidden', {
     variants: {
         variant: {
-            primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5',
+            primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5 [&]:text-white [&]:!text-white',
             secondary: 'bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-primary-500 transition-colors',
             outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent',
             ghost: 'text-primary-700 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',

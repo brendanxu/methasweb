@@ -349,7 +349,7 @@ export function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
       initial={{ 
@@ -371,16 +371,16 @@ export function Header() {
           <div className="flex h-12 items-center justify-between text-body-sm">
             <div className="hidden md:flex items-center space-x-6">
               <a href="/contact" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
+                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white drop-shadow-md'
               }`}>{t.contact}</a>
               <a href="/locations" className={`transition-colors text-body-sm ${
-                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white'
+                isScrolled ? 'text-gray-600 hover:text-primary-500' : 'text-white/80 hover:text-white drop-shadow-md'
               }`}>{t.locations}</a>
             </div>
             <div className="flex items-center space-x-6 ml-auto">
               <select 
                 className={`bg-transparent text-body-sm cursor-pointer border-none outline-none ${
-                  isScrolled ? 'text-gray-600' : 'text-white/80'
+                  isScrolled ? 'text-gray-600' : 'text-white/80 drop-shadow-md'
                 }`}
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as 'zh-CN' | 'en' | 'de' | 'fr')}
@@ -399,11 +399,11 @@ export function Header() {
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
           <a href="/" className="flex items-center">
             <span className={`text-heading-lg font-semibold transition-colors duration-normal ${
-              isScrolled ? 'text-gray-900' : 'text-white'
+              isScrolled ? 'text-gray-900' : 'text-white drop-shadow-lg'
             }`}>{t.brandName}</span>
           </a>
 
-          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
             {navItems.map((item) => (
               <div
                 key={item.label}
@@ -417,7 +417,7 @@ export function Header() {
                     className={`transition-colors font-medium text-body-md ${
                       isScrolled 
                         ? 'text-gray-700 hover:text-gray-900' 
-                        : 'text-white/90 hover:text-white'
+                        : 'text-white/90 hover:text-white drop-shadow-md'
                     }`}
                   >
                     {item.label}
@@ -425,7 +425,7 @@ export function Header() {
                   {item.children && (
                     <motion.svg
                       className={`h-4 w-4 transition-all duration-200 ${
-                        isScrolled ? 'text-gray-500' : 'text-white/70'
+                        isScrolled ? 'text-gray-500' : 'text-white/70 drop-shadow-md'
                       }`}
                       fill="none"
                       stroke="currentColor"
@@ -515,10 +515,10 @@ export function Header() {
             </Button>
             
             <motion.button
-              className={`lg:hidden p-2 rounded-lg transition-colors ${
+              className={`md:hidden p-2 rounded-lg transition-colors ${
                 isScrolled 
                   ? 'text-gray-700 hover:bg-gray-100' 
-                  : 'text-white hover:bg-white/10'
+                  : 'text-white hover:bg-white/10 drop-shadow-md'
               }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
@@ -548,7 +548,7 @@ export function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            className="lg:hidden border-t border-gray-200 bg-white"
+            className="md:hidden border-t border-gray-200 bg-white"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

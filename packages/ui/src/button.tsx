@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5',
+        primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5 [&]:text-white [&]:!text-white',
         secondary: 'bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-primary-500 transition-colors',
         outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent',
         ghost: 'text-primary-700 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',

@@ -178,115 +178,7 @@ const carbonInsightsTranslations = {
 export function CarbonInsights() {
   const { language } = useLanguage()
   const t = carbonInsightsTranslations[language]
-  useEffect(() => {
-    // 碳智观察轮播功能
-    let currentIndex = 0;
-    const track = document.getElementById('ciTrack');
-    const cards = document.querySelectorAll('.ci-card');
-    const indicators = document.querySelectorAll('.ci-indicator');
-    
-    if (!track || !cards.length) return;
-    
-    // 响应式卡片数量
-    function getCardsPerView() {
-      if (window.innerWidth <= 480) return 1;
-      if (window.innerWidth <= 768) return 2;
-      if (window.innerWidth <= 1024) return 3;
-      return 4;
-    }
-    
-    // 更新轮播位置
-    function updateCarousel() {
-      if (!track) return;
-      
-      const cardsPerView = getCardsPerView();
-      const cardWidth = 100 / cardsPerView;
-      const maxIndex = Math.max(0, cards.length - cardsPerView);
-      
-      // 限制索引范围
-      currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-      
-      // 计算偏移
-      const offset = currentIndex * cardWidth;
-      track.style.transform = `translateX(-${offset}%)`;
-      
-      // 更新指示器
-      updateIndicators();
-    }
-    
-    // 更新指示器状态
-    function updateIndicators() {
-      indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === Math.floor(currentIndex / 2));
-      });
-    }
-    
-    // 下一页
-    const slideNext = function() {
-      const cardsPerView = getCardsPerView();
-      const maxIndex = cards.length - cardsPerView;
-      
-      if (currentIndex < maxIndex) {
-        currentIndex = Math.min(currentIndex + cardsPerView, maxIndex);
-        updateCarousel();
-      }
-    };
-    
-    // 上一页
-    const slidePrev = function() {
-      if (currentIndex > 0) {
-        const cardsPerView = getCardsPerView();
-        currentIndex = Math.max(currentIndex - cardsPerView, 0);
-        updateCarousel();
-      }
-    };
-    
-    // 绑定按钮事件
-    const prevBtn = document.querySelector('.ci-nav-prev');
-    const nextBtn = document.querySelector('.ci-nav-next');
-    
-    if (prevBtn) prevBtn.addEventListener('click', slidePrev);
-    if (nextBtn) nextBtn.addEventListener('click', slideNext);
-    
-    // 触摸滑动支持
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    track.addEventListener('touchstart', (e) => {
-      if (e.touches[0]) {
-        touchStartX = e.touches[0].clientX;
-      }
-    });
-    
-    track.addEventListener('touchend', (e) => {
-      if (e.changedTouches[0]) {
-        touchEndX = e.changedTouches[0].clientX;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) {
-            slideNext();
-          } else {
-            slidePrev();
-          }
-        }
-      }
-    });
-    
-    // 窗口调整时更新
-    const handleResize = () => updateCarousel();
-    window.addEventListener('resize', handleResize);
-    
-    // 初始化
-    updateCarousel();
-    
-    // 清理函数
-    return () => {
-      if (prevBtn) prevBtn.removeEventListener('click', slidePrev);
-      if (nextBtn) nextBtn.removeEventListener('click', slideNext);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  // 简化为静态显示4个卡片，不需要复杂的轮播逻辑
 
   return (
     <>
@@ -297,17 +189,13 @@ export function CarbonInsights() {
         </div>
         
         <div className="ci-carousel">
-          <button className="ci-nav ci-nav-prev">
-            <span>‹</span>
-          </button>
-          
           <div className="ci-viewport">
             <div className="ci-track" id="ciTrack">
-              {t.articles.map((article, index) => (
+              {t.articles.slice(0, 4).map((article, index) => (
                 <article key={index} className="ci-card">
                   <div className="ci-card-image">
                     <img 
-                      src={`https://via.placeholder.com/300x200/${['0066cc', '00aa66', 'ff6633', '9933ff', 'ff3366', '33ccff'][index]}/ffffff?text=Article+${index + 1}`} 
+                      src={`https://via.placeholder.com/300x200/${['0066cc', '00aa66', 'ff6633', '9933ff'][index]}/ffffff?text=Article+${index + 1}`} 
                       alt={article.title} 
                       loading="lazy"
                       style={{
@@ -324,16 +212,6 @@ export function CarbonInsights() {
               ))}
             </div>
           </div>
-          
-          <button className="ci-nav ci-nav-next">
-            <span>›</span>
-          </button>
-        </div>
-        
-        <div className="ci-indicators">
-          <span className="ci-indicator active"></span>
-          <span className="ci-indicator"></span>
-          <span className="ci-indicator"></span>
         </div>
       </section>
 
@@ -362,14 +240,12 @@ export function CarbonInsights() {
           color: #666;
         }
 
-        /* 轮播容器 */
+        /* 容器 - 显示4个卡片 */
         .ci-carousel {
-          max-width: 1200px;
+          max-width: 1400px;
           margin: 0 auto;
           position: relative;
-          display: flex;
-          align-items: center;
-          gap: 20px;
+          padding: 0 20px;
         }
 
         /* 视口 - 显示区域 */
@@ -379,17 +255,20 @@ export function CarbonInsights() {
           position: relative;
         }
 
-        /* 轨道 - 包含所有卡片 */
+        /* 轨道 - 包含所有卡片，确保4个卡片并排显示 */
         .ci-track {
           display: flex;
           gap: 20px;
+          width: 100%;
+          min-width: 100%;
           transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform;
         }
 
-        /* 卡片样式 - 关键：固定宽度 */
+        /* 卡片样式 - 关键：固定宽度显示4个 */
         .ci-card {
-          flex: 0 0 calc((100% - 60px) / 4);
+          flex: 0 0 calc(25% - 15px);
+          min-width: 280px;
           background: white;
           border-radius: 12px;
           overflow: hidden;
@@ -467,87 +346,38 @@ export function CarbonInsights() {
           color: #0052a3;
         }
 
-        /* 导航按钮 */
-        .ci-nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 44px;
-          height: 44px;
-          background: white;
-          border: 1px solid #e0e0e0;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s;
-          z-index: 10;
-          font-size: 24px;
-          color: #666;
-        }
 
-        .ci-nav:hover {
-          background: #f5f5f5;
-          border-color: #ccc;
-          color: #333;
-        }
-
-        .ci-nav-prev {
-          left: -22px;
-        }
-
-        .ci-nav-next {
-          right: -22px;
-        }
-
-        /* 指示器 */
-        .ci-indicators {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-top: 30px;
-        }
-
-        .ci-indicator {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #ddd;
-          transition: all 0.3s;
-          cursor: pointer;
-        }
-
-        .ci-indicator.active {
-          width: 24px;
-          border-radius: 4px;
-          background: #0066cc;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
+        /* 响应式设计 - 确保不同屏幕都能看到卡片 */
+        @media (max-width: 1200px) {
           .ci-card {
-            flex: 0 0 calc((100% - 40px) / 3);
+            flex: 0 0 calc(33.333% - 15px);
+            min-width: 250px;
           }
         }
 
         @media (max-width: 768px) {
           .ci-card {
-            flex: 0 0 calc((100% - 20px) / 2);
+            flex: 0 0 calc(50% - 10px);
+            min-width: 200px;
           }
           
-          .ci-nav {
-            display: none;
+          .ci-carousel {
+            padding: 0 10px;
           }
         }
 
         @media (max-width: 480px) {
           .ci-card {
-            flex: 0 0 90%;
+            flex: 0 0 calc(100% - 20px);
+            min-width: unset;
           }
           
           .ci-title {
             font-size: 28px;
+          }
+          
+          .ci-track {
+            flex-direction: column;
           }
         }
       `}</style>
