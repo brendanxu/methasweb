@@ -87,7 +87,7 @@ export default {
         mono: ['"SF Mono"', 'Monaco', 'Inconsolata', '"Fira Code"', 'monospace'],
       },
       fontSize: {
-        // South Pole 字体系统 - 精确匹配官网规格
+        // 碳智METHAS 字体系统 - 精确匹配官网规格
         'hero-xl': ['4.5rem', { lineHeight: '1.1', fontWeight: '700' }],      // 72px - Hero大标题
         'hero-lg': ['3.5rem', { lineHeight: '1.1', fontWeight: '700' }],      // 56px - Hero标题
         'display-lg': ['3rem', { lineHeight: '1.2', fontWeight: '600' }],     // 48px - 大标题
@@ -106,7 +106,7 @@ export default {
         'button-sm': ['0.75rem', { lineHeight: '1.5', fontWeight: '600' }],   // 12px 按钮
       },
       spacing: {
-        // South Pole 8px 基础间距系统
+        // 碳智METHAS 8px 基础间距系统
         'unit': '0.5rem',     // 8px 基础单位
         '0.5': '0.25rem',     // 4px
         '1': '0.5rem',        // 8px

@@ -19,7 +19,7 @@ export default async function ServicesPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'What We Do - Climate Solutions & Services | South Pole',
-    description: 'Discover South Pole\'s comprehensive climate solutions: carbon offsetting, net-zero strategies, renewable energy, and sustainability consulting. Create meaningful climate impact.',
+    title: 'What We Do - Climate Solutions & Services | 碳智METHAS',
+    description: 'Discover 碳智METHAS\'s comprehensive climate solutions: carbon offsetting, net-zero strategies, renewable energy, and sustainability consulting. Create meaningful climate impact.',
   }
 }

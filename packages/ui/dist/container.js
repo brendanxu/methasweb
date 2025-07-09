@@ -8,7 +8,7 @@ function Container({ size = 'xl', padding = 'md', children, className = '', as: 
         sm: 'max-w-2xl', // 672px
         md: 'max-w-4xl', // 896px
         lg: 'max-w-6xl', // 1152px
-        xl: 'max-w-7xl', // 1280px - South Pole standard
+        xl: 'max-w-7xl', // 1280px - 碳智METHAS standard
         full: 'max-w-full'
     };
     const paddings = {

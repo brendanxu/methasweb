@@ -82,7 +82,7 @@ export async function pingUmbraco(): Promise<boolean> {
 export function getUmbracoConfig() {
   return {
     baseUrl: process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5001',
-    hasApiKey: !!(process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-railway-api-key-2024'),
+    hasApiKey: !!(process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'methas-railway-api-key-2024'),
     isProduction: process.env.NODE_ENV === 'production',
     timestamp: new Date().toISOString()
   }

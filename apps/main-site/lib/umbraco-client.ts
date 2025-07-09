@@ -11,7 +11,7 @@ import {
 } from './types'
 
 const UMBRACO_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || 'http://localhost:5001'
-const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'southpole-api-key-2024'
+const UMBRACO_API_KEY = process.env.NEXT_PUBLIC_UMBRACO_API_KEY || 'methas-api-key-2024'
 
 class UmbracoClient {
   private baseUrl: string

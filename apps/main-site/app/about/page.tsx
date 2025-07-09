@@ -45,7 +45,7 @@ export default async function AboutPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'About South Pole - Climate Action Since 2006',
-    description: 'Learn about South Pole\'s mission to accelerate the transition to a climate-positive world. Discover our history, values, and global team of 800+ climate experts.',
+    title: 'About 碳智METHAS - Climate Action Since 2006',
+    description: 'Learn about 碳智METHAS\'s mission to accelerate the transition to a climate-positive world. Discover our history, values, and global team of 800+ climate experts.',
   }
 }

@@ -33,7 +33,7 @@ export default function HomepagePartners() {
 
         <div className="text-center mt-12">
           <p className="text-gray-500 text-sm">
-            Join 1000+ organizations creating climate impact with South Pole
+            Join 1000+ organizations creating climate impact with 碳智METHAS
           </p>
         </div>
       </div>

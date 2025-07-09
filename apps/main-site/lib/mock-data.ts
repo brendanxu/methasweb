@@ -139,12 +139,12 @@ export const mockNewsArticles: NewsArticle[] = [
   },
   {
     id: '4',
-    title: 'South Pole Launches New Climate Finance Platform',
+    title: '碳智METHAS推出新气候金融平台',
     slug: 'climate-finance-platform-launch',
     publishDate: '2024-06-20',
     heroImage: 'https://images.unsplash.com/photo-1518544801976-3e159e50e5bb?w=1600&h=900&fit=crop',
-    content: 'South Pole announces the launch of an innovative climate finance platform connecting investors with verified climate projects...',
+    content: '碳智METHAS宣布推出创新的气候金融平台，连接投资者与经过验证的气候项目...',
     category: mockCategories[0]!,
-    summary: 'New platform streamlines investment in high-impact climate projects with enhanced transparency and verification.'
+    summary: '新平台通过增强透明度和验证简化高影响力气候项目的投资流程。'
   }
 ]

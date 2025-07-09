@@ -14,8 +14,8 @@
     "analyze": "ANALYZE=true npm run build",
     "build:prod": "NODE_ENV=production npm run build",
     "start:prod": "NODE_ENV=production npm run start",
-    "docker:build": "docker build -t southpole-main-site .",
-    "docker:run": "docker run -p 3000:3000 southpole-main-site",
+    "docker:build": "docker build -t methas-main-site .",
+    "docker:run": "docker run -p 3000:3000 methas-main-site",
     "deploy:staging": "../scripts/deploy.sh staging",
     "deploy:production": "../scripts/deploy.sh production"
   },

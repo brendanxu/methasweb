@@ -23,7 +23,7 @@ export default async function TeamPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'Our Team - Climate Experts & Leaders | South Pole',
-    description: 'Meet the passionate climate experts, leaders, and innovators driving South Pole\'s mission. 800+ professionals across 20+ countries creating global climate impact.',
+    title: 'Our Team - Climate Experts & Leaders | 碳智METHAS',
+    description: 'Meet the passionate climate experts, leaders, and innovators driving 碳智METHAS\'s mission. 800+ professionals across 20+ countries creating global climate impact.',
   }
 }

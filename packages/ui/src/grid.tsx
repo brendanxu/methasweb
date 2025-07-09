@@ -35,7 +35,7 @@ export function Grid({
   
   const gaps = {
     sm: 'gap-4',         // 16px
-    md: 'gap-8',         // 32px - South Pole standard
+    md: 'gap-8',         // 32px - 碳智METHAS standard
     lg: 'gap-12',        // 48px
     xl: 'gap-16'         // 64px
   }

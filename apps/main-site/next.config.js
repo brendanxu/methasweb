@@ -21,7 +21,7 @@ const nextConfig = {
       // Add your production image domains here
       {
         protocol: 'https',
-        hostname: 'cdn.southpole.com',
+        hostname: 'cdn.methas.com',
       },
       // Umbraco media
       {
@@ -31,7 +31,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cms.southpole.com',
+        hostname: 'cms.methas.com',
       },
     ],
   },

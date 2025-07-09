@@ -147,13 +147,13 @@ export async function generateMetadata({ params }: CaseStudyDetailProps) {
   
   if (!caseStudy) {
     return {
-      title: 'Case Study Not Found | South Pole',
+      title: 'Case Study Not Found | 碳智METHAS',
       description: 'The requested case study could not be found.'
     }
   }
 
   return {
-    title: `${caseStudy.title} | South Pole Case Study`,
+    title: `${caseStudy.title} | 碳智METHAS Case Study`,
     description: caseStudy.summary,
     openGraph: {
       title: caseStudy.title,

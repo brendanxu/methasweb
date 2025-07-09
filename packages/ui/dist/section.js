@@ -8,7 +8,7 @@ function Section({ spacing = 'lg', background = 'white', children, className = '
         none: '',
         sm: 'py-12', // 48px vertical padding
         md: 'py-16', // 64px vertical padding
-        lg: 'py-24', // 96px vertical padding - South Pole standard
+        lg: 'py-24', // 96px vertical padding - 碳智METHAS standard
         xl: 'py-32' // 128px vertical padding
     };
     const backgrounds = {

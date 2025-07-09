@@ -21,7 +21,7 @@ export default async function HomePage() {
 
 export async function generateMetadata() {
   return {
-    title: 'South Pole - Leading Climate Solutions & Carbon Market Experts',
-    description: 'South Pole develops comprehensive climate action strategies for businesses worldwide. Expert in carbon offsetting, net-zero strategies, and sustainable development since 2006.',
+    title: '碳智METHAS - 专业碳中和解决方案与碳市场专家',
+    description: '碳智METHAS为全球企业提供全方位的碳中和战略规划。专注于碳资产管理、零碳转型策略和可持续发展解决方案。',
   }
 }

@@ -143,7 +143,7 @@ export default function TeamCulture() {
               Voices from Our Team
             </h3>
             <p className="text-gray-600">
-              Hear what our team members say about working at South Pole
+              Hear what our team members say about working at 碳智METHAS
             </p>
           </div>
 
@@ -164,7 +164,7 @@ export default function TeamCulture() {
                 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
               },
               {
-                quote: "South Pole gives me the flexibility to balance my work with family life while pursuing my passion for climate action.",
+                quote: "碳智METHAS gives me the flexibility to balance my work with family life while pursuing my passion for climate action.",
                 author: "Emma Thompson",
                 role: "Technology Lead",
                 location: "London",

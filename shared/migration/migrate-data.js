@@ -16,7 +16,7 @@ const path = require('path');
 // 检查是否存在 PostgreSQL 数据
 const POSTGRES_DATA_PATH = path.join(__dirname, '../../../backup/cms-backend-backup/scripts/sqlite-export.json');
 const UMBRACO_BASE_URL = process.env.UMBRACO_BASE_URL || 'http://localhost:5000';
-const UMBRACO_API_KEY = process.env.UMBRACO_API_KEY || 'southpole-api-key-2024';
+const UMBRACO_API_KEY = process.env.UMBRACO_API_KEY || 'methas-api-key-2024';
 
 class DataMigrationTool {
   constructor() {
@@ -82,8 +82,8 @@ class DataMigrationTool {
       users: [
         {
           id: 'user1',
-          email: 'admin@southpole.com',
-          name: 'South Pole Admin',
+          email: 'admin@methas.com',
+          name: 'METHAS Admin',
           role: 'ADMIN',
           createdAt: new Date().toISOString()
         }
@@ -179,7 +179,7 @@ class DataMigrationTool {
           name: 'John Doe',
           title: 'Chief Executive Officer',
           department: 'Executive',
-          bio: 'John leads South Pole with over 15 years of experience in climate solutions.',
+          bio: 'John leads METHAS with over 15 years of experience in climate solutions.'
           isLeadership: true,
           displayOrder: 1,
           isActive: true,
@@ -382,7 +382,7 @@ const fs = require('fs');
 const path = require('path');
 
 const UMBRACO_BASE_URL = '${UMBRACO_BASE_URL}';
-const UMBRACO_USERNAME = 'admin@southpole.com'; // 替换为实际管理员邮箱
+const UMBRACO_USERNAME = 'admin@methas.com'; // 替换为实际管理员邮箱
 const UMBRACO_PASSWORD = 'admin123456'; // 替换为实际密码
 
 class ContentImporter {

@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: ServicePageProps) {
   }
 
   return {
-    title: `${service.name} - Climate Solutions | South Pole`,
+    title: `${service.name} - Climate Solutions | 碳智METHAS`,
     description: service.description,
   }
 }

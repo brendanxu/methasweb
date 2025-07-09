@@ -15,7 +15,7 @@ export default function ContactLocations({ locations }: ContactLocationsProps) {
       country: 'Switzerland',
       countryCode: 'CH',
       phone: '+41 43 501 35 50',
-      email: 'zurich@southpole.com',
+      email: 'zurich@methas.com',
       timezone: 'CET',
       isHeadquarters: true,
       isActive: true,
@@ -30,7 +30,7 @@ export default function ContactLocations({ locations }: ContactLocationsProps) {
       country: 'Singapore',
       countryCode: 'SG',
       phone: '+65 6681 9200',
-      email: 'singapore@southpole.com',
+      email: 'singapore@methas.com',
       timezone: 'SGT',
       isHeadquarters: false,
       isActive: true,
@@ -45,7 +45,7 @@ export default function ContactLocations({ locations }: ContactLocationsProps) {
       country: 'United States',
       countryCode: 'US',
       phone: '+1 646 663 8400',
-      email: 'newyork@southpole.com',
+      email: 'newyork@methas.com',
       timezone: 'EST',
       isHeadquarters: false,
       isActive: true,
@@ -152,7 +152,7 @@ export default function ContactLocations({ locations }: ContactLocationsProps) {
               {/* Actions */}
               <div className="flex space-x-3">
                 <a
-                  href={`mailto:${location.email || 'hello@southpole.com'}`}
+                  href={`mailto:${location.email || 'hello@methas.com'}`}
                   className="flex-1 bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-center"
                 >
                   Contact Office

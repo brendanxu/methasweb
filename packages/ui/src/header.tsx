@@ -19,7 +19,7 @@ const navItems: NavItem[] = [
     label: 'About us',
     href: '/about',
     children: [
-      { label: 'Our story', href: '/about/story', description: 'How South Pole became a climate leader' },
+      { label: 'Our story', href: '/about/story', description: 'How 碳智METHAS became a climate leader' },
       { label: 'Leadership team', href: '/about/leadership', description: 'Meet our executive team and board' },
       { label: 'Mission & values', href: '/about/mission', description: 'Our purpose and core principles' },
       { label: 'Locations', href: '/about/locations', description: 'Our global offices and presence' },
@@ -76,7 +76,7 @@ export function Header() {
       // 更新 isScrolled 状态（背景变化）
       setIsScrolled(currentScrollY > 50)
       
-      // South Pole 导航隐藏逻辑：滚动超过500px时开始隐藏/显示
+      // 碳智METHAS 导航隐藏逻辑：滚动超过500px时开始隐藏/显示
       if (currentScrollY > 500) {
         if (currentScrollY > lastScrollY && currentScrollY > 500) {
           // 向下滚动 - 隐藏导航
@@ -113,7 +113,7 @@ export function Header() {
       }}
       transition={{ 
         duration: 0.3, 
-        ease: [0.4, 0, 0.2, 1] // South Pole cubic-bezier
+        ease: [0.4, 0, 0.2, 1] // 碳智METHAS cubic-bezier
       }}
     >
       <div className={`border-b border-white/20 ${isScrolled ? 'hidden' : 'block'}`}>
@@ -145,7 +145,7 @@ export function Header() {
           <a href="/" className="flex items-center">
             <span className={`text-heading-lg font-semibold transition-colors duration-300 ${
               isScrolled ? 'text-gray-900' : 'text-white'
-            }`}>South Pole</span>
+            }`}>碳智METHAS</span>
           </a>
 
           <div className="hidden lg:flex lg:items-center lg:space-x-8">

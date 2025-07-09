@@ -7,13 +7,13 @@ interface HistorySectionProps {
 export default function HistorySection({ data }: HistorySectionProps) {
   const title = data?.title || "Our Journey"
   const subtitle = data?.subtitle || "18 Years of Climate Leadership"
-  const content = data?.content || "Since our founding in 2006, South Pole has grown from a small consultancy to a global leader in climate solutions. Our journey reflects our unwavering commitment to creating meaningful environmental impact."
+  const content = data?.content || "Since our founding in 2006, 碳智METHAS has grown from a small consultancy to a global leader in climate solutions. Our journey reflects our unwavering commitment to creating meaningful environmental impact."
 
   const milestones = [
     {
       year: "2006",
       title: "Foundation",
-      description: "South Pole founded in Zurich by Renat Heuberger and Maximilian Horster with a mission to accelerate climate action.",
+      description: "碳智METHAS founded in Zurich by Renat Heuberger and Maximilian Horster with a mission to accelerate climate action.",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop"
     },
     {

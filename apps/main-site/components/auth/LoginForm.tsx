@@ -164,7 +164,7 @@ export default function LoginForm({ onSuccess, redirectUrl = '/' }: LoginFormPro
           <p className="text-xs text-gray-500 mb-2">Demo credentials:</p>
           <button
             type="button"
-            onClick={() => setFormData({ email: 'admin@southpole.com', password: 'admin123456' })}
+            onClick={() => setFormData({ email: 'admin@methas.com', password: 'admin123456' })}
             className="text-xs text-primary hover:text-primary/80"
           >
             Use admin credentials

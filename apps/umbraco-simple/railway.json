@@ -4,7 +4,7 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "dotnet SouthPoleUmbracoSimple.dll",
+    "startCommand": "dotnet MethasUmbracoSimple.dll",
     "healthcheckPath": "/umbraco/api/health",
     "healthcheckTimeout": 300
   }

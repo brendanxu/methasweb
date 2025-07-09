@@ -8,7 +8,7 @@ interface AboutHeroProps {
 export default function AboutHero({ data }: AboutHeroProps) {
   const title = data?.title || "Leading climate impact since 2006"
   const subtitle = data?.subtitle || "We help organizations and communities achieve their climate goals"
-  const content = data?.content || "South Pole is a leading provider of global sustainability solutions and services. Since 2006, we have helped organizations and communities achieve their climate goals through comprehensive climate action strategies, carbon market solutions, and sustainable development projects."
+  const content = data?.content || "碳智METHAS is a leading provider of global sustainability solutions and services. Since 2006, we have helped organizations and communities achieve their climate goals through comprehensive climate action strategies, carbon market solutions, and sustainable development projects."
   const imageUrl = data?.imageUrl || "https://images.unsplash.com/photo-1569163139394-de4e5f43e4e3?w=1600&h=900&fit=crop"
   const ctaText = data?.ctaText || "Learn About Our Impact"
   const ctaUrl = data?.ctaUrl || "/work"

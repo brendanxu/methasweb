@@ -98,7 +98,7 @@ export async function generateMetadata({ searchParams }: SearchPageProps) {
   const query = params.q || ''
   
   return {
-    title: query ? `Search Results for "${query}" | South Pole` : 'Search | South Pole',
-    description: 'Search through South Pole\'s climate solutions, case studies, news, and insights to find the information you need.',
+    title: query ? `Search Results for "${query}" | 碳智METHAS` : 'Search | 碳智METHAS',
+    description: 'Search through 碳智METHAS\'s climate solutions, case studies, news, and insights to find the information you need.',
   }
 }

@@ -8,14 +8,14 @@ import { AuthProvider } from '../contexts/AuthContext';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "South Pole - Leading Climate Solutions",
-  description: "South Pole develops climate action solutions for businesses, governments and organizations around the world.",
-  keywords: "climate solutions, carbon credits, renewable energy, sustainability, net zero",
+  title: "碳智METHAS - 专业的碳中和解决方案提供商",
+  description: "碳智METHAS为企业、政府和组织提供全方位的碳中和解决方案，助力实现可持续发展目标。",
+  keywords: "碳中和, 碳资产管理, 碳交易, 可持续发展, 零碳转型, ESG, 碳市场",
   openGraph: {
-    title: "South Pole - Leading Climate Solutions",
-    description: "South Pole develops climate action solutions for businesses, governments and organizations around the world.",
-    url: "https://www.southpole.com",
-    siteName: "South Pole",
+    title: "碳智METHAS - 专业的碳中和解决方案提供商",
+    description: "碳智METHAS为企业、政府和组织提供全方位的碳中和解决方案，助力实现可持续发展目标。",
+    url: "https://www.methas.cn",
+    siteName: "碳智METHAS",
     locale: "en_US",
     type: "website",
   },

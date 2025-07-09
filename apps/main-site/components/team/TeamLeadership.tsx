@@ -12,10 +12,10 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       name: 'Renat Heuberger',
       title: 'CEO & Co-Founder',
       department: 'Leadership',
-      bio: 'Renat co-founded South Pole in 2006 and has been driving climate action for over 18 years. He is a recognized expert in carbon markets and climate finance.',
+      bio: 'Renat co-founded 碳智METHAS in 2006 and has been driving climate action for over 18 years. He is a recognized expert in carbon markets and climate finance.',
       imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/renatheuberger',
-      email: 'renat.heuberger@southpole.com',
+      email: 'renat.heuberger@methas.com',
       isLeadership: true,
       displayOrder: 1,
       isActive: true,
@@ -27,10 +27,10 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       name: 'Maximilian Horster',
       title: 'COO & Co-Founder',
       department: 'Leadership',
-      bio: 'Maximilian oversees global operations and has been instrumental in South Pole\'s expansion across 20+ countries.',
+      bio: 'Maximilian oversees global operations and has been instrumental in 碳智METHAS\'s expansion across 20+ countries.',
       imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/maximilianhorster',
-      email: 'maximilian.horster@southpole.com',
+      email: 'maximilian.horster@methas.com',
       isLeadership: true,
       displayOrder: 2,
       isActive: true,
@@ -45,7 +45,7 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       bio: 'Dr. Johnson leads our climate science initiatives and carbon market development with 15+ years of experience in environmental research.',
       imageUrl: 'https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/sarahjohnsonclimate',
-      email: 'sarah.johnson@southpole.com',
+      email: 'sarah.johnson@methas.com',
       isLeadership: true,
       displayOrder: 3,
       isActive: true,
@@ -60,7 +60,7 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       bio: 'Michael drives our digital transformation and technology innovation initiatives, bringing cutting-edge solutions to climate action.',
       imageUrl: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/michaelchentech',
-      email: 'michael.chen@southpole.com',
+      email: 'michael.chen@methas.com',
       isLeadership: true,
       displayOrder: 4,
       isActive: true,
@@ -75,7 +75,7 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       bio: 'Elena manages our global financial strategy and sustainable finance initiatives, ensuring strong fiscal health and responsible growth.',
       imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/elenarodriguezfinance',
-      email: 'elena.rodriguez@southpole.com',
+      email: 'elena.rodriguez@methas.com',
       isLeadership: true,
       displayOrder: 5,
       isActive: true,
@@ -90,7 +90,7 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
       bio: 'David leads our strategic planning and business development efforts, identifying new opportunities for climate impact and growth.',
       imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face',
       linkedinUrl: 'https://linkedin.com/in/davidkimstrategy',
-      email: 'david.kim@southpole.com',
+      email: 'david.kim@methas.com',
       isLeadership: true,
       displayOrder: 6,
       isActive: true,
@@ -110,7 +110,7 @@ export default function TeamLeadership({ leadership }: TeamLeadershipProps) {
             Leadership Team
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Meet the experienced leaders guiding South Pole's mission to accelerate 
+            Meet the experienced leaders guiding 碳智METHAS's mission to accelerate 
             the transition to a climate-positive world. Together, they bring decades 
             of expertise in climate science, business strategy, and global operations.
           </p>

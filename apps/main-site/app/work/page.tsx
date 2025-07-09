@@ -142,10 +142,10 @@ async function StatsSection() {
 }
 
 export const metadata = {
-  title: 'Our Work | Climate Solutions Case Studies | South Pole',
+  title: 'Our Work | Climate Solutions Case Studies | 碳智METHAS',
   description: 'Explore our portfolio of climate action projects and case studies. See how we\'ve helped organizations worldwide achieve their sustainability and net-zero goals.',
   openGraph: {
-    title: 'Our Work | Climate Solutions Case Studies | South Pole',
+    title: 'Our Work | Climate Solutions Case Studies | 碳智METHAS',
     description: 'Explore our portfolio of climate action projects and case studies. See how we\'ve helped organizations worldwide achieve their sustainability and net-zero goals.',
     type: 'website',
   },

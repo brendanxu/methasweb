@@ -5,10 +5,10 @@ import React, { useState } from 'react'
 // MioTech style footer navigation data
 const footerNavigation = {
   chooseMioTech: {
-    title: '选择妙盈',
+    title: '选择碳智METHAS',
     links: [
       { label: '可持续共益', href: '#' },
-      { label: '妙盈研究院', href: '#' },
+      { label: '碳智研究院', href: '#' },
       { label: '新闻与媒体', href: '#' },
       { label: '加入我们', href: '#' },
       { label: 'ESG报告', href: '#' },
@@ -40,7 +40,7 @@ const footerNavigation = {
     title: '碳资产',
     links: [
       { label: '碳资产管理', href: '#' },
-      { label: '妙盈碳信用服务工具', href: '#' },
+      { label: '碳智METHAS碳信用服务工具', href: '#' },
     ]
   }
 }
@@ -67,7 +67,7 @@ export function Footer() {
               {/* Logo */}
               <div className="mb-6">
                 <h2 className="text-heading-lg font-semibold text-white">
-                  妙盈
+                  碳智METHAS
                 </h2>
               </div>
               
@@ -181,7 +181,7 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-body-sm">
-              © {new Date().getFullYear()} 妙盈科技. 保留所有权利.
+              © {new Date().getFullYear()} 碳智METHAS. 保留所有权利.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white text-body-sm transition-colors duration-200">

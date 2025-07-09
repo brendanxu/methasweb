@@ -1,8 +1,8 @@
 import LoginForm from '@/components/auth/LoginForm'
 
 export const metadata = {
-  title: 'Sign In | South Pole',
-  description: 'Sign in to your South Pole account to access exclusive climate solutions and insights.',
+  title: 'Sign In | 碳智METHAS',
+  description: 'Sign in to your 碳智METHAS account to access exclusive climate solutions and insights.',
 }
 
 export default function LoginPage() {
@@ -11,8 +11,8 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary mb-2">South Pole</h1>
-          <p className="text-gray-600">Leading climate solutions provider</p>
+          <h1 className="text-3xl font-bold text-primary mb-2">碳智METHAS</h1>
+          <p className="text-gray-600">Leading carbon neutrality solutions provider</p>
         </div>
       </div>
 

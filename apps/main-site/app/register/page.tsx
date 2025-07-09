@@ -1,8 +1,8 @@
 import RegisterForm from '@/components/auth/RegisterForm'
 
 export const metadata = {
-  title: 'Create Account | South Pole',
-  description: 'Join South Pole to access exclusive climate solutions, insights, and resources for your sustainability journey.',
+  title: 'Create Account | 碳智METHAS',
+  description: 'Join 碳智METHAS to access exclusive climate solutions, insights, and resources for your sustainability journey.',
 }
 
 export default function RegisterPage() {
@@ -11,7 +11,7 @@ export default function RegisterPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary mb-2">South Pole</h1>
+          <h1 className="text-3xl font-bold text-primary mb-2">碳智METHAS</h1>
           <p className="text-gray-600">Join the climate action community</p>
         </div>
       </div>

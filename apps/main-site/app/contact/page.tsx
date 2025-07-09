@@ -23,7 +23,7 @@ export default async function ContactPage() {
 
 export async function generateMetadata() {
   return {
-    title: 'Contact South Pole - Start Your Climate Journey',
-    description: 'Get in touch with South Pole\'s climate experts. Contact our global team to start your sustainability journey and create meaningful climate impact.',
+    title: 'Contact 碳智METHAS - Start Your Climate Journey',
+    description: 'Get in touch with 碳智METHAS\'s climate experts. Contact our global team to start your sustainability journey and create meaningful climate impact.',
   }
 }
