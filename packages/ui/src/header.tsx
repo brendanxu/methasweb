@@ -331,6 +331,9 @@ export function Header() {
   const navItems = getNavItems(language)
 
   useEffect(() => {
+    // 检查是否在客户端环境
+    if (typeof window === 'undefined') return
+    
     // 设置初始状态
     setIsScrolled(window.scrollY > 50)
     setLastScrollY(window.scrollY)
