@@ -629,10 +629,6 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-0 {
-    border-style: var(--tw-border-style);
-    border-width: 0px;
-  }
   .border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -1287,12 +1283,6 @@
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 12);
     }
-  }
-  .\[\&\]\:\!text-white {
-    color: var(--color-white) !important;
-  }
-  .\[\&\]\:text-white {
-    color: var(--color-white);
   }
 }
 :root {

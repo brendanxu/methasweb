@@ -555,7 +555,7 @@ export function Header() {
               <Button 
                 variant="primary" 
                 size="md"
-                className="bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-0 px-6 py-3"
+                className="font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <span className="flex items-center gap-2">
                   {t.getStarted}

@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-gradient-to-r from-primary-700 to-primary-500 text-white hover:from-primary-800 hover:to-primary-600 focus:ring-primary-500 shadow-sm hover:shadow-lg hover:-translate-y-0.5 [&]:text-white [&]:!text-white',
+        primary: 'bg-gradient-to-r text-white shadow-sm hover:shadow-lg hover:-translate-y-0.5',
         secondary: 'bg-transparent text-primary-700 border-2 border-primary-700 hover:bg-primary-700 hover:text-white focus:ring-primary-500 transition-colors',
         outline: 'border-2 border-neutral-300 text-neutral-700 hover:border-primary-500 hover:text-primary-700 focus:ring-primary-500 bg-transparent',
         ghost: 'text-primary-700 hover:bg-primary-50 focus:ring-primary-500 bg-transparent',
@@ -113,6 +113,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={!isDisabled ? { scale: 1.02 } : {}}
         whileTap={!isDisabled ? { scale: 0.98 } : {}}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        style={{
+          ...(variant === 'primary' && {
+            background: 'linear-gradient(135deg, #0F5132 0%, #198754 100%)',
+            color: '#ffffff',
+            border: 'none'
+          }),
+          ...props.style
+        }}
         {...props}
       >
         {loading && <LoadingIcon />}
